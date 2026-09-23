@@ -1,0 +1,70 @@
+{
+ "note": "Les visuels de coffret sont GÉNÉRÉS (aucune image, aucun téléchargement) : ils ne sont donc pas listés un par un. Leur identifiant se dérive de la règle « gabarits.coffret-art » et des paramètres artistiques portés par le coffret.",
+ "modele": {
+  "mediaId": "M-<coffret>-01",
+  "type": "coffret-art | identite | lieu | portrait | plan",
+  "mediaType": "visuel-génératif | image | video | audio",
+  "url": null,
+  "source": null,
+  "sourceUrl": null,
+  "sourceType": null,
+  "caption": null,
+  "alt": null,
+  "credit": null,
+  "lieuId": null,
+  "coffretId": null,
+  "droits": null,
+  "retrievedAt": null,
+  "updatedAt": null,
+  "externalId": null,
+  "statut": "À VÉRIFIER"
+ },
+ "gabarits": {
+  "coffret-art": {
+   "idRegle": "M-<identifiant de coffret>-01",
+   "type": "coffret-art",
+   "mediaType": "visuel-génératif",
+   "url": null,
+   "source": "WEDDING BOX — génération déterministe",
+   "sourceUrl": null,
+   "sourceType": "éditorial",
+   "caption": "Motif génératif du coffret <id> — <titre>",
+   "alt": "Composition graphique abstraite (visuel généré, non photographique) — coffret <id>",
+   "credit": "WEDDING BOX",
+   "statut": "VÉRIFIÉ",
+   "note": "Ne jamais présenter ce visuel comme une photographie du lieu : c’est un motif graphique."
+  }
+ },
+ "assets": [
+  {
+   "mediaId": "M-SITE-01",
+   "type": "identite",
+   "mediaType": "image",
+   "url": "assets/og-wedding-box.png",
+   "source": "WEDDING BOX",
+   "sourceUrl": null,
+   "sourceType": "production interne",
+   "caption": "Carte de partage WEDDING BOX — Lille Métropole",
+   "alt": "Composition graphique WEDDING BOX : titre de la collection sur fond sombre",
+   "credit": "WEDDING BOX",
+   "droits": "production interne",
+   "statut": "VÉRIFIÉ"
+  },
+  {
+   "mediaId": "M-SITE-02",
+   "type": "identite",
+   "mediaType": "image",
+   "url": "assets/favicon.svg",
+   "source": "WEDDING BOX",
+   "sourceUrl": null,
+   "sourceType": "production interne",
+   "caption": "Monogramme WB",
+   "alt": "Monogramme WEDDING BOX",
+   "credit": "WEDDING BOX",
+   "droits": "production interne",
+   "statut": "VÉRIFIÉ"
+  }
+ ],
+ "medias": [],
+ "aFaire": "Chaque photo réelle (lieu, prestation) devra être ajoutée ici avec source, sourceUrl, crédit, droits et statut — jamais une image générique présentée comme une photo du lieu."
+}

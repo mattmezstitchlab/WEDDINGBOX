@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="WEDDING BOX">
+  <rect width="64" height="64" rx="14" fill="#08080A"/>
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="rgba(239,234,225,.16)"/>
+  <text x="32" y="34" text-anchor="middle" font-family="Archivo, Helvetica, Arial, sans-serif"
+        font-size="27" font-weight="900" font-stretch="62%" letter-spacing="-1" fill="#EFEAE1">WB</text>
+  <circle cx="32" cy="48" r="3.4" fill="#E4572E"/>
+</svg>

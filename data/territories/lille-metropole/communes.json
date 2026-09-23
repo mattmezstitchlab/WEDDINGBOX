@@ -1,0 +1,589 @@
+[
+ {
+  "id": "CM-01",
+  "slug": "lille",
+  "nom": "Lille",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "ville-centre",
+  "identite": "Préfecture du Nord et ville-centre de la métropole.",
+  "description": "C’est la commune la plus documentée de la collection, et de loin : un tiers des coffrets environ y sont ancrés. Le Vieux-Lille, la Citadelle, les gares, Euralille : la ville propose des échelles très différentes dans un rayon de trois kilomètres. Un même mariage peut y passer de la brique ancienne au verre contemporain en une matinée.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-001",
+   "L-002",
+   "L-003",
+   "L-004",
+   "L-005",
+   "L-006",
+   "L-007",
+   "L-008",
+   "L-009",
+   "L-010"
+  ],
+  "compteurs": {
+   "coffrets": 100,
+   "lieux": 10,
+   "part": 27.4
+  }
+ },
+ {
+  "id": "CM-02",
+  "slug": "roubaix",
+  "nom": "Roubaix",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "ville industrielle",
+  "identite": "Ancienne capitale textile de la métropole.",
+  "description": "Roubaix est la deuxième source de la collection. Le patrimoine industriel y est partout : filatures, verrières, brique. C’est la commune où les décors « bruts » sont les plus cohérents, et celle où la question du chauffage d’un volume industriel se pose le plus tôt.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-011",
+   "L-012",
+   "L-013",
+   "L-014",
+   "L-015",
+   "L-016"
+  ],
+  "compteurs": {
+   "coffrets": 50,
+   "lieux": 6,
+   "part": 13.7
+  }
+ },
+ {
+  "id": "CM-03",
+  "slug": "tourcoing",
+  "nom": "Tourcoing",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "ville industrielle",
+  "identite": "Ville textile, à la frontière belge.",
+  "description": "Tourcoing apporte à la collection trois familles de lieux : la filature réhabilitée, l’édifice public et le parc. Le Fresnoy, l’hôtel de ville, les béguinages et les anciennes chaufferies forment un trio de matières très différent de celui de Lille.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-017",
+   "L-018",
+   "L-019",
+   "L-020",
+   "L-021",
+   "L-022"
+  ],
+  "compteurs": {
+   "coffrets": 43,
+   "lieux": 6,
+   "part": 11.8
+  }
+ },
+ {
+  "id": "CM-04",
+  "slug": "villeneuve-d-ascq",
+  "nom": "Villeneuve-d’Ascq",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "ville nouvelle et universitaire",
+  "identite": "Ville nouvelle des années 1970, campus et musée.",
+  "description": "Territoire le plus contrasté de la collection : un château ancien, un musée et son parc de sculptures, un lac, une cité-jardin, une place de village. Peu de lieux « spectaculaires », beaucoup d’air et de lumière rasante.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-023",
+   "L-024",
+   "L-025",
+   "L-026",
+   "L-027"
+  ],
+  "compteurs": {
+   "coffrets": 32,
+   "lieux": 5,
+   "part": 8.8
+  }
+ },
+ {
+  "id": "CM-05",
+  "slug": "marcq-en-bar-ul",
+  "nom": "Marcq-en-Barœul",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "commune résidentielle",
+  "identite": "Commune du nord-est de la métropole.",
+  "description": "Quatre lieux très différents : l’hippodrome et ses tribunes, un parc, un quai, un clos. La collection y travaille surtout les grandes pelouses et les vues longues.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-028",
+   "L-029",
+   "L-030",
+   "L-031"
+  ],
+  "compteurs": {
+   "coffrets": 29,
+   "lieux": 4,
+   "part": 7.9
+  }
+ },
+ {
+  "id": "CM-06",
+  "slug": "lambersart",
+  "nom": "Lambersart",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "commune de bord de Deûle",
+  "identite": "Commune au nord-ouest, traversée par la Deûle.",
+  "description": "Trois lieux, dont deux sur l’eau. Lambersart est la commune où la collection pousse le plus loin la piste du « mariage au bord de l’eau » : berges, reflets, et une lumière qui change très vite en fin de journée.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-032",
+   "L-033",
+   "L-034"
+  ],
+  "compteurs": {
+   "coffrets": 24,
+   "lieux": 3,
+   "part": 6.6
+  }
+ },
+ {
+  "id": "CM-07",
+  "slug": "mons-en-bar-ul",
+  "nom": "Mons-en-Barœul",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "commune de fortification",
+  "identite": "Commune limitrophe de Lille, marquée par son fort.",
+  "description": "Le fort et son parc donnent à la collection une géométrie qu’aucun autre lieu ne propose : talus, fossés, murs épais. Un décor qui absorbe le son et cadre les photos.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-035",
+   "L-036",
+   "L-037"
+  ],
+  "compteurs": {
+   "coffrets": 17,
+   "lieux": 3,
+   "part": 4.7
+  }
+ },
+ {
+  "id": "CM-08",
+  "slug": "wasquehal",
+  "nom": "Wasquehal",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "commune de bord de Marque",
+  "identite": "Commune de l’est métropolitain, sur la Marque.",
+  "description": "Bois, berges et une adresse conviviale : trois échelles, dont deux sur l’eau. C’est la commune la plus « campagne » de la collection, à dix minutes de Lille.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-038",
+   "L-039",
+   "L-040"
+  ],
+  "compteurs": {
+   "coffrets": 18,
+   "lieux": 3,
+   "part": 4.9
+  }
+ },
+ {
+  "id": "CM-09",
+  "slug": "croix",
+  "nom": "Croix",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "commune au patrimoine remarquable",
+  "identite": "Commune de la Villa Cavrois (Robert Mallet-Stevens).",
+  "description": "Croix est la commune où la collection touche à l’architecture moderniste : lignes nettes, blanc, symétrie. Un contrepoint total aux décors de brique, et un point d’équilibre pour les mariages qui cherchent le graphisme.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-041",
+   "L-042",
+   "L-043"
+  ],
+  "compteurs": {
+   "coffrets": 17,
+   "lieux": 3,
+   "part": 4.7
+  }
+ },
+ {
+  "id": "CM-10",
+  "slug": "hem",
+  "nom": "Hem",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "commune à faible couverture",
+  "identite": "Commune de l’est de la métropole.",
+  "description": "Cinq coffrets seulement : c’est l’une des couvertures les plus faibles de la collection, avec Faches-Thumesnil. Trois lieux existent pourtant (un moulin, une ferme, une adresse conviviale) : un travail de repérage reste à faire pour équilibrer la mosaïque.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-044",
+   "L-045",
+   "L-046"
+  ],
+  "compteurs": {
+   "coffrets": 5,
+   "lieux": 3,
+   "part": 1.4
+  }
+ },
+ {
+  "id": "CM-11",
+  "slug": "loos",
+  "nom": "Loos",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "commune de fortification et de Deûle",
+  "identite": "Commune du sud-ouest, fort détaché et berges.",
+  "description": "Un fort, des berges, un parc : Loos ressemble à une version calme de Mons-en-Barœul. La collection y travaille les lignes d’eau et les murs anciens, souvent dans le même coffret.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-047",
+   "L-048",
+   "L-049"
+  ],
+  "compteurs": {
+   "coffrets": 16,
+   "lieux": 3,
+   "part": 4.4
+  }
+ },
+ {
+  "id": "CM-12",
+  "slug": "faches-thumesnil",
+  "nom": "Faches-Thumesnil",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "commune à faible couverture",
+  "identite": "Commune du sud de la métropole.",
+  "description": "Quatre coffrets : la couverture la plus faible de la collection, un signal à traiter plutôt qu’à masquer. Deux lieux seulement sont identifiés (un château, un parc), dont l’un reste à documenter sérieusement.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-050",
+   "L-051"
+  ],
+  "compteurs": {
+   "coffrets": 4,
+   "lieux": 2,
+   "part": 1.1
+  }
+ },
+ {
+  "id": "CM-13",
+  "slug": "saint-andre-lez-lille",
+  "nom": "Saint-André-lez-Lille",
+  "territoireId": "lille-metropole",
+  "roleEditorial": "commune de bord de Deûle",
+  "identite": "Commune au nord de Lille, sur la Deûle.",
+  "description": "Une écluse, des berges, une cité : trois lieux qui parlent d’eau et de logement ouvrier. La collection y est encore mince (dix coffrets) au regard de ce que le canal promet.",
+  "rattachement": {
+   "epci": "Métropole européenne de Lille (MEL)",
+   "departement": "Nord (59)",
+   "region": "Hauts-de-France",
+   "status": "TROUVÉ"
+  },
+  "position": {
+   "lat": null,
+   "lon": null,
+   "status": "À VÉRIFIER",
+   "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ],
+  "statut": "TROUVÉ",
+  "lieux": [
+   "L-052",
+   "L-053",
+   "L-054"
+  ],
+  "compteurs": {
+   "coffrets": 10,
+   "lieux": 3,
+   "part": 2.7
+  }
+ }
+]
