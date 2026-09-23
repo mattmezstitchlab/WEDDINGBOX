@@ -1,0 +1,1335 @@
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="World Wedding Magazine — 365 coffrets de mariage pour Lille Métropole. La mosaïque éditoriale des idées de mariage urbaines : Lille, Roubaix, Tourcoing, Villeneuve-d’Ascq.">
+<title>WWM · 365 Coffrets — Lille Métropole</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BASE
+   ============================================================ */
+:root{
+  --ink:#08080A;
+  --ink-2:#0E0E12;
+  --ink-3:#141419;
+  --paper:#EFEAE1;
+  --muted:#8C8A85;
+  --line:rgba(255,255,255,.11);
+  --line-soft:rgba(255,255,255,.06);
+  --brick:#E4572E;
+  --acid:#D9FF3F;
+  --blue:#4C6FFF;
+  --navh:58px;
+  --pad:clamp(16px,4.2vw,58px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ink);color:var(--paper);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;
+  background-image:
+    linear-gradient(rgba(255,255,255,.026) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.026) 1px,transparent 1px);
+  background-size:72px 72px;
+  -webkit-mask-image:radial-gradient(130% 90% at 50% 0%,#000 10%,transparent 72%);
+          mask-image:radial-gradient(130% 90% at 50% 0%,#000 10%,transparent 72%);
+}
+.noise{
+  position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.045;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img,svg{display:block;max-width:100%}
+button,input,select{font:inherit;color:inherit}
+::selection{background:var(--brick);color:#fff}
+
+/* scrollbar */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#0a0a0c}
+::-webkit-scrollbar-thumb{background:#2a2a30;border-radius:20px;border:3px solid #0a0a0c}
+::-webkit-scrollbar-thumb:hover{background:#3d3d45}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;height:var(--navh);z-index:90;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:0 var(--pad);
+  background:linear-gradient(to bottom,rgba(8,8,10,.94),rgba(8,8,10,.55));
+  backdrop-filter:blur(16px) saturate(1.3);
+  -webkit-backdrop-filter:blur(16px) saturate(1.3);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Anton',sans-serif;font-size:15px;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+.brand i{width:9px;height:9px;border-radius:50%;background:var(--brick);flex:0 0 auto;box-shadow:0 0 14px rgba(228,87,46,.8)}
+.brand small{font-family:'Inter';font-size:10px;letter-spacing:.22em;color:var(--muted);font-weight:500}
+.navlinks{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
+.navlinks a{color:rgba(239,234,225,.72);text-decoration:none;transition:.25s;position:relative;padding-bottom:3px}
+.navlinks a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--acid);transition:width .3s}
+.navlinks a:hover{color:var(--paper)}
+.navlinks a:hover::after{width:100%}
+.selbtn{
+  display:flex;align-items:center;gap:8px;flex:0 0 auto;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--paper);
+  padding:8px 14px;border-radius:100px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  cursor:pointer;transition:.3s;
+}
+.selbtn i{width:6px;height:6px;border-radius:50%;background:var(--muted);transition:.3s}
+.selbtn b{font-variant-numeric:tabular-nums;font-weight:600}
+.selbtn:hover{border-color:rgba(255,255,255,.34);background:rgba(255,255,255,.08)}
+.selbtn.on{background:var(--acid);color:#0a0a0c;border-color:var(--acid)}
+.selbtn.on i{background:#0a0a0c}
+@media(max-width:900px){.navlinks{display:none}}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;min-height:100vh;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:calc(var(--navh) + 48px) var(--pad) 108px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:-25%;z-index:0;
+  background:
+    radial-gradient(38% 42% at 20% 30%, rgba(228,87,46,.55), transparent 62%),
+    radial-gradient(32% 38% at 80% 22%, rgba(76,111,255,.42), transparent 60%),
+    radial-gradient(46% 40% at 64% 84%, rgba(217,255,63,.16), transparent 62%);
+  filter:blur(38px) saturate(1.1);
+  transform:translate3d(calc(var(--mx,0) * 14px), calc(var(--my,0) * 14px), 0);
+  transition:transform .8s cubic-bezier(.2,.8,.2,1);
+}
+.hero::after{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top, var(--ink) 6%, rgba(8,8,10,.35) 46%, rgba(8,8,10,.15) 100%);
+}
+.hero-inner{position:relative;z-index:2;max-width:1180px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:rgba(239,234,225,.75);
+  border:1px solid var(--line);border-radius:100px;padding:7px 15px;margin:0 0 26px;
+  background:rgba(255,255,255,.03);backdrop-filter:blur(6px);
+}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--acid);box-shadow:0 0 12px var(--acid);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+.hero h1{
+  font-family:'Anton',sans-serif;font-weight:400;
+  font-size:clamp(48px,11.6vw,176px);line-height:.82;letter-spacing:-.028em;
+  text-transform:uppercase;margin:0 0 8px;
+}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:2px rgba(239,234,225,.5);text-stroke:2px rgba(239,234,225,.5)}
+.hero h1 em{
+  font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;
+  text-transform:none;letter-spacing:-.02em;color:var(--acid);
+}
+.hero-lede{
+  max-width:620px;color:rgba(239,234,225,.76);font-size:clamp(14px,1.45vw,17.5px);
+  margin:26px 0 34px;font-weight:300;line-height:1.68;
+}
+.hero-lede strong{color:var(--paper);font-weight:500}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 24px;border-radius:100px;border:1px solid transparent;
+  font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:500;
+  text-decoration:none;cursor:pointer;transition:.3s cubic-bezier(.2,.8,.2,1);
+  background:none;
+}
+.btn.primary{background:var(--paper);color:#0a0a0c}
+.btn.primary:hover{background:var(--acid);transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(217,255,63,.45)}
+.btn.ghost{border-color:var(--line);color:var(--paper)}
+.btn.ghost:hover{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.06);transform:translateY(-2px)}
+.btn.arrow::after{content:'→';font-size:14px;transition:transform .3s}
+.btn.arrow:hover::after{transform:translateX(4px)}
+
+/* hero card */
+.hero-card{
+  position:absolute;right:var(--pad);bottom:150px;z-index:3;
+  width:230px;cursor:pointer;
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;
+  background:var(--ink-2);
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.95);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1);
+  animation:floatCard 7s ease-in-out infinite;
+}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-card:hover{transform:translateY(-18px) scale(1.03)}
+.hc-art{height:150px;position:relative}
+.hc-body{padding:12px 14px 14px}
+.hc-kicker{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--acid);margin:0 0 6px}
+.hc-title{font-family:'Anton',sans-serif;font-size:17px;text-transform:uppercase;line-height:1;margin:0 0 5px}
+.hc-meta{font-size:10.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:0}
+@media(max-width:1180px){.hero-card{display:none}}
+
+/* marquee */
+.marquee{
+  position:absolute;bottom:0;left:0;right:0;z-index:3;overflow:hidden;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:13px 0;background:rgba(8,8,10,.6);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.marquee-track{display:flex;width:max-content;animation:marq 42s linear infinite}
+.marquee-track span{
+  display:inline-flex;align-items:center;gap:22px;padding-right:22px;
+  font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(239,234,225,.58);white-space:nowrap;
+}
+.marquee-track span b{color:var(--brick);font-weight:600}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ============================================================
+   MANIFESTE
+   ============================================================ */
+.manifeste{
+  position:relative;z-index:2;
+  padding:clamp(72px,10vw,150px) var(--pad) clamp(50px,7vw,90px);
+  border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:1.35fr .85fr;gap:clamp(32px,6vw,96px);
+  align-items:start;
+}
+.m-label{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--brick);margin:0 0 22px;display:flex;align-items:center;gap:12px}
+.m-label::after{content:'';height:1px;width:60px;background:var(--brick);opacity:.5}
+.m-text{font-size:clamp(19px,2.5vw,33px);line-height:1.34;font-weight:300;letter-spacing:-.015em;margin:0;color:rgba(239,234,225,.9)}
+.m-text strong{font-weight:500;color:var(--paper)}
+.m-text em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--acid)}
+.m-side{display:flex;flex-direction:column;gap:26px;padding-top:6px}
+.m-side p{font-size:14px;color:var(--muted);margin:0;line-height:1.75;font-weight:300}
+.m-side .quote{font-family:'Instrument Serif',serif;font-style:italic;font-size:20px;color:var(--paper);line-height:1.45;border-left:1px solid var(--brick);padding-left:18px}
+@media(max-width:900px){.manifeste{grid-template-columns:1fr;gap:36px}}
+
+/* stats band */
+.stats{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid var(--line);
+}
+.stat{padding:clamp(26px,4vw,44px) var(--pad);border-right:1px solid var(--line);transition:background .4s}
+.stat:last-child{border-right:none}
+.stat:hover{background:rgba(255,255,255,.025)}
+.stat b{display:block;font-family:'Anton',sans-serif;font-size:clamp(30px,4.4vw,58px);line-height:1;letter-spacing:-.02em;margin-bottom:10px}
+.stat b i{font-style:normal;color:var(--brick)}
+.stat span{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:760px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+}
+
+/* ============================================================
+   EXPLORER / TOOLBAR
+   ============================================================ */
+.explorer{position:relative;z-index:2}
+.explorer-head{padding:clamp(48px,7vw,96px) var(--pad) clamp(24px,3vw,38px);max-width:1100px}
+.explorer-head h2{
+  font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;
+  font-size:clamp(30px,5.6vw,74px);line-height:.92;letter-spacing:-.025em;margin:0 0 18px;
+}
+.explorer-head h2 em{font-family:'Instrument Serif',serif;font-style:italic;text-transform:none;color:var(--brick)}
+.explorer-head p{color:var(--muted);max-width:660px;font-size:14.5px;font-weight:300;margin:0}
+
+.toolbar{
+  position:sticky;top:var(--navh);z-index:70;
+  background:rgba(8,8,10,.88);
+  backdrop-filter:blur(20px) saturate(1.4);
+  -webkit-backdrop-filter:blur(20px) saturate(1.4);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:12px var(--pad) 11px;
+  display:flex;flex-direction:column;gap:10px;
+}
+.tb-row{display:flex;align-items:center;gap:12px;min-height:30px}
+.rowlabel{
+  flex:0 0 88px;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;
+}
+.tb-top .rowlabel{display:none}
+
+/* search */
+.search{
+  flex:1 1 auto;min-width:140px;display:flex;align-items:center;gap:10px;
+  border:1px solid var(--line);border-radius:100px;padding:8px 16px;
+  background:rgba(255,255,255,.03);transition:.3s;
+}
+.search:focus-within{border-color:rgba(239,234,225,.45);background:rgba(255,255,255,.06)}
+.search svg{width:14px;height:14px;flex:0 0 auto;opacity:.5}
+.search input{flex:1;background:none;border:0;outline:none;font-size:13px;letter-spacing:.01em;min-width:0}
+.search input::placeholder{color:var(--muted)}
+
+/* segmented */
+.segmented{display:flex;border:1px solid var(--line);border-radius:100px;padding:3px;gap:2px;flex:0 0 auto;overflow:hidden}
+.segmented button{
+  border:0;background:none;padding:7px 14px;border-radius:100px;cursor:pointer;
+  font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+  transition:.28s;white-space:nowrap;
+}
+.segmented button:hover{color:var(--paper)}
+.segmented button.on{background:var(--paper);color:#0a0a0c}
+
+/* zoom */
+.zoomctl{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.zbtn{
+  width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.03);
+  cursor:pointer;display:grid;place-items:center;font-size:15px;line-height:1;color:var(--paper);
+  transition:.25s;padding:0;
+}
+.zbtn:hover{background:var(--paper);color:#0a0a0c;border-color:var(--paper)}
+.zbtn:disabled{opacity:.25;cursor:default;pointer-events:none}
+.zlevel{display:flex;flex-direction:column;gap:5px;min-width:82px}
+.zlevel b{font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.ztrack{height:3px;border-radius:3px;background:rgba(255,255,255,.13);overflow:hidden}
+.ztrack i{display:block;height:100%;background:var(--acid);border-radius:3px;transition:width .35s cubic-bezier(.2,.8,.2,1)}
+
+/* chips */
+.chips{display:flex;gap:7px;overflow-x:auto;padding-bottom:2px;flex:1 1 auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;
+  border:1px solid var(--line);background:rgba(255,255,255,.028);
+  padding:7px 13px;border-radius:100px;cursor:pointer;transition:.26s;
+  font-size:11px;letter-spacing:.05em;white-space:nowrap;
+}
+.chip b{font-size:9.5px;font-weight:600;opacity:.45;font-variant-numeric:tabular-nums}
+.chip:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.3);transform:translateY(-1px)}
+.chip.on{background:var(--paper);color:#0a0a0c;border-color:var(--paper)}
+.chip.on b{opacity:.5}
+.chip.zero{opacity:.28;pointer-events:none}
+.chip.season.on{background:var(--acid);border-color:var(--acid);color:#0a0a0c}
+
+/* year strip */
+.yeartrack{display:flex;gap:3px;flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.yeartrack::-webkit-scrollbar{display:none}
+.mbtn{
+  flex:1 1 0;min-width:38px;border:0;background:none;padding:0;cursor:pointer;
+  display:flex;flex-direction:column;gap:5px;align-items:stretch;
+}
+.mbtn .seg{height:22px;border-radius:2px;opacity:.32;transition:.3s cubic-bezier(.2,.8,.2,1);position:relative;overflow:hidden}
+.mbtn .seg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.28),transparent 60%)}
+.mbtn:hover .seg{opacity:.62}
+.mbtn.on .seg{opacity:1;box-shadow:0 0 0 1px var(--paper), 0 8px 22px -8px rgba(255,255,255,.5)}
+.mbtn.zero .seg{opacity:.1}
+.mbtn span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;transition:.25s}
+.mbtn.on span{color:var(--paper)}
+
+/* footer row */
+.tb-foot{justify-content:space-between;flex-wrap:wrap;gap:12px}
+.count{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.count b{font-family:'Anton',sans-serif;font-size:19px;color:var(--paper);letter-spacing:0;margin-right:4px;font-weight:400}
+.sel{
+  background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:100px;
+  padding:7px 32px 7px 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  outline:none;appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,rgba(239,234,225,.6) 50%),linear-gradient(135deg,rgba(239,234,225,.6) 50%,transparent 50%);
+  background-position:calc(100% - 17px) 14px,calc(100% - 12px) 14px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+}
+.sel:hover{border-color:rgba(255,255,255,.3)}
+.sel option{background:#141419;color:var(--paper)}
+.reset{
+  background:none;border:0;color:var(--muted);cursor:pointer;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;transition:.25s;padding:6px 0;
+}
+.reset:hover{color:var(--brick)}
+.tb-toggle{
+  display:none;background:none;border:1px solid var(--line);border-radius:100px;
+  padding:7px 14px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);cursor:pointer;
+}
+@media(max-width:1000px){
+  .toolbar.compact .tb-row:not(.tb-top):not(.tb-foot){display:none}
+  .tb-toggle{display:inline-flex}
+  .rowlabel{flex:0 0 70px;font-size:9px}
+}
+
+/* ============================================================
+   GRID / MOSAIC
+   ============================================================ */
+.gridwrap{padding:clamp(20px,3vw,34px) var(--pad) clamp(80px,10vw,140px)}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(var(--tile-min,116px),1fr));
+  gap:clamp(6px,0.85vw,13px);
+  align-items:start;
+}
+.tile{
+  position:relative;display:block;width:100%;aspect-ratio:var(--ratio,1/1);
+  border:0;padding:0;margin:0;cursor:pointer;overflow:hidden;border-radius:3px;
+  background:#111116;color:var(--paper);text-align:left;isolation:isolate;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .45s, z-index 0s;
+  animation:tileIn .5s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay:calc(min(var(--i,0),26) * 9ms);
+}
+@keyframes tileIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+.tile::after{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.28) 38%,rgba(0,0,0,0) 66%);
+}
+.tile:hover{transform:translateY(-5px) scale(1.025);z-index:6;box-shadow:0 34px 64px -24px rgba(0,0,0,.95), 0 0 0 1px rgba(255,255,255,.22)}
+.tile:focus-visible{outline:2px solid var(--acid);outline-offset:2px}
+.tile-art{position:absolute;inset:0;transition:transform .8s cubic-bezier(.2,.8,.2,1), filter .5s}
+.tile:hover .tile-art{transform:scale(1.09);filter:saturate(1.2) brightness(1.06)}
+.tile-art::after{content:'';position:absolute;inset:0;opacity:.42;mix-blend-mode:overlay}
+.p0::after{background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.5) 0 1.5px,transparent 1.5px 9px)}
+.p1::after{background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.6) 0 1px,transparent 1px 8px)}
+.p2::after{background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.4) 0 13px,transparent 13px 15px),repeating-linear-gradient(0deg,rgba(255,255,255,.4) 0 7px,transparent 7px 9px)}
+.p3::after{background-image:radial-gradient(circle at 50% 130%,rgba(255,255,255,.55) 0 30%,transparent 31%);background-size:34px 34px}
+.p4::after{background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.55) 0 2.5px,transparent 2.5px 12px)}
+.p5::after{background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.35) 0 1px,transparent 1px 11px),repeating-linear-gradient(-45deg,rgba(255,255,255,.35) 0 1px,transparent 1px 11px)}
+
+.tile-code{
+  position:absolute;top:8px;left:9px;z-index:2;
+  font-size:9.5px;letter-spacing:.14em;color:rgba(255,255,255,.72);
+  font-variant-numeric:tabular-nums;font-weight:500;
+}
+.tile-sel{
+  position:absolute;top:6px;right:7px;z-index:3;width:19px;height:19px;border-radius:50%;
+  background:var(--acid);color:#0a0a0c;display:grid;place-items:center;font-size:11px;font-weight:700;
+}
+.tile-body{
+  position:absolute;left:9px;right:9px;bottom:8px;z-index:2;
+  display:flex;flex-direction:column;gap:3px;
+}
+.tile-title{
+  font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;
+  font-size:clamp(11px,1.05vw,15px);line-height:1.06;letter-spacing:.005em;
+  text-shadow:0 2px 14px rgba(0,0,0,.7);
+}
+.tile-sub{
+  font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.66);
+}
+.grid.z0 .tile-body,.grid.z1 .tile-body{display:none}
+.grid.z0 .tile-code{font-size:8.5px;top:6px;left:7px;opacity:.8}
+.grid.z1 .tile-body{display:flex}
+.grid.z1 .tile-title{display:none}
+.grid.z2 .tile-sub{font-size:9px}
+.grid.z3 .tile-title{font-size:clamp(15px,1.5vw,22px)}
+.grid.z3 .tile-body{left:13px;right:13px;bottom:12px}
+.grid.z3 .tile-code{top:12px;left:13px}
+
+/* group headers */
+.group-head{
+  grid-column:1/-1;display:flex;align-items:baseline;gap:14px;
+  padding:26px 0 12px;margin-top:6px;border-top:1px solid var(--line);
+}
+.group-head:first-child{margin-top:0;border-top:0;padding-top:0}
+.group-head h3{
+  font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;
+  font-size:clamp(18px,2.6vw,32px);letter-spacing:-.01em;margin:0;line-height:1;
+}
+.group-head span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.group-head::after{content:'';flex:1;height:1px;background:var(--line-soft);align-self:center}
+
+.empty{
+  grid-column:1/-1;padding:80px 0;text-align:center;color:var(--muted);
+  display:flex;flex-direction:column;align-items:center;gap:22px;
+}
+.empty h3{font-family:'Anton',sans-serif;font-size:clamp(22px,3vw,36px);text-transform:uppercase;color:var(--paper);margin:0;font-weight:400}
+
+/* ============================================================
+   DRAWER
+   ============================================================ */
+.drawer{position:fixed;inset:0;z-index:120;pointer-events:none}
+.drawer.open{pointer-events:auto}
+.drawer-scrim{
+  position:absolute;inset:0;background:rgba(3,3,5,.72);
+  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  opacity:0;transition:opacity .45s;
+}
+.drawer.open .drawer-scrim{opacity:1}
+.drawer-panel{
+  position:absolute;top:0;right:0;bottom:0;width:min(580px,100%);
+  background:var(--ink-2);border-left:1px solid var(--line);
+  transform:translateX(103%);transition:transform .6s cubic-bezier(.2,.9,.2,1);
+  overflow-y:auto;overscroll-behavior:contain;
+}
+.drawer.open .drawer-panel{transform:none}
+.dw-close{
+  position:absolute;top:16px;right:16px;z-index:12;width:38px;height:38px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.28);background:rgba(0,0,0,.45);color:#fff;
+  cursor:pointer;display:grid;place-items:center;font-size:19px;line-height:1;
+  backdrop-filter:blur(8px);transition:.3s;padding:0;
+}
+.dw-close:hover{background:var(--paper);color:#0a0a0c;transform:rotate(90deg)}
+.dw-art{position:relative;height:min(46vw,290px);overflow:hidden}
+.dw-art::after{content:'';position:absolute;inset:0;opacity:.42;mix-blend-mode:overlay}
+.dw-head{padding:26px 30px 20px;border-bottom:1px solid var(--line)}
+.dw-code{
+  display:inline-block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:#0a0a0c;background:var(--acid);padding:4px 11px;border-radius:100px;margin-bottom:14px;font-weight:600;
+}
+.dw-head h2{
+  font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;
+  font-size:clamp(26px,4.6vw,44px);line-height:.96;letter-spacing:-.02em;margin:0 0 12px;
+}
+.dw-loc{color:var(--muted);font-size:12.5px;letter-spacing:.08em;margin:0;text-transform:uppercase}
+.dw-loc b{color:var(--paper);font-weight:500}
+.dw-meta{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border-bottom:1px solid var(--line);
+}
+.dw-meta>div{background:var(--ink-2);padding:16px 18px}
+.dw-meta span{display:block;font-size:9px;letter-spacing:.19em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.dw-meta strong{font-size:13px;font-weight:500;letter-spacing:.01em}
+.dw-body{padding:26px 30px 40px}
+.dw-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+.tag{
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(239,234,225,.75);
+  border:1px solid var(--line);border-radius:100px;padding:5px 12px;
+}
+.dw-text{font-size:14.5px;line-height:1.78;color:rgba(239,234,225,.82);font-weight:300;margin:0 0 26px}
+.dw-text::first-letter{
+  font-family:'Anton',sans-serif;font-size:46px;line-height:.8;float:left;
+  margin:6px 10px 0 0;color:var(--brick);
+}
+.dw-pal{display:flex;gap:8px;margin-bottom:28px}
+.dw-pal i{width:38px;height:38px;border-radius:4px;display:block;border:1px solid rgba(255,255,255,.12)}
+.dw-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:30px}
+.dw-nav{display:flex;gap:8px;margin-left:auto}
+.dw-nav button{
+  background:none;border:1px solid var(--line);border-radius:100px;padding:11px 16px;
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:.28s;color:var(--paper);
+}
+.dw-nav button:hover{border-color:var(--paper);background:rgba(255,255,255,.07)}
+.dw-related h4{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 0 14px;font-weight:500}
+.dw-rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rel{
+  position:relative;aspect-ratio:1/1;border-radius:3px;overflow:hidden;cursor:pointer;border:0;padding:0;background:#111;
+  transition:transform .4s;
+}
+.rel:hover{transform:translateY(-4px)}
+.rel span{
+  position:absolute;left:7px;right:7px;bottom:6px;z-index:2;font-size:9px;letter-spacing:.06em;
+  text-transform:uppercase;color:#fff;text-shadow:0 1px 8px #000;text-align:left;
+}
+.rel::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent 62%)}
+@media(max-width:680px){
+  .drawer-panel{
+    top:auto;left:0;right:0;width:100%;height:90%;
+    border-left:0;border-top:1px solid var(--line);
+    border-radius:18px 18px 0 0;transform:translateY(103%);
+  }
+  .drawer.open .drawer-panel{transform:none}
+  .dw-head,.dw-body{padding-left:20px;padding-right:20px}
+  .dw-meta{grid-template-columns:repeat(2,1fr)}
+  .dw-close{top:12px;right:12px}
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{
+  position:relative;z-index:2;border-top:1px solid var(--line);
+  padding:clamp(48px,7vw,90px) var(--pad) 40px;
+  background:linear-gradient(to bottom,transparent,rgba(228,87,46,.045));
+}
+.f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.4fr;gap:clamp(24px,4vw,60px);margin-bottom:60px}
+.f-brand{font-family:'Anton',sans-serif;font-size:clamp(24px,3.4vw,42px);text-transform:uppercase;line-height:.95;letter-spacing:-.02em;margin:0 0 16px}
+.f-brand em{font-family:'Instrument Serif',serif;font-style:italic;text-transform:none;color:var(--brick)}
+.f-grid p{color:var(--muted);font-size:13px;line-height:1.75;margin:0;font-weight:300;max-width:340px}
+.f-col h5{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper);margin:0 0 18px;font-weight:600}
+.f-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.f-col a{color:var(--muted);text-decoration:none;font-size:13px;transition:.25s}
+.f-col a:hover{color:var(--paper);padding-left:5px}
+.news{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.news input{
+  flex:1 1 150px;min-width:0;background:rgba(255,255,255,.03);border:1px solid var(--line);
+  border-radius:100px;padding:12px 18px;outline:none;font-size:12.5px;transition:.3s;
+}
+.news input:focus{border-color:rgba(239,234,225,.45);background:rgba(255,255,255,.06)}
+.news button{
+  background:var(--paper);color:#0a0a0c;border:0;border-radius:100px;padding:12px 22px;
+  font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:.3s;font-weight:500;
+}
+.news button:hover{background:var(--acid);transform:translateY(-2px)}
+.f-bottom{
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+  padding-top:28px;border-top:1px solid var(--line);
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+@media(max-width:900px){.f-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.f-grid{grid-template-columns:1fr}}
+
+/* toast */
+.toast{
+  position:fixed;left:50%;bottom:26px;transform:translate(-50%,140%);
+  background:var(--paper);color:#0a0a0c;padding:13px 22px;border-radius:100px;
+  font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  z-index:300;transition:transform .5s cubic-bezier(.2,.9,.2,1);white-space:nowrap;
+  box-shadow:0 24px 50px -14px rgba(0,0,0,.9);max-width:92vw;overflow:hidden;text-overflow:ellipsis;
+}
+.toast.show{transform:translate(-50%,0)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="brand"><i></i> WWM <small>Lille Métropole</small></div>
+  <nav>
+    <ul class="navlinks">
+      <li><a href="#manifeste">Manifeste</a></li>
+      <li><a href="#explorer">Les 365 coffrets</a></li>
+      <li><a href="#territoires">Territoires</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+  </nav>
+  <button class="selbtn" id="selBtn"><i></i> Ma sélection <b id="selCount">0</b></button>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-inner">
+    <p class="eyebrow"><i></i> Édition 2025 · 365 coffrets numérotés</p>
+    <h1>
+      <span class="outline">365</span><br>
+      Coffrets<br>
+      <em>de mariage</em>
+    </h1>
+    <p class="hero-lede">
+      La métropole lilloise comme <strong>plateau de tournage</strong>. Un an de repérages,
+      de briques rouges et de canaux, condensé en 365 coffrets éditoriaux —
+      un par jour, de Lille à Roubaix, de Tourcoing à Villeneuve-d’Ascq.
+    </p>
+    <div class="hero-cta">
+      <a href="#explorer" class="btn primary arrow">Explorer la mosaïque</a>
+      <a href="#manifeste" class="btn ghost">Lire le manifeste</a>
+    </div>
+  </div>
+  <div class="hero-card" id="heroCard" role="button" tabindex="0" aria-label="Coffret du jour"></div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Lille <b>◆</b> Roubaix <b>◆</b> Tourcoing <b>◆</b> Villeneuve-d’Ascq <b>◆</b> Marcq-en-Barœul <b>◆</b> Wasquehal <b>◆</b> Croix <b>◆</b> Lambersart <b>◆</b> Loos <b>◆</b> Hem <b>◆</b> Mons-en-Barœul <b>◆</b> Faches-Thumesnil <b>◆</b> Saint-André <b>◆</b></span>
+      <span>Lille <b>◆</b> Roubaix <b>◆</b> Tourcoing <b>◆</b> Villeneuve-d’Ascq <b>◆</b> Marcq-en-Barœul <b>◆</b> Wasquehal <b>◆</b> Croix <b>◆</b> Lambersart <b>◆</b> Loos <b>◆</b> Hem <b>◆</b> Mons-en-Barœul <b>◆</b> Faches-Thumesnil <b>◆</b> Saint-André <b>◆</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MANIFESTE ================= -->
+<section class="manifeste" id="manifeste">
+  <div class="reveal">
+    <p class="m-label">Manifeste</p>
+    <p class="m-text">
+      Nous ne cherchons pas la France des châteaux. Nous cherchons <strong>la ville qui tient debout</strong> :
+      l’acier du Fresnoy, la brique de la Condition Publique, la Deûle qui coupe les jardins.
+      Chaque coffret est un <em>objet éditorial</em> — moodboard, lumière heure par heure,
+      artisans, budgets, plans B sous la pluie du Nord.
+    </p>
+  </div>
+  <div class="m-side reveal">
+    <p class="quote">« Un mariage réussi à Lille, c’est un mariage qui accepte le gris et en fait une matière. »</p>
+    <p>
+      Trois cent soixante-cinq numéros, un par jour de l’année. Chacun est ancré dans un lieu réel de la
+      métropole, une matière dominante et une saison. Zoomez : la mosaïque devient un plan de ville.
+      Filtrez : elle devient un calendrier.
+    </p>
+    <p>
+      Aucune carte de France. Une seule interface : la grille. Spatiale, temporelle, zoomable, filtrable.
+    </p>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats" id="territoires">
+  <div class="stat reveal"><b>365</b><span>Coffrets numérotés</span></div>
+  <div class="stat reveal"><b>14</b><span>Communes de la métropole</span></div>
+  <div class="stat reveal"><b>128</b><span>Lieux repérés</span></div>
+  <div class="stat reveal"><b>4</b><span>Saisons, 12 mois</span></div>
+</section>
+
+<!-- ================= EXPLORER ================= -->
+<section class="explorer" id="explorer">
+  <div class="explorer-head reveal">
+    <h2>La mosaïque <em>des coffrets</em></h2>
+    <p>
+      Chaque carré est un coffret. Zoomez pour passer de l’échelle du territoire à celle du détail,
+      filtrez par commune, matière ou mois de l’année. Cliquez pour ouvrir le dossier éditorial complet.
+    </p>
+  </div>
+
+  <div class="toolbar" id="toolbar">
+    <div class="tb-row tb-top">
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="search" id="q" placeholder="Rechercher un coffret, une ville, un lieu…" autocomplete="off">
+      </label>
+      <div class="segmented" id="viewMode" role="group" aria-label="Mode d'affichage">
+        <button data-view="mosaique" class="on">Mosaïque</button>
+        <button data-view="chrono">Chronologie</button>
+        <button data-view="territoire">Territoire</button>
+      </div>
+      <div class="zoomctl">
+        <button class="zbtn" data-zoom="-1" aria-label="Dézoomer">−</button>
+        <div class="zlevel">
+          <b id="zlabel">Quartier</b>
+          <div class="ztrack"><i id="zfill" style="width:50%"></i></div>
+        </div>
+        <button class="zbtn" data-zoom="1" aria-label="Zoomer">+</button>
+      </div>
+      <button class="tb-toggle" id="tbToggle">Filtres</button>
+    </div>
+
+    <div class="tb-row tb-months">
+      <span class="rowlabel">Année</span>
+      <div class="yeartrack" id="yeartrack"></div>
+    </div>
+
+    <div class="tb-row">
+      <span class="rowlabel">Saison</span>
+      <div class="chips" id="chipsSeasons"></div>
+    </div>
+
+    <div class="tb-row">
+      <span class="rowlabel">Territoire</span>
+      <div class="chips" id="chipsCities"></div>
+    </div>
+
+    <div class="tb-row">
+      <span class="rowlabel">Matière</span>
+      <div class="chips" id="chipsStyles"></div>
+    </div>
+
+    <div class="tb-row tb-foot">
+      <span class="count"><b id="countNum">365</b> coffrets affichés</span>
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+        <select class="sel" id="sort" aria-label="Trier">
+          <option value="numero">N° croissant</option>
+          <option value="date-desc">Plus récents d’abord</option>
+          <option value="ville">Par commune</option>
+          <option value="style">Par matière</option>
+          <option value="alpha">Ordre alphabétique</option>
+        </select>
+        <button class="reset" id="resetBtn">Réinitialiser</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="gridwrap">
+    <div class="grid z1" id="grid" style="--tile-min:116px;--ratio:1 / 1"></div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="footer">
+  <div class="f-grid">
+    <div class="reveal">
+      <p class="f-brand">World Wedding<br>Magazine <em>Lille</em></p>
+      <p>Édition métropolitaine 2025. Une revue urbaine de mariage, publiée à Lille, imprimée à Roubaix, distribuée dans 14 communes.</p>
+    </div>
+    <div class="f-col reveal">
+      <h5>Explorer</h5>
+      <ul>
+        <li><a href="#explorer">Les 365 coffrets</a></li>
+        <li><a href="#territoires">Territoires</a></li>
+        <li><a href="#manifeste">Manifeste</a></li>
+        <li><a href="#top">Retour en haut</a></li>
+      </ul>
+    </div>
+    <div class="f-col reveal">
+      <h5>Prestataires</h5>
+      <ul>
+        <li><a href="#explorer">Rejoindre l’annuaire</a></li>
+        <li><a href="#explorer">Lieux & salles</a></li>
+        <li><a href="#explorer">Photographes</a></li>
+        <li><a href="#explorer">Traiteurs</a></li>
+      </ul>
+    </div>
+    <div class="f-col reveal">
+      <h5>La lettre du Nord</h5>
+      <p>Un coffret, une adresse, un lieu, chaque jeudi matin. Zéro bruit.</p>
+      <form class="news" id="newsForm">
+        <input type="email" placeholder="votre@email.fr" required aria-label="Email">
+        <button type="submit">S’inscrire</button>
+      </form>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span>© 2025 WWM — Lille Métropole</span>
+    <span>Conçu entre la Grand-Place et la Deûle</span>
+    <span>365 / 365 coffrets</span>
+  </div>
+</footer>
+
+<!-- ================= DRAWER ================= -->
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-scrim" data-close></div>
+  <div class="drawer-panel">
+    <button class="dw-close" data-close aria-label="Fermer">×</button>
+    <div id="drawerContent"></div>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   1. UTILITAIRES
+   ============================================================ */
+const $  = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296}}
+const rnd = mulberry32(20250413);
+const pick = arr => arr[Math.floor(rnd()*arr.length)];
+
+const MONTHS_FULL = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+const MONTHS_SHORT = ['Janv','Févr','Mars','Avr','Mai','Juin','Juil','Août','Sept','Oct','Nov','Déc'];
+
+const SEASONS = [
+  {id:'Hiver',     months:[11,0,1], color:'#5B7CFF'},
+  {id:'Printemps', months:[2,3,4],  color:'#5FD08A'},
+  {id:'Été',       months:[5,6,7],  color:'#FFC24B'},
+  {id:'Automne',   months:[8,9,10], color:'#E4572E'}
+];
+const seasonOf = m => SEASONS.find(s=>s.months.includes(m)) || SEASONS[0];
+
+/* ============================================================
+   2. DONNÉES DE LA MÉTROPOLE
+   ============================================================ */
+const CITIES = [
+  {name:'Lille', w:24, venues:['Gare Saint-Sauveur','Palais Rameau','Hospice Comtesse','Vieux-Lille, rue de la Monnaie','Euralille, tour Lilleurope','Citadelle, bois de Boulogne','Gare Lille-Flandres','Jardin des Plantes','Wazemmes, marché de nuit','Maison de l’Habitat']},
+  {name:'Roubaix', w:12, venues:['La Condition Publique','Le Colisée','Piscine Art déco','Cave des Trois Suisses','Parc de Barbieux','La Manufacture, ancienne filature']},
+  {name:'Tourcoing', w:10, venues:['Le Fresnoy','Hôtel de ville de Tourcoing','Église Saint-Christophe','La Chaufferie, ex-filature','Béguinage de Tourcoing','Parc du Lion d’Or']},
+  {name:'Villeneuve-d’Ascq', w:9, venues:['Château de Flers','LaM, parc de sculptures','Grand-Place de l’Ascq','Triolo, cité-jardin','Lac du Héron']},
+  {name:'Marcq-en-Barœul', w:8, venues:['Hippodrome des Flandres','Parc du Lion','Quai des Flandres','Clos du Prieuré']},
+  {name:'Lambersart', w:5, venues:['Villa Saint-Charles','Bords de Deûle','Château de la Hallotière']},
+  {name:'Mons-en-Barœul', w:4, venues:['Fort de Mons','Parc du Fort','Cité du Nouveau Monde']},
+  {name:'Wasquehal', w:4, venues:['Le Triporteur','Bois de la Houssière','Rives de la Marque']},
+  {name:'Croix', w:4, venues:['Villa Cavrois','Parc de la Villa Cavrois','Église Saint-Martin']},
+  {name:'Hem', w:3, venues:['Le Grand-Bar','Moulin de Hem','Ferme du Château']},
+  {name:'Loos', w:3, venues:['Fort de Loos','Bords de la Deûle','Parc de Loos']},
+  {name:'Faches-Thumesnil', w:3, venues:['Château de Faches','Parc des Hautes Rives']},
+  {name:'Saint-André-lez-Lille', w:3, venues:['Bords de Deûle','Écluse de Saint-André','Cité des Peupliers']}
+];
+const TOTALW = CITIES.reduce((a,c)=>a+c.w,0);
+function pickCity(){ let r = rnd()*TOTALW; for(const c of CITIES){ r -= c.w; if(r<=0) return c; } return CITIES[0]; }
+
+const STYLES = [
+  {id:'brique',  name:'Brique & Fumée',       hue:16,  sat:62, line:'Murs de brique rouge, fumée douce, lumière rasante de fin d’après-midi.'},
+  {id:'canal',   name:'Canal',                hue:192, sat:55, line:'Reflets d’eau, passerelles d’acier, brume du matin sur la Deûle.'},
+  {id:'neon',    name:'Néon Urbain',          hue:308, sat:70, line:'Néons, béton brut, pluie fine sur l’asphalte et dancefloor jusqu’au dernier tram.'},
+  {id:'vegetal', name:'Végétal Brut',         hue:132, sat:45, line:'Serres, houblon, fougères et lin brut froissé.'},
+  {id:'beton',   name:'Béton Contemporain',   hue:222, sat:14, line:'Lignes nettes, béton ciré, blanc absolu et ombres graphiques.'},
+  {id:'or',      name:'Or & Velours',         hue:44,  sat:70, line:'Velours profond, laiton poli, bougies et or patiné.'}
+];
+
+const STYLE_TAGS = {
+  brique:  ['Industriel','Brique','Loft','Fumée','Atelier'],
+  canal:   ['Bord d’eau','Brume','Acier','Péniche','Reflets'],
+  neon:    ['Néon','Nuit','Béton','Dancefloor','Pluie'],
+  vegetal: ['Serre','Houblon','Lin','Fougère','Jardin'],
+  beton:   ['Minimal','Graphique','Blanc','Architecture','Lignes'],
+  or:      ['Velours','Laiton','Bougies','Baroque','Or patiné']
+};
+
+const A = ['Brique','Canal','Beffroi','Grand-Place','Houblon','Vieux-Lille','Escaut','Deûle','Flandre','Pavé','Verre','Acier','Tramway','Ch’ti','Nord','Marne','Béguinage','Estaminet','Citadelle','Gare'];
+const B = ['Or','Néon','Velours','Fumée','Blé','Pluie','Sucre','Papier','Lumière','Cuivre','Chaux','Lin','Vermeil','Brume','Sel','Ardoise','Cendre','Ocre','Givre','Zinc'];
+
+/* combinaisons uniques mélangées */
+let combos = [];
+for(const a of A) for(const b of B) combos.push(a+' & '+b);
+for(let i=combos.length-1;i>0;i--){ const j = Math.floor(rnd()*(i+1)); [combos[i],combos[j]] = [combos[j],combos[i]]; }
+
+const TEXTS = [
+  it => `On entre par ${it.venue}, à ${it.city}. ${it.styleLine} Le coffret déroule douze pages d’inspiration, la carte des lumières heure par heure et l’annuaire des artisans qui tiennent la journée debout.`,
+  it => `${it.venue} — ${it.city}. ${it.styleLine} Un objet éditorial pensé comme un plan-séquence : moodboard, repérages photo, timing de cérémonie et adresses 100 % métropole.`,
+  it => `Dix heures de mariage en immersion à ${it.city}, depuis ${it.venue}. ${it.styleLine} À l’intérieur, les matières, les paliers de budget et les lieux alternatifs que personne ne vous montrera.`,
+  it => `Le décor : ${it.venue}, ${it.city}. ${it.styleLine} Nous avons suivi les équipes du premier café au dernier verre, et tout consigné dans ce coffret numéroté.`
+];
+
+const ITEMS = [];
+for(let i=1;i<=365;i++){
+  const date = new Date(2025,0,i);
+  const month = date.getMonth();
+  const city = pickCity();
+  const venue = pick(city.venues);
+  const st = pick(STYLES);
+  const hue = st.hue + (rnd()*26-13);
+  const sat = Math.max(8, st.sat + (rnd()*16-8));
+  const light = 7 + rnd()*6;
+  const tagsPool = [...STYLE_TAGS[st.id]];
+  const tags = [];
+  while(tags.length<3 && tagsPool.length){
+    tags.push(tagsPool.splice(Math.floor(rnd()*tagsPool.length),1)[0]);
+  }
+  const it = {
+    id:i,
+    code:'C-'+String(i).padStart(3,'0'),
+    title:combos[i-1] || ('Coffret '+String(i).padStart(3,'0')),
+    city:city.name, venue, styleId:st.id, styleName:st.name, styleLine:st.line,
+    date, month, season:seasonOf(month).id,
+    hue:Math.round(hue), sat:Math.round(sat), light:Math.round(light),
+    tags,
+    presta: 8 + Math.floor(rnd()*17),
+    budget: 'à partir de ' + ((8 + Math.floor(rnd()*23))*1000).toLocaleString('fr-FR') + ' €',
+    guests: (4 + Math.floor(rnd()*16))*10,
+    pages: 12 + Math.floor(rnd()*20)
+  };
+  it.text = TEXTS[Math.floor(rnd()*TEXTS.length)](it);
+  ITEMS.push(it);
+}
+
+/* ============================================================
+   3. ART GÉNÉRATIF
+   ============================================================ */
+function artStyle(it, big){
+  const h = it.hue, s = it.sat, base = it.light;
+  const h2 = (h+38)%360, h3 = (h+16)%360;
+  const s2 = Math.min(92, s+10);
+  return `background:
+    radial-gradient(120% ${big?'85':'100'}% at 18% 12%, hsla(${h3},${s2}%,70%,.95) 0%, hsla(${h3},${s2}%,60%,0) 56%),
+    radial-gradient(95% 88% at 88% 84%, hsla(${h2},${s}%,52%,.85) 0%, hsla(${h2},${s}%,52%,0) 62%),
+    linear-gradient(155deg, hsl(${h3},${s}%,${base+15}%) 0%, hsl(${h},${s}%,${base}%) 80%),
+    #0A0A0C;`;
+}
+const shortDate = d => d.getDate() + ' ' + MONTHS_SHORT[d.getMonth()].toLowerCase().replace('.','');
+const longDate  = d => d.getDate() + ' ' + MONTHS_FULL[d.getMonth()] + ' 2025';
+
+/* ============================================================
+   4. ÉTAT
+   ============================================================ */
+const state = {
+  q:'', city:'all', style:'all', season:'all', month:null,
+  sort:'numero', view:'mosaique', zoom:1, selection:new Set(), onlySel:false
+};
+const ZOOMS = [
+  {min:'74px',  ratio:'1 / 1', cls:'z0', label:'Ville'},
+  {min:'116px', ratio:'1 / 1', cls:'z1', label:'Quartier'},
+  {min:'172px', ratio:'4 / 5', cls:'z2', label:'Rue'},
+  {min:'268px', ratio:'4 / 5', cls:'z3', label:'Détail'}
+];
+
+const grid = $('#grid');
+
+/* ============================================================
+   5. FILTRAGE
+   ============================================================ */
+function match(it, ignore){
+  if(ignore!=='q' && state.q){
+    const hay = (it.title+' '+it.city+' '+it.venue+' '+it.styleName+' '+it.tags.join(' ')+' '+it.code).toLowerCase();
+    if(!hay.includes(state.q.toLowerCase())) return false;
+  }
+  if(ignore!=='city'   && state.city!=='all'   && it.city!==state.city) return false;
+  if(ignore!=='style'  && state.style!=='all'  && it.styleId!==state.style) return false;
+  if(ignore!=='season' && state.season!=='all' && it.season!==state.season) return false;
+  if(ignore!=='month'  && state.month!==null   && it.month!==state.month) return false;
+  if(state.onlySel && !state.selection.has(it.id)) return false;
+  return true;
+}
+function currentItems(){
+  const arr = ITEMS.filter(it=>match(it));
+  const cmp = {
+    'numero': (a,b)=>a.id-b.id,
+    'date-desc': (a,b)=>b.id-a.id,
+    'ville': (a,b)=> a.city.localeCompare(b.city,'fr') || a.id-b.id,
+    'style': (a,b)=> a.styleName.localeCompare(b.styleName,'fr') || a.id-b.id,
+    'alpha': (a,b)=> a.title.localeCompare(b.title,'fr')
+  }[state.sort];
+  return arr.sort(cmp);
+}
+
+/* ============================================================
+   6. RENDU — TUILES
+   ============================================================ */
+function tileHTML(it, idx){
+  const sel = state.selection.has(it.id);
+  return `<button class="tile" data-id="${it.id}" style="--i:${idx%27}" aria-label="${it.code} — ${it.title}, ${it.city}">
+    <span class="tile-art p${it.id%6}" style="${artStyle(it)}"></span>
+    <span class="tile-code">${it.code}</span>
+    ${sel?'<span class="tile-sel">✓</span>':''}
+    <span class="tile-body">
+      <span class="tile-title">${it.title}</span>
+      <span class="tile-sub">${it.city} · ${shortDate(it.date)}</span>
+    </span>
+  </button>`;
+}
+
+/* ============================================================
+   7. RENDU — GRILLE
+   ============================================================ */
+function renderGrid(){
+  const items = currentItems();
+  const z = ZOOMS[state.zoom];
+  grid.style.setProperty('--tile-min', z.min);
+  grid.style.setProperty('--ratio', z.ratio);
+  grid.className = 'grid ' + z.cls;
+
+  let html = '';
+  if(state.view === 'mosaique'){
+    html = items.map((it,i)=>tileHTML(it,i)).join('');
+  } else if(state.view === 'chrono'){
+    for(let m=0;m<12;m++){
+      const group = items.filter(it=>it.month===m);
+      if(!group.length) continue;
+      html += `<div class="group-head"><h3>${MONTHS_FULL[m]}</h3><span>${group.length} coffret${group.length>1?'s':''} · ${seasonOf(m).id}</span></div>`;
+      html += group.map((it,i)=>tileHTML(it,i)).join('');
+    }
+  } else {
+    const byCity = {};
+    items.forEach(it => (byCity[it.city] = byCity[it.city] || []).push(it));
+    Object.entries(byCity)
+      .sort((a,b)=> b[1].length - a[1].length || a[0].localeCompare(b[0],'fr'))
+      .forEach(([city, arr])=>{
+        html += `<div class="group-head"><h3>${city}</h3><span>${arr.length} coffret${arr.length>1?'s':''}</span></div>`;
+        html += arr.map((it,i)=>tileHTML(it,i)).join('');
+      });
+  }
+
+  if(!items.length){
+    html = `<div class="empty">
+      <h3>Aucun coffret ici</h3>
+      <p>Cette combinaison de filtres ne renvoie rien. Élargissez le territoire ou changez de saison.</p>
+      <button class="btn ghost" id="emptyReset">Tout réinitialiser</button>
+    </div>`;
+  }
+
+  grid.innerHTML = html;
+  $('#countNum').textContent = items.length;
+
+  const er = $('#emptyReset');
+  if(er) er.addEventListener('click', resetAll);
+}
+
+/* ============================================================
+   8. RENDU — FILTRES
+   ============================================================ */
+function renderFilters(){
+  /* --- saisons --- */
+  const seasonBox = $('#chipsSeasons');
+  let sHTML = `<button class="chip season ${state.season==='all'?'on':''}" data-season="all">Toutes saisons <b>${ITEMS.filter(it=>match(it,'season')).length}</b></button>`;
+  SEASONS.forEach(s=>{
+    const n = ITEMS.filter(it => match(it,'season') && it.season===s.id).length;
+    sHTML += `<button class="chip season ${state.season===s.id?'on':''} ${n?'':'zero'}" data-season="${s.id}">
+      <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${s.color}"></span>${s.id} <b>${n}</b></button>`;
+  });
+  seasonBox.innerHTML = sHTML;
+
+  /* --- année --- */
+  const track = $('#yeartrack');
+  track.innerHTML = MONTHS_SHORT.map((m,i)=>{
+    const n = ITEMS.filter(it => match(it,'month') && it.month===i).length;
+    const col = seasonOf(i).color;
+    return `<button class="mbtn ${state.month===i?'on':''} ${n?'':'zero'}" data-month="${i}" title="${MONTHS_FULL[i]} — ${n} coffrets">
+      <span class="seg" style="background:${col}"></span>
+      <span>${m}</span>
+    </button>`;
+  }).join('');
+
+  /* --- communes --- */
+  const totalCity = ITEMS.filter(it=>match(it,'city')).length;
+  let cHTML = `<button class="chip ${state.city==='all'?'on':''}" data-city="all">Toute la métropole <b>${totalCity}</b></button>`;
+  const cityCounts = CITIES.map(c=>({name:c.name, n:ITEMS.filter(it=>match(it,'city') && it.city===c.name).length}))
+                           .sort((a,b)=>b.n-a.n);
+  cityCounts.forEach(c=>{
+    cHTML += `<button class="chip ${state.city===c.name?'on':''} ${c.n?'':'zero'}" data-city="${c.name}">${c.name} <b>${c.n}</b></button>`;
+  });
+  $('#chipsCities').innerHTML = cHTML;
+
+  /* --- matières --- */
+  const totalStyle = ITEMS.filter(it=>match(it,'style')).length;
+  let stHTML = `<button class="chip ${state.style==='all'?'on':''}" data-style="all">Toutes matières <b>${totalStyle}</b></button>`;
+  STYLES.map(s=>({...s, n:ITEMS.filter(it=>match(it,'style') && it.styleId===s.id).length}))
+        .sort((a,b)=>b.n-a.n)
+        .forEach(s=>{
+    stHTML += `<button class="chip ${state.style===s.id?'on':''} ${s.n?'':'zero'}" data-style="${s.id}">
+      <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:hsl(${s.hue} ${s.sat}% 58%)"></span>${s.name} <b>${s.n}</b></button>`;
+  });
+  $('#chipsStyles').innerHTML = stHTML;
+}
+
+/* ============================================================
+   9. ZOOM / VUE
+   ============================================================ */
+function updateZoomUI(){
+  $('#zlabel').textContent = ZOOMS[state.zoom].label;
+  $('#zfill').style.width = ((state.zoom+1)/ZOOMS.length*100) + '%';
+  $$('.zbtn').forEach(b=>{
+    if(b.dataset.zoom==='-1') b.disabled = state.zoom===0;
+    if(b.dataset.zoom==='1')  b.disabled = state.zoom===ZOOMS.length-1;
+  });
+}
+function updateSelUI(){
+  $('#selCount').textContent = state.selection.size;
+  $('#selBtn').classList.toggle('on', state.onlySel);
+}
+
+/* ============================================================
+   10. DRAWER
+   ============================================================ */
+let currentId = null;
+const drawer = $('#drawer');
+
+function openDrawer(id){
+  const it = ITEMS.find(x=>x.id===id);
+  if(!it) return;
+  currentId = id;
+  const list = currentItems();
+  const pos = list.findIndex(x=>x.id===id);
+  const prev = pos>0 ? list[pos-1] : list[list.length-1];
+  const next = pos<list.length-1 ? list[pos+1] : list[0];
+
+  const related = ITEMS.filter(x=>x.city===it.city && x.id!==it.id).slice(0,3);
+  const selected = state.selection.has(it.id);
+
+  $('#drawerContent').innerHTML = `
+    <div class="dw-art p${it.id%6}" style="${artStyle(it,true)}"></div>
+    <div class="dw-head">
+      <span class="dw-code">${it.code} · ${it.season}</span>
+      <h2>${it.title}</h2>
+      <p class="dw-loc"><b>${it.city}</b> — ${it.venue}</p>
+    </div>
+    <div class="dw-meta">
+      <div><span>Date</span><strong>${longDate(it.date)}</strong></div>
+      <div><span>Matière</span><strong>${it.styleName}</strong></div>
+      <div><span>Prestataires</span><strong>${it.presta} locaux</strong></div>
+      <div><span>Budget</span><strong>${it.budget}</strong></div>
+      <div><span>Invités</span><strong>${it.guests} pers.</strong></div>
+      <div><span>Pages</span><strong>${it.pages} pages</strong></div>
+    </div>
+    <div class="dw-body">
+      <div class="dw-tags">${it.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <p class="dw-text">${it.text}</p>
+      <div class="dw-pal">
+        <i style="background:hsl(${it.hue},${it.sat}%,72%)"></i>
+        <i style="background:hsl(${it.hue},${it.sat}%,56%)"></i>
+        <i style="background:hsl(${(it.hue+38)%360},${it.sat}%,34%)"></i>
+        <i style="background:hsl(${it.hue},${it.sat}%,10%)"></i>
+      </div>
+      <div class="dw-actions">
+        <button class="btn ${selected?'ghost':'primary'}" data-sel="${it.id}">
+          ${selected?'✓ Dans ma sélection':'Ajouter à ma sélection'}
+        </button>
+        <div class="dw-nav">
+          <button data-goto="${prev.id}">← Précédent</button>
+          <button data-goto="${next.id}">Suivant →</button>
+        </div>
+      </div>
+      ${related.length?`<div class="dw-related">
+        <h4>Dans la même commune</h4>
+        <div class="dw-rel-grid">
+          ${related.map(r=>`<button class="rel" data-goto="${r.id}">
+            <span class="tile-art p${r.id%6}" style="position:absolute;inset:0;${artStyle(r)}"></span>
+            <span>${r.title}</span>
+          </button>`).join('')}
+        </div>
+      </div>`:''}
+    </div>`;
+
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  $('.drawer-panel').scrollTop = 0;
+}
+function closeDrawer(){
+  drawer.classList.remove('open');
+  drawer.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+
+/* ============================================================
+   11. SÉLECTION / TOAST
+   ============================================================ */
+let toastTimer;
+function toast(msg){
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 2400);
+}
+function toggleSelection(id){
+  if(state.selection.has(id)){
+    state.selection.delete(id);
+    toast('Coffret retiré de votre sélection');
+  } else {
+    state.selection.add(id);
+    toast('Coffret ajouté · ' + state.selection.size + ' au total');
+  }
+  updateSelUI();
+  const tile = grid.querySelector(`.tile[data-id="${id}"]`);
+  if(tile){
+    const exists = tile.querySelector('.tile-sel');
+    if(state.selection.has(id) && !exists){
+      const s = document.createElement('span');
+      s.className = 'tile-sel'; s.textContent = '✓';
+      tile.appendChild(s);
+    } else if(!state.selection.has(id) && exists){
+      exists.remove();
+    }
+  }
+  if(currentId === id) openDrawer(id);
+}
+
+/* ============================================================
+   12. ÉVÉNEMENTS
+   ============================================================ */
+/* recherche */
+let searchTimer;
+$('#q').addEventListener('input', e=>{
+  clearTimeout(searchTimer);
+  const v = e.target.value;
+  searchTimer = setTimeout(()=>{ state.q = v.trim(); renderFilters(); renderGrid(); }, 180);
+});
+
+/* vue */
+$('#viewMode').addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  $$('#viewMode button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  state.view = b.dataset.view;
+  renderGrid();
+});
+
+/* zoom */
+$$('.zbtn').forEach(b=>b.addEventListener('click', ()=>{
+  const d = parseInt(b.dataset.zoom,10);
+  state.zoom = Math.min(ZOOMS.length-1, Math.max(0, state.zoom + d));
+  updateZoomUI(); renderGrid();
+}));
+
+/* filtres : saisons */
+$('#chipsSeasons').addEventListener('click', e=>{
+  const c = e.target.closest('.chip'); if(!c) return;
+  state.season = c.dataset.season;
+  state.month = null;
+  renderFilters(); renderGrid();
+});
+/* filtres : mois */
+$('#yeartrack').addEventListener('click', e=>{
+  const b = e.target.closest('.mbtn'); if(!b) return;
+  const m = parseInt(b.dataset.month,10);
+  state.month = (state.month === m) ? null : m;
+  state.season = 'all';
+  renderFilters(); renderGrid();
+});
+/* filtres : villes */
+$('#chipsCities').addEventListener('click', e=>{
+  const c = e.target.closest('.chip'); if(!c) return;
+  state.city = c.dataset.city;
+  renderFilters(); renderGrid();
+});
+/* filtres : matières */
+$('#chipsStyles').addEventListener('click', e=>{
+  const c = e.target.closest('.chip'); if(!c) return;
+  state.style = c.dataset.style;
+  renderFilters(); renderGrid();
+});
+/* tri */
+$('#sort').addEventListener('change', e=>{ state.sort = e.target.value; renderGrid(); });
+
+/* reset */
+function resetAll(){
+  state.q=''; state.city='all'; state.style='all'; state.season='all'; state.month=null;
+  state.sort='numero'; state.onlySel=false;
+  $('#q').value=''; $('#sort').value='numero';
+  updateSelUI(); renderFilters(); renderGrid();
+}
+$('#resetBtn').addEventListener('click', resetAll);
+
+/* toggle filtres mobile */
+$('#tbToggle').addEventListener('click', ()=>{
+  const tb = $('#toolbar');
+  tb.classList.toggle('compact');
+  $('#tbToggle').textContent = tb.classList.contains('compact') ? 'Filtres' : 'Masquer';
+});
+
+/* sélection */
+$('#selBtn').addEventListener('click', ()=>{
+  state.onlySel = !state.onlySel;
+  if(state.onlySel && state.selection.size===0){ toast('Votre sélection est vide'); }
+  updateSelUI(); renderGrid();
+});
+
+/* grille */
+grid.addEventListener('click', e=>{
+  const tile = e.target.closest('.tile');
+  if(!tile) return;
+  openDrawer(parseInt(tile.dataset.id,10));
+});
+
+/* drawer */
+drawer.addEventListener('click', e=>{
+  if(e.target.closest('[data-close]')){ closeDrawer(); return; }
+  const sel = e.target.closest('[data-sel]');
+  if(sel){ toggleSelection(parseInt(sel.dataset.sel,10)); return; }
+  const go = e.target.closest('[data-goto]');
+  if(go){ openDrawer(parseInt(go.dataset.goto,10)); return; }
+});
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape') closeDrawer();
+  if(!drawer.classList.contains('open')) return;
+  if(e.key === 'ArrowRight'){ const b=drawer.querySelector('[data-goto]'); if(b) openDrawer(parseInt(drawer.querySelectorAll('[data-goto]')[1].dataset.goto,10)); }
+  if(e.key === 'ArrowLeft'){ const b=drawer.querySelector('[data-goto]'); if(b) openDrawer(parseInt(b.dataset.goto,10)); }
+});
+
+/* newsletter */
+$('#newsForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  toast('Inscription enregistrée — à jeudi');
+  e.target.reset();
+});
+
+/* parallaxe hero */
+const heroBg = $('#heroBg');
+let mx=0, my=0, tx=0, ty=0;
+window.addEventListener('mousemove', e=>{
+  mx = (e.clientX / window.innerWidth - .5) * 2;
+  my = (e.clientY / window.innerHeight - .5) * 2;
+});
+(function loop(){
+  tx += (mx - tx) * .06;
+  ty += (my - ty) * .06;
+  heroBg.style.setProperty('--mx', tx.toFixed(3));
+  heroBg.style.setProperty('--my', ty.toFixed(3));
+  requestAnimationFrame(loop);
+})();
+
+/* reveal */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+},{threshold:.14});
+$$('.reveal').forEach(el=>io.observe(el));
+
+/* ============================================================
+   13. COFFRET DU JOUR
+   ============================================================ */
+(function(){
+  const now = new Date();
+  const start = new Date(now.getFullYear(),0,0);
+  const doy = Math.min(365, Math.max(1, Math.floor((now - start) / 86400000)));
+  const it = ITEMS[doy-1];
+  const card = $('#heroCard');
+  card.innerHTML = `
+    <div class="hc-art p${it.id%6}" style="${artStyle(it)}"></div>
+    <div class="hc-body">
+      <p class="hc-kicker">Coffret du jour · ${it.code}</p>
+      <p class="hc-title">${it.title}</p>
+      <p class="hc-meta">${it.city} · ${shortDate(it.date)}</p>
+    </div>`;
+  card.addEventListener('click', ()=>openDrawer(it.id));
+  card.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openDrawer(it.id);} });
+})();
+
+/* ============================================================
+   14. INITIALISATION
+   ============================================================ */
+renderFilters();
+renderGrid();
+updateZoomUI();
+updateSelUI();
+</script>
+</body>
+</html>
