@@ -90,6 +90,14 @@ function build() {
       },
       position: { lat: null, lon: null, status: STATUS.A_VERIFIER,
         note: 'coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici' },
+      /* Place de la commune dans le plan schématique de la mosaïque : relative,
+         jamais géographique (voir E.PLAN_SOURCE). */
+      plan: (() => {
+        const pl = E.COMMUNE_PLAN[c.name];
+        if (!pl) return null;
+        return { col: pl.col, row: pl.row, planColonnes: 24, statut: E.PLAN_SOURCE.statut,
+                 place: pl.note, avertissement: E.PLAN_SOURCE.note };
+      })(),
       sources: [
         E.INSEE_SOURCE,
         source({ label: 'INSEE — Code officiel géographique', sourceType: 'base officielle',
@@ -351,6 +359,10 @@ function build() {
 
   /* ---- territoire + compteurs calculés ---- */
   const monde = { ...E.MONDE, enfant: { niveau: 'N-02', id: 'france', nom: E.FRANCE.nom } };
+  /* le plan schématique dit ce qu'il est : un dessin relatif, jamais une géographie
+     (le modèle n'affirme aucune latitude, aucune distance, aucune surface) */
+  monde.plan = { statut: E.PLAN_SOURCE.statut, note: E.PLAN_SOURCE.note,
+                 colonnes: 24, communes: E.COMMUNE_PLAN ? Object.keys(E.COMMUNE_PLAN).length : 0 };
   const france = {
     ...E.FRANCE,
     enfant: { niveau: 'N-03', id: E.TERRITORY.id, nom: E.TERRITORY.nom },
@@ -582,6 +594,12 @@ function verify(d) {
     if (n.rang > 1 && !n.parent) err.push(`niveau ${n.code} : parent manquant`);
   }
   if (d.niveaux[0].code !== 'monde' || d.niveaux[9].code !== 'recit') err.push('la chaîne doit aller de MONDE à RÉCIT');
+  /* plan schématique : chaque commune a une place unique, et aucune coordonnée n'est inventée */
+  if (d.communes.some((c) => !c.plan)) err.push('plan : une commune sans position dans le plan schématique');
+  const places = d.communes.map((c) => (c.plan ? c.plan.col + ':' + c.plan.row : null));
+  if (new Set(places).size !== places.length) err.push('plan : deux communes au même endroit du plan');
+  if (d.communes.some((c) => c.plan && (c.plan.col < 1 || c.plan.col > 24 || c.plan.row < 1))) err.push('plan : position hors de la grille du plan');
+  if (d.communes.some((c) => c.position.lat !== null || c.position.lon !== null)) err.push('plan : aucune coordonnée ne doit être inventée');
   if (d.france.decoupage.region.codeInsee !== '32') err.push('découpage France : région inattendue');
   for (const c of d.communes) {
     if (!/^[0-9]{5}$/.test(String(c.codeInsee))) err.push(`${c.id} : code INSEE manquant ou invalide (${c.codeInsee})`);
@@ -647,6 +665,7 @@ function bundle(d) {
     moments: d.moments,
     saisons: d.saisons,
     communes: d.communes.map((c) => ({ ...c, sources: c.sources.slice(0, 2) })),
+    plan: { statut: E.PLAN_SOURCE.statut, note: E.PLAN_SOURCE.note, colonnes: 24 },
     lieux: d.lieux.map((l) => ({
       id: l.id, slug: l.slug, nom: l.nom, communeId: l.communeId,
       niveauRang: l.niveauRang, parentId: l.parentId,

@@ -639,6 +639,40 @@ export const NIVEAUX = [
 
 /* Sources de référence des niveaux 1 et 2, déclarées ici pour être citées
    par MONDE comme par FRANCE : un seul descriptif par source. */
+/* ------------------------------------------------------------------ */
+/* 12. PLAN SCHÉMATIQUE DES 13 COMMUNES                                */
+/* ------------------------------------------------------------------ */
+/* Positions RELATIVES (nord/sud, ouest/est) des communes les unes par
+   rapport aux autres, pour dessiner un plan lisible dans l'interface.
+   Ce ne sont PAS des coordonnées : aucune latitude, aucune longitude, aucune
+   distance, aucune surface n'est affirmée ici. Les vraies coordonnées restent
+   à renseigner dans `commune.position` depuis une source officielle (IGN/INSEE).
+   Grille du plan : 24 colonnes (ouest → est), lignes numérotées nord → sud. */
+
+export const COMMUNE_PLAN = {
+  'Lille':                { col: 6,  row: 6,  note: 'centre de la métropole' },
+  'Roubaix':              { col: 20, row: 3,  note: 'nord-est' },
+  'Tourcoing':            { col: 17, row: 1,  note: 'nord-est' },
+  'Villeneuve-d’Ascq':    { col: 15, row: 9,  note: 'est-sud-est' },
+  'Marcq-en-Barœul':      { col: 7,  row: 2,  note: 'nord' },
+  'Lambersart':           { col: 1,  row: 1,  note: 'nord-ouest' },
+  'Mons-en-Barœul':       { col: 11, row: 4,  note: 'nord-est de Lille' },
+  'Wasquehal':            { col: 14, row: 6,  note: 'est' },
+  'Croix':                { col: 18, row: 8,  note: 'est, au nord de Villeneuve-d’Ascq' },
+  'Hem':                  { col: 21, row: 11, note: 'sud-est, au sud de Roubaix' },
+  'Loos':                 { col: 1,  row: 10, note: 'sud-ouest' },
+  'Faches-Thumesnil':     { col: 7,  row: 11, note: 'sud' },
+  'Saint-André-lez-Lille': { col: 5, row: 1,  note: 'nord-nord-ouest' },
+};
+
+export const PLAN_SOURCE = {
+  statut: STATUS.SCHEMATIQUE,
+  note:
+    "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la " +
+    "mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. " +
+    "À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées.",
+};
+
 export const INSEE_SOURCE = source({
   label: 'INSEE — Code officiel géographique, arrondissement de Lille (595)', sourceType: 'base officielle',
   url: 'https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille',

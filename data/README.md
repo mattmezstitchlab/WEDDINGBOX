@@ -75,6 +75,23 @@ l'algorithme d'origine (`tools/lib/legacy-generator.js`) n'est qu'une archive re
 | `À VÉRIFIER` | à confirmer avant publication |
 | `VÉRIFIÉ` | contrôlé en interne |
 | `CALCULÉ` | produit par un algorithme reproductible (lumière) |
+| `SCHÉMATIQUE` | dessin relatif (plan de la mosaïque) — aucune mesure, aucune coordonnée |
+
+## Plan de la mosaïque (`commune.plan`)
+
+Chaque commune porte sa place dans le plan affiché par la mosaïque :
+
+```json
+"plan": { "col": 20, "row": 3, "planColonnes": 24, "statut": "SCHÉMATIQUE",
+          "place": "nord-est", "avertissement": "Position relative indicative…" }
+```
+
+Ces positions sont **relatives** (nord/sud, ouest/est), établies pour dessiner un plan lisible :
+elles n'affirment **ni latitude, ni longitude, ni distance, ni surface**. Les coordonnées réelles restent
+vides dans `commune.position` (`lat: null`, `lon: null`, statut `À VÉRIFIER`) et sont à renseigner depuis
+une source officielle (IGN / INSEE). Le contrôle d'intégrité vérifie que chaque commune a une place unique
+dans le plan et qu'aucune coordonnée n'est inventée. L'interface place les blocs en quatre bandes nord → sud
+(à l'intérieur d'une bande, d'ouest en est) et garantit qu'aucun bloc n'en recouvre un autre.
 
 ## Ce qui n'existe pas (et ne doit pas être inventé)
 

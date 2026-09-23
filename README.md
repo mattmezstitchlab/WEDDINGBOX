@@ -5,6 +5,12 @@ Un seul fichier d'interface (`index.html`), une couche de données séparée (`d
 
 **Territoire pilote :** Lille Métropole. L'architecture prévoit d'autres territoires, mais ils ne sont **pas** créés.
 
+**Mosaïque-plan :** les 365 coffrets sont posés en une mosaïque cartographique — un bloc par commune,
+placé en quatre bandes du nord au sud, d'autant plus large que la commune compte de coffrets. Le plan est
+**schématique** : positions relatives, aucune coordonnée géographique affirmée (voir `data/README.md`).
+Quatre vues cohabitent : **Plan** (ouverture), **Mosaïque**, **Chronologie**, **Territoire**, sur une
+échelle de quatre zooms — de la couleur seule au détail éditorial.
+
 **Chaîne des dix niveaux :** MONDE → FRANCE → LILLE MÉTROPOLE → COMMUNE → LIEU → COFFRET → MOMENT → LUMIÈRE → MÉDIA → RÉCIT.
 Chaque niveau est une entité de plein droit (fichier, rôle, parent, statut, cardinalité calculée), exposée
 dans l'interface par une arborescence, un index des 54 lieux et un fil d'Ariane à dix segments dans
@@ -29,7 +35,7 @@ Ouvrir `index.html` directement fonctionne aussi : la collection et les fiches r
 node tools/build-data.mjs --init   # (re)génère data/ depuis l'algorithme d'origine — une seule fois
 node tools/build-data.mjs          # vérifie data/, puis réinjecte le noyau dans index.html
 node tools/build-data.mjs --check  # vérifie sans écrire
-node tests/app.test.mjs            # 127 tests : données, dix niveaux, rendu, liens, sélection, SEO, a11y, mobile
+node tests/app.test.mjs            # 154 tests : données, plan, dix niveaux, rendu, liens, sélection, SEO, a11y, mobile
 ```
 
 `data/` est la **source de vérité**. `index.html` embarque un noyau généré (bloc balisé

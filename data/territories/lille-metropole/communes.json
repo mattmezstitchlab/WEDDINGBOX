@@ -22,6 +22,14 @@
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
   },
+  "plan": {
+   "col": 6,
+   "row": 6,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "centre de la métropole",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
+  },
   "sources": [
    {
     "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
@@ -96,6 +104,14 @@
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
   },
+  "plan": {
+   "col": 20,
+   "row": 3,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "nord-est",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
+  },
   "sources": [
    {
     "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
@@ -165,6 +181,14 @@
    "lon": null,
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "plan": {
+   "col": 17,
+   "row": 1,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "nord-est",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
   },
   "sources": [
    {
@@ -236,6 +260,14 @@
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
   },
+  "plan": {
+   "col": 15,
+   "row": 9,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "est-sud-est",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
+  },
   "sources": [
    {
     "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
@@ -305,6 +337,14 @@
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
   },
+  "plan": {
+   "col": 7,
+   "row": 2,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "nord",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
+  },
   "sources": [
    {
     "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
@@ -373,6 +413,14 @@
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
   },
+  "plan": {
+   "col": 1,
+   "row": 1,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "nord-ouest",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
+  },
   "sources": [
    {
     "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
@@ -439,6 +487,14 @@
    "lon": null,
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "plan": {
+   "col": 11,
+   "row": 4,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "nord-est de Lille",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
   },
   "sources": [
    {
@@ -507,6 +563,14 @@
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
   },
+  "plan": {
+   "col": 14,
+   "row": 6,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "est",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
+  },
   "sources": [
    {
     "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
@@ -573,6 +637,14 @@
    "lon": null,
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "plan": {
+   "col": 18,
+   "row": 8,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "est, au nord de Villeneuve-d’Ascq",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
   },
   "sources": [
    {
@@ -641,6 +713,14 @@
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
   },
+  "plan": {
+   "col": 21,
+   "row": 11,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "sud-est, au sud de Roubaix",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
+  },
   "sources": [
    {
     "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
@@ -707,6 +787,14 @@
    "lon": null,
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "plan": {
+   "col": 1,
+   "row": 10,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "sud-ouest",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
   },
   "sources": [
    {
@@ -775,6 +863,14 @@
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
   },
+  "plan": {
+   "col": 7,
+   "row": 11,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "sud",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
+  },
   "sources": [
    {
     "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
@@ -840,6 +936,14 @@
    "lon": null,
    "status": "À VÉRIFIER",
    "note": "coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici"
+  },
+  "plan": {
+   "col": 5,
+   "row": 1,
+   "planColonnes": 24,
+   "statut": "SCHÉMATIQUE",
+   "place": "nord-nord-ouest",
+   "avertissement": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées."
   },
   "sources": [
    {

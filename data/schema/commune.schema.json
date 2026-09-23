@@ -100,7 +100,8 @@
        "SOURCE OFFICIELLE",
        "À VÉRIFIER",
        "VÉRIFIÉ",
-       "CALCULÉ"
+       "CALCULÉ",
+       "SCHÉMATIQUE"
       ]
      }
     }
@@ -113,7 +114,8 @@
     "SOURCE OFFICIELLE",
     "À VÉRIFIER",
     "VÉRIFIÉ",
-    "CALCULÉ"
+    "CALCULÉ",
+    "SCHÉMATIQUE"
    ]
   }
  }

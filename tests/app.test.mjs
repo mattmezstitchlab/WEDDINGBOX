@@ -144,11 +144,13 @@ await attendre(260);
 ok('recherche sur un lieu réel', Number($('#countNum').textContent) > 0 && Number($('#countNum').textContent) < 20, `(${$('#countNum').textContent})`);
 q.value = ''; q.dispatchEvent(new win.Event('input', { bubbles: true })); await attendre(260);
 
-clic($$('#viewMode button')[1]); await attendre(10);
+const vue = (v) => $$('#viewMode button').find((b) => b.dataset.view === v);
+clic(vue('chrono')); await attendre(10);
 ok('vue chronologie : 12 en-têtes de mois', $$('.group-head').length === 12, `(${$$('.group-head').length})`);
-clic($$('#viewMode button')[2]); await attendre(10);
+clic(vue('territoire')); await attendre(10);
 ok('vue territoire : une section par commune utilisée', $$('.group-head').length >= 13);
-clic($$('#viewMode button')[0]); await attendre(10);
+clic(vue('mosaique')); await attendre(10);
+ok('vue mosaïque : ni plan ni groupe', !$('#grid').className.includes('mosaic') && $$('.group-head').length === 0);
 
 $('#sort').value = 'alpha'; $('#sort').dispatchEvent(new win.Event('change', { bubbles: true })); await attendre(10);
 const premier = $('.tile').querySelector('.tile-title').textContent;
@@ -165,6 +167,80 @@ $('#resetBtn').dispatchEvent(new win.MouseEvent('click', { bubbles: true })); aw
 ok('réinitialisation', $('#countNum').textContent === '365');
 
 /* ============================================================ */
+titre('4 bis. Mosaïque cartographique (plan schématique)');
+
+const rect = (b) => ({ n: b.querySelector('.un-n').textContent, c: +b.dataset.col, l: +b.dataset.ligne, s: +b.dataset.span, h: +b.dataset.lignes });
+clic(vue('plan')); await attendre(30);
+
+ok('le plan est la vue d’ouverture', $('#grid').className.includes('mosaic') && vue('plan').getAttribute('aria-pressed') === 'true');
+ok('les 13 communes forment 13 blocs', $$('#grid .unite').length === 13, `(${$$('#grid .unite').length})`);
+ok('chaque bloc porte le nom, le code INSEE et son compte de coffrets',
+  $$('#grid .unite').every((b) => b.querySelector('.ubloc .un-n').textContent
+    && /^59\d{3}$/.test(b.querySelector('.ubloc .un-v').textContent)
+    && Number(b.querySelector('.ubloc .un-c').textContent) === b.querySelectorAll('.unite-c').length));
+ok('chaque bloc est un groupe étiqueté', $$('#grid .unite').every((b) => b.getAttribute('role') === 'group' && b.getAttribute('aria-label')));
+ok('les unités portent le jour et le titre du coffret',
+  $$('#grid .unite-c').length === 365
+  && $$('#grid .unite-c').every((u) => /^#\d{3}$/.test(u.querySelector('.um-c').textContent) && u.querySelector('.um-n').textContent));
+ok('la largeur du bloc suit le nombre réel de coffrets : Lille (100) plus large que Hem (5)',
+  rect($$('#grid .unite').find((b) => /Lille/.test(b.querySelector('.un-n').textContent))).s
+    > rect($$('#grid .unite').find((b) => /Hem/.test(b.querySelector('.un-n').textContent))).s);
+
+/* le contrôle qui compte : deux blocs ne peuvent jamais se recouvrir */
+const boites = $$('#grid .unite').map(rect);
+const chocs = [];
+boites.forEach((a, i) => boites.slice(i + 1).forEach((b) => {
+  const horiz = a.c < b.c + b.s && b.c < a.c + a.s;
+  const vert = a.l < b.l + b.h && b.l < a.l + a.h;
+  if (horiz && vert) chocs.push(`${a.n} × ${b.n}`);
+}));
+ok('aucun bloc n’en recouvre un autre', chocs.length === 0, chocs.join(' | '));
+const colonnes = Number($('#grid').dataset.colonnes);
+ok('le plan annonce ses colonnes (24 sur grand écran)', colonnes === 24, `(${colonnes})`);
+ok('aucun bloc ne sort du plan',
+  boites.every((b) => b.c >= 1 && b.c + b.s - 1 <= colonnes && b.l >= 1));
+ok('les rapports nord/sud sont respectés (Tourcoing au-dessus de Hem)',
+  rect($$('#grid .unite').find((b) => /Tourcoing/.test(b.textContent))).l
+    < rect($$('#grid .unite').find((b) => /Hem/.test(b.textContent))).l);
+
+/* la légende dit ce que le plan est — et ce qu'il n'est pas */
+const leg = $$('#planLegend > div').map((d) => d.textContent);
+ok('la légende annonce un plan schématique', /Plan schématique/.test(leg[0]) && /SCHÉMATIQUE/.test(leg[0]));
+ok('la légende refuse explicitement toute coordonnée',
+  /Aucune coordonnée/.test(leg[1]) && /aucune latitude/i.test(leg[1]) && /aucune longitude/i.test(leg[1]));
+ok('les repères du plan sont calculés, pas saisis', /Le plus au nord[\s\S]*Le plus au sud[\s\S]*Le plus à l.ouest[\s\S]*Le plus à l.est/.test(leg[2]));
+ok('la légende chiffre ce qui est affiché', /365 coffrets · 13\/13 communes/.test(leg[3]));
+ok('la légende dit sur combien de colonnes le plan est tracé', /tracé sur 24 colonnes/.test(leg[3]));
+
+/* le zoom choisit ce qu'on lit, sans rien supprimer */
+clic($('.zbtn[data-zoom="-1"]')); await attendre(10);
+ok('zoom « Ville » : le plan passe en couleur seule (u-min = 26px)',
+  $('#grid').className.includes('z0') && $('#grid').style.getPropertyValue('--u-min') === '26px');
+clic($('.zbtn[data-zoom="1"]')); clic($('.zbtn[data-zoom="1"]')); clic($('.zbtn[data-zoom="1"]')); await attendre(10);
+ok('zoom « Détail » : les unités reprennent titre et lieu',
+  $('#grid').className.includes('z3') && $$('#grid .unite-c .tile-body').length === 365);
+clic($('.zbtn[data-zoom="-1"]')); clic($('.zbtn[data-zoom="-1"]')); clic($('.zbtn[data-zoom="-1"]')); await attendre(10);
+
+/* le plan survit aux filtres et reste cliquable */
+clic(chip('#chipsCities', 'CM-02')); await attendre(20);
+ok('un filtre réduit le plan à la commune concernée', $$('#grid .unite').length === 1
+  && /Roubaix/.test($('#grid .unite').textContent) && $$('#grid .unite-c').length === 50);
+const blocRoubaix = $('#grid .unite');
+const planRoubaix = core.communes.find((c) => c.nom === 'Roubaix').plan.col;
+ok('le bloc filtré garde la colonne de son plan',
+  +blocRoubaix.dataset.col === Math.max(1, Math.min(planRoubaix, colonnes - +blocRoubaix.dataset.span + 1)),
+  `(col ${blocRoubaix.dataset.col}, plan ${planRoubaix}, span ${blocRoubaix.dataset.span})`);
+clic(chip('#chipsCities', 'all')); await attendre(20);
+ok('retour aux 13 blocs et 365 unités', $$('#grid .unite').length === 13 && $$('#grid .unite-c').length === 365);
+
+clic($('.tile[data-code="C-042"]')); await attendre(80);
+ok('une unité du plan ouvre la fiche du bon coffret', $('#dwUrl').textContent.includes('C-042'));
+clic($('[data-close]')); await attendre(30);
+clic(vue('mosaique')); await attendre(20);
+ok('la mosaïque classique est intacte (365 tuiles, sans bloc)',
+  $$('.tile').length === 365 && $$('#grid .unite').length === 0 && !$('#grid').className.includes('mosaic'));
+clic(vue('plan')); await attendre(20);
+
 titre('5. Fiche coffret enrichie (drawer)');
 clic($('.tile[data-code="C-042"]')); await attendre(60);
 const dw = $('#drawer');
@@ -276,6 +352,8 @@ ok('menu mobile présent et étiqueté', $('#navBurger') && $('#navBurger').getA
 ok('bouton filtres avec aria-expanded', $('#tbToggle').getAttribute('aria-expanded') !== null);
 ok('recherche étiquetée', $('#q').getAttribute('aria-label'));
 ok('segmented avec aria-pressed', $$('#viewMode button').every((b) => b.getAttribute('aria-pressed') !== null));
+ok('les quatre vues sont annoncées (plan, mosaïque, chronologie, territoire)',
+  $$('#viewMode button').map((b) => b.dataset.view).join(',') === 'plan,mosaique,chrono,territoire');
 ok('lien d’évitement ou titres hiérarchisés', $$('h1').length === 1 && $$('h2').length >= 2);
 ok('chaque tuile est un bouton étiqueté', $$('.tile').every((t) => t.getAttribute('aria-label')));
 
@@ -301,6 +379,7 @@ const domM = new JSDOM(html, {
     win3.fetch = win.fetch;
     win3.IntersectionObserver = win.IntersectionObserver;
     win3.requestAnimationFrame = win.requestAnimationFrame;
+    Object.defineProperty(win3, 'innerWidth', { value: 390, configurable: true });
     win3.matchMedia = (q) => ({ matches: /max-width:\s*1000px/.test(q), media: q, addEventListener() {}, removeEventListener() {} });
   },
 });
@@ -311,6 +390,11 @@ ok('bouton filtres explicite', dM.querySelector('#tbToggle').textContent.trim() 
 dM.querySelector('#tbToggle').dispatchEvent(new domM.window.MouseEvent('click', { bubbles: true }));
 ok('ouverture explicite des filtres', !dM.querySelector('#toolbar').classList.contains('compact') && dM.querySelector('#tbToggle').getAttribute('aria-expanded') === 'true');
 ok('les 365 coffrets sont rendus malgré le repli', dM.querySelectorAll('.tile').length === 365);
+ok('plan mobile : le plan se replie sur 6 colonnes', dM.querySelector('#grid').dataset.colonnes === '6',
+  `(${dM.querySelector('#grid').dataset.colonnes})`);
+ok('plan mobile : aucun bloc ne dépasse les 6 colonnes',
+  [...dM.querySelectorAll('#grid .unite')].every((b) => +b.dataset.col + +b.dataset.span - 1 <= 6));
+ok('plan mobile : les 13 communes restent présentes', dM.querySelectorAll('#grid .unite').length === 13);
 ok('menu mobile accessible', dM.querySelector('#navBurger').getAttribute('aria-expanded') === 'false');
 dM.querySelector('#navBurger').dispatchEvent(new domM.window.MouseEvent('click', { bubbles: true }));
 ok('ouverture du menu mobile', dM.querySelector('.nav').classList.contains('menu-open') && dM.querySelector('#navBurger').getAttribute('aria-expanded') === 'true');

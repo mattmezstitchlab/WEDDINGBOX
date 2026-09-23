@@ -174,6 +174,29 @@ MÉDIA → RÉCIT la structure explicite du produit. Chaque niveau est devenu un
   (« 9 h 58 » passait pour plus long que « 16 h 24 ») — les extrêmes sont désormais comparés en minutes,
   avec un contrôle qui exige un jour le plus long en juin/juillet et le plus court en décembre/janvier.
 
+## 8 ter. Mosaïque cartographique (plan schématique)
+
+Demande : « une vraie mosaïque en grille, de tous les coffrets, comme une cartographie ».
+
+- **Un bloc par commune**, posé sur un plan relatif à 24 colonnes. Quatre bandes du nord au sud ;
+  dans chaque bande, les communes se suivent d'ouest en est. Un algorithme de placement en lignes
+  garantit qu'**aucun bloc n'en recouvre un autre** — vérifié par test sur les rectangles réellement rendus.
+- **La largeur d'un bloc suit le nombre réel de coffrets affichés** (racine du nombre, plafonnée) :
+  Lille (100 coffrets) est plus large que Hem (5). Filtrer resserre le plan sans changer son échelle.
+- **Quatre zooms = quatre niveaux de lecture** : couleur seule (26 px), jour `#042`, titre du coffret,
+  puis vignette détaillée. Aucun niveau n'est supprimé, on monte seulement en information.
+- **Le plan se replie** : 24 colonnes sur grand écran, 12 puis 6 sur écran étroit — les blocs sont
+  recalculés pour la largeur réelle, pas simplement réduits.
+- **Le plan dit ce qu'il est** : légende permanente (ce que c'est, ce que ce n'est pas, repères calculés,
+  nombre de coffrets et de communes affichés). Positions **relatives** uniquement : aucune latitude,
+  aucune longitude, aucune distance, aucune surface. Nouveau statut `SCHÉMATIQUE`.
+- **Mesure de densité** : 38 lignes de plan, soit ≈ 2 200 px à 1 440 px de large — deux fois plus compact
+  que la mosaïque plate précédente (4 292 px à la même largeur), tout en situant les communes.
+- Aucune vidéo n'a été ajoutée : Pexels n'est pas joignable depuis l'environnement d'exécution, et
+  365 vidéos « au sujet exact » n'étaient pas vérifiables une par une. Une vignette non vérifiée aurait
+  été exactement ce que ce projet s'interdit.
+- Les quatre vues restent disponibles (Plan, Mosaïque, Chronologie, Territoire) ; rien n'a été retiré.
+
 ## 9. À confirmer (décisions qui ne peuvent venir que de vous)
 
 1. **Année éditoriale** : passée à 2026 pour être cohérente (aujourd'hui 23/09/2026). Confirmez-vous l'édition 2026 ?
@@ -200,7 +223,8 @@ MÉDIA → RÉCIT la structure explicite du produit. Chaque niveau est devenu un
 | Sections dans la fiche coffret | 1 | 12 |
 | Compteurs saisis à la main | 4 (dont 2 faux) | 0 |
 | Niveaux modélisés | 0 | 10 (MONDE → RÉCIT), avec cardinalités calculées |
-| Tests automatisés | 0 | 127 |
+| Vues de la mosaïque | 3 | 4 (Plan schématique, Mosaïque, Chronologie, Territoire) |
+| Tests automatisés | 0 | 154 |
 | Adresse par coffret | non | oui |
 | Sélection persistante | non | oui |
 | Sources citées | 0 | 9 sources officielles + provenance structurée (lieux, INSEE, fiche F930) |

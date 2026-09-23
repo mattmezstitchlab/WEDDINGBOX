@@ -66,5 +66,11 @@
   "niveau": "N-02",
   "id": "france",
   "nom": "FRANCE"
+ },
+ "plan": {
+  "statut": "SCHÉMATIQUE",
+  "note": "Position relative indicative (nord/sud, ouest/est) dans la métropole, établie pour dessiner le plan de la mosaïque. Aucune coordonnée géographique n'est affirmée : ni latitude, ni longitude, ni distance, ni surface. À remplacer par les positions officielles (IGN / INSEE) quand elles seront renseignées.",
+  "colonnes": 24,
+  "communes": 13
  }
 }

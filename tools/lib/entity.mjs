@@ -16,6 +16,7 @@ export const STATUS = {
   A_VERIFIER: 'À VÉRIFIER',
   VERIFIE: 'VÉRIFIÉ',
   CALCULE: 'CALCULÉ',
+  SCHEMATIQUE: 'SCHÉMATIQUE',
 };
 
 export const STATUS_LABEL = {
@@ -25,6 +26,7 @@ export const STATUS_LABEL = {
   'À VÉRIFIER': 'à confirmer avant publication',
   'VÉRIFIÉ': 'contrôlé en interne',
   'CALCULÉ': 'calculé, reproductible',
+  'SCHÉMATIQUE': 'dessin relatif — aucune mesure, aucune coordonnée',
 };
 
 export const slugify = (s) =>
