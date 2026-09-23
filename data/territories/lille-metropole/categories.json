@@ -1,0 +1,224 @@
+[
+ {
+  "id": "CAT-01",
+  "code": "brique",
+  "nom": "Brique & Fumée",
+  "ligne": "Murs de brique rouge, fumée douce, lumière rasante de fin d’après-midi.",
+  "tags": [
+   "Industriel",
+   "Brique",
+   "Loft",
+   "Fumée",
+   "Atelier"
+  ],
+  "palette": [
+   {
+    "hsl": "hsl(16 62% 72%)"
+   },
+   {
+    "hsl": "hsl(16 62% 56%)"
+   },
+   {
+    "hsl": "hsl(54 62% 34%)"
+   },
+   {
+    "hsl": "hsl(16 62% 10%)"
+   }
+  ],
+  "art": {
+   "hue": 16,
+   "sat": 62
+  },
+  "momentsAffinite": [
+   "MO-05",
+   "MO-07",
+   "MO-09"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "CAT-02",
+  "code": "canal",
+  "nom": "Canal",
+  "ligne": "Reflets d’eau, passerelles d’acier, brume du matin sur la Deûle.",
+  "tags": [
+   "Bord d’eau",
+   "Brume",
+   "Acier",
+   "Péniche",
+   "Reflets"
+  ],
+  "palette": [
+   {
+    "hsl": "hsl(192 55% 72%)"
+   },
+   {
+    "hsl": "hsl(192 55% 56%)"
+   },
+   {
+    "hsl": "hsl(230 55% 34%)"
+   },
+   {
+    "hsl": "hsl(192 55% 10%)"
+   }
+  ],
+  "art": {
+   "hue": 192,
+   "sat": 55
+  },
+  "momentsAffinite": [
+   "MO-04",
+   "MO-09",
+   "MO-03"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "CAT-03",
+  "code": "neon",
+  "nom": "Néon Urbain",
+  "ligne": "Néons, béton brut, pluie fine sur l’asphalte et dancefloor jusqu’au dernier tram.",
+  "tags": [
+   "Néon",
+   "Nuit",
+   "Béton",
+   "Dancefloor",
+   "Pluie"
+  ],
+  "palette": [
+   {
+    "hsl": "hsl(308 70% 72%)"
+   },
+   {
+    "hsl": "hsl(308 70% 56%)"
+   },
+   {
+    "hsl": "hsl(346 70% 34%)"
+   },
+   {
+    "hsl": "hsl(308 70% 10%)"
+   }
+  ],
+  "art": {
+   "hue": 308,
+   "sat": 70
+  },
+  "momentsAffinite": [
+   "MO-07",
+   "MO-06",
+   "MO-05"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "CAT-04",
+  "code": "vegetal",
+  "nom": "Végétal Brut",
+  "ligne": "Serres, houblon, fougères et lin brut froissé.",
+  "tags": [
+   "Serre",
+   "Houblon",
+   "Lin",
+   "Fougère",
+   "Jardin"
+  ],
+  "palette": [
+   {
+    "hsl": "hsl(132 45% 72%)"
+   },
+   {
+    "hsl": "hsl(132 45% 56%)"
+   },
+   {
+    "hsl": "hsl(170 45% 34%)"
+   },
+   {
+    "hsl": "hsl(132 45% 10%)"
+   }
+  ],
+  "art": {
+   "hue": 132,
+   "sat": 45
+  },
+  "momentsAffinite": [
+   "MO-03",
+   "MO-08",
+   "MO-04"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "CAT-05",
+  "code": "beton",
+  "nom": "Béton Contemporain",
+  "ligne": "Lignes nettes, béton ciré, blanc absolu et ombres graphiques.",
+  "tags": [
+   "Minimal",
+   "Graphique",
+   "Blanc",
+   "Architecture",
+   "Lignes"
+  ],
+  "palette": [
+   {
+    "hsl": "hsl(222 14% 72%)"
+   },
+   {
+    "hsl": "hsl(222 14% 56%)"
+   },
+   {
+    "hsl": "hsl(260 14% 34%)"
+   },
+   {
+    "hsl": "hsl(222 14% 10%)"
+   }
+  ],
+  "art": {
+   "hue": 222,
+   "sat": 14
+  },
+  "momentsAffinite": [
+   "MO-03",
+   "MO-09",
+   "MO-01"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "CAT-06",
+  "code": "or",
+  "nom": "Or & Velours",
+  "ligne": "Velours profond, laiton poli, bougies et or patiné.",
+  "tags": [
+   "Velours",
+   "Laiton",
+   "Bougies",
+   "Baroque",
+   "Or patiné"
+  ],
+  "palette": [
+   {
+    "hsl": "hsl(44 70% 72%)"
+   },
+   {
+    "hsl": "hsl(44 70% 56%)"
+   },
+   {
+    "hsl": "hsl(82 70% 34%)"
+   },
+   {
+    "hsl": "hsl(44 70% 10%)"
+   }
+  ],
+  "art": {
+   "hue": 44,
+   "sat": 70
+  },
+  "momentsAffinite": [
+   "MO-05",
+   "MO-06",
+   "MO-02"
+  ],
+  "statut": "PROPOSÉ"
+ }
+]

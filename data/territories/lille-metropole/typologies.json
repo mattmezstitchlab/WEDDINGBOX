@@ -1,0 +1,146 @@
+[
+ {
+  "code": "eaux",
+  "label": "Bord d’eau",
+  "promesse": "l’eau comme premier décor, et le son qu’elle ajoute à une cérémonie",
+  "matiere": "reflets, passerelles, brume, péniches",
+  "aVerifier": [
+   "accès au bord de l’eau",
+   "règles d’usage du domaine public ou fluvial",
+   "contraintes sonores en extérieur"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "code": "industriel",
+  "label": "Patrimoine industriel",
+  "promesse": "des volumes que la lumière traverse, une brique qui absorbe le son",
+  "matiere": "brique, acier, verrières, béton brut",
+  "aVerifier": [
+   "volumes réellement disponibles",
+   "chauffage et isolation",
+   "classement du bâti et contraintes de décor"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "code": "jardins",
+  "label": "Parc & jardin",
+  "promesse": "un décor qui change d’heure en heure, sans rien ajouter",
+  "matiere": "feuillages, allées, pelouses, ombrages",
+  "aVerifier": [
+   "autorisation d’occupation d’un parc public",
+   "saisonnalité des floraisons",
+   "plan B en cas de pluie"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "code": "patrimoine",
+  "label": "Patrimoine bâti",
+  "promesse": "une architecture qui fait la moitié du travail d’ambiance",
+  "matiere": "pierre, brique, boiseries, parquets",
+  "aVerifier": [
+   "conditions d’accueil du public",
+   "modalités de privatisation",
+   "mobilier autorisé ou non"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "code": "culture",
+  "label": "Équipement culturel",
+  "promesse": "un lieu déjà scénographié, où le décor est une exposition en soi",
+  "matiere": "cloisons mobiles, cimaises, gradins, scène",
+  "aVerifier": [
+   "programmation et dates réellement libres",
+   "régie technique et sonorisation",
+   "règles de privatisation en dehors des spectacles"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "code": "culte",
+  "label": "Édifice religieux",
+  "promesse": "une acoustique et une verticalité qui installent le silence",
+  "matiere": "voûtes, vitraux, nef, pierre froide",
+  "aVerifier": [
+   "conditions d’accueil d’une cérémonie ou d’un concert",
+   "contact avec la paroisse ou l’affectataire",
+   "personne référente sur place"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "code": "espace-public",
+  "label": "Espace public",
+  "promesse": "la ville comme plateau, avec ses passants comme figurants",
+  "matiere": "pavés, façades, étals, enseignes",
+  "aVerifier": [
+   "autorisation d’occupation temporaire",
+   "réglementation municipale",
+   "coordination avec les services techniques"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "code": "contemporain",
+  "label": "Écriture contemporaine",
+  "promesse": "des lignes nettes, du verre, et une ville qui sert de toile de fond",
+  "matiere": "verre, acier, béton ciré, lignes longues",
+  "aVerifier": [
+   "accès et circulation dans un bâtiment en activité",
+   "visibilité et signalétique",
+   "contraintes de sécurité"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "code": "passage",
+  "label": "Lieu de passage",
+  "promesse": "le mouvement comme décor — départs, retrouvailles, quai qui s’efface",
+  "matiere": "verrières, quais, horloges, lumière zénithale",
+  "aVerifier": [
+   "usage d’un lieu en exploitation",
+   "créneaux réellement disponibles",
+   "autorisations de tournage ou d’accueil"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "code": "sport",
+  "label": "Équipement sportif",
+  "promesse": "une géométrie forte et des gradins qui deviennent tribune",
+  "matiere": "pistes, tribunes, carrelages, gradins",
+  "aVerifier": [
+   "conditions d’accueil du public",
+   "réutilisation sportive du site",
+   "évacuation et sécurité"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "code": "ferme",
+  "label": "Patrimoine rural",
+  "promesse": "une échelle humaine, du bois, et la campagne qui touche la ville",
+  "matiere": "charpentes, torchis, meules, cours",
+  "aVerifier": [
+   "site en activité ou non",
+   "accueil du public",
+   "état du bâti et sécurité"
+  ],
+  "statut": "PROPOSÉ"
+ },
+ {
+  "code": "convivial",
+  "label": "Lieu convivial",
+  "promesse": "un décor déjà vécu, une adresse qui a sa clientèle",
+  "matiere": "zinc, banquettes, comptoir, lumière chaude",
+  "aVerifier": [
+   "activité commerciale en cours",
+   "conditions de privatisation",
+   "capacité réelle"
+  ],
+  "statut": "PROPOSÉ"
+ }
+]

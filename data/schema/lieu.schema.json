@@ -1,0 +1,121 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "title": "Lieu (entité unique, référencée par les coffrets)",
+ "type": "object",
+ "required": [
+  "id",
+  "nom",
+  "communeId",
+  "typologie",
+  "statut"
+ ],
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^L-[0-9]{3}$"
+  },
+  "nom": {
+   "type": "string"
+  },
+  "slug": {
+   "type": "string"
+  },
+  "communeId": {
+   "type": "string",
+   "pattern": "^CM-[0-9]{2}$"
+  },
+  "typologie": {
+   "type": "object"
+  },
+  "description": {
+   "type": "string"
+  },
+  "note": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "coffrets": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "sources": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "source": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "sourceType": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "sourceUrl": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "retrievedAt": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "updatedAt": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "externalId": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "portee": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "status": {
+      "enum": [
+       "PROPOSÉ",
+       "TROUVÉ",
+       "SOURCE OFFICIELLE",
+       "À VÉRIFIER",
+       "VÉRIFIÉ",
+       "CALCULÉ",
+       "SCHÉMATIQUE"
+      ]
+     }
+    }
+   }
+  },
+  "statut": {
+   "enum": [
+    "PROPOSÉ",
+    "TROUVÉ",
+    "SOURCE OFFICIELLE",
+    "À VÉRIFIER",
+    "VÉRIFIÉ",
+    "CALCULÉ",
+    "SCHÉMATIQUE"
+   ]
+  },
+  "position": {
+   "type": "object"
+  }
+ }
+}

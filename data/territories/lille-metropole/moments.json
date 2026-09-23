@@ -1,0 +1,112 @@
+[
+ {
+  "id": "MO-01",
+  "article": "les",
+  "nom": "Préparatifs",
+  "court": "Préparatifs",
+  "besoin": "De la place, de la lumière stable et personne dans le cadre.",
+  "texte": "Les préparatifs demandent surtout un lieu qui ne bouge pas : même lumière, même fond, deux heures durant. Un décor sobre tient mieux qu’un décor spectaculaire.",
+  "niveauRang": 7,
+  "rang": 1,
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "MO-02",
+  "article": "la",
+  "nom": "Cérémonie civile",
+  "court": "Mairie",
+  "besoin": "Un créneau court, une adresse claire, des photos de sortie.",
+  "texte": "La cérémonie civile est un moment de ville : l’escalier, la façade et la sortie comptent autant que la salle. C’est le seul moment où le décor municipal est imposé.",
+  "niveauRang": 7,
+  "rang": 2,
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "MO-03",
+  "article": "la",
+  "nom": "Cérémonie laïque ou religieuse",
+  "court": "Cérémonie",
+  "besoin": "Un axe, du silence, un fond qui ne concurrence pas.",
+  "texte": "Une cérémonie se joue sur un axe et sur le silence. Plus le décor est fort (nef, verrière, mur plein), plus le reste doit être retiré.",
+  "niveauRang": 7,
+  "rang": 3,
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "MO-04",
+  "article": "le",
+  "nom": "Cocktail",
+  "court": "Cocktail",
+  "besoin": "De la circulation, des zones debout, un extérieur si possible.",
+  "texte": "Le cocktail est le moment le plus dépendant de la météo et de la lumière : c’est là qu’un extérieur, même modeste, change tout.",
+  "niveauRang": 7,
+  "rang": 4,
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "MO-05",
+  "article": "le",
+  "nom": "Dîner",
+  "court": "Dîner",
+  "besoin": "Des tables, de l’acoustique, de la hauteur sous plafond.",
+  "texte": "Le dîner est le moment le plus technique : acoustique, service, cheminement des assiettes. Un volume industriel absorbe mieux le bruit qu’un beau parquet.",
+  "niveauRang": 7,
+  "rang": 5,
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "MO-06",
+  "article": "les",
+  "nom": "Discours & interventions",
+  "court": "Discours",
+  "besoin": "Un point focal, un micro, une lumière qui isole.",
+  "texte": "Les discours tiennent à trois choses : un endroit où se mettre, une lumière qui isole et une acoustique qui pardonne.",
+  "niveauRang": 7,
+  "rang": 6,
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "MO-07",
+  "article": "la",
+  "nom": "Soirée & dancefloor",
+  "court": "Soirée",
+  "besoin": "De la puissance électrique, des murs épais, un voisinage conciliant.",
+  "texte": "La soirée est le moment qui négocie le plus avec le lieu : puissance, horaires, voisinage. À traiter très en amont.",
+  "niveauRang": 7,
+  "rang": 7,
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "MO-08",
+  "article": "le",
+  "nom": "Brunch du lendemain",
+  "court": "Brunch",
+  "besoin": "Un extérieur, une lumière douce, un service simple.",
+  "texte": "Le brunch profite de ce que personne ne remarque : la lumière de fin de matinée et un extérieur qui n’a pas été rangé pour la soirée.",
+  "niveauRang": 7,
+  "rang": 8,
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "MO-09",
+  "article": "la",
+  "nom": "Séance photo & vidéo",
+  "court": "Séance photo",
+  "besoin": "De l’heure dorée, des matières, de la profondeur.",
+  "texte": "La séance photo est le seul moment qui se planifie à la minute : la fenêtre de lumière est courte et ne se rattrape pas.",
+  "niveauRang": 7,
+  "rang": 9,
+  "statut": "PROPOSÉ"
+ },
+ {
+  "id": "MO-10",
+  "article": "le",
+  "nom": "Repérage & essais",
+  "court": "Repérage",
+  "besoin": "Du temps, un accès libre, une seconde visite à la bonne heure.",
+  "texte": "Le repérage se fait deux fois : une fois le matin pour les volumes, une fois à l’heure de la cérémonie pour la lumière.",
+  "niveauRang": 7,
+  "rang": 10,
+  "statut": "PROPOSÉ"
+ }
+]

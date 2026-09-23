@@ -1,0 +1,71 @@
+{
+ "note": "L'annuaire est PRÉPARÉ mais VOLONTAIREMENT VIDE : aucun professionnel n'a été inventé. Chaque fiche devra porter sa provenance et son statut de vérification.",
+ "categories": [
+  {
+   "code": "wedding-planner",
+   "label": "Wedding planner"
+  },
+  {
+   "code": "photographe",
+   "label": "Photographe"
+  },
+  {
+   "code": "videaste",
+   "label": "Vidéaste"
+  },
+  {
+   "code": "dj",
+   "label": "DJ"
+  },
+  {
+   "code": "musicien",
+   "label": "Musicien / saxophoniste"
+  },
+  {
+   "code": "traiteur",
+   "label": "Traiteur"
+  },
+  {
+   "code": "fleuriste",
+   "label": "Fleuriste"
+  },
+  {
+   "code": "decorateur",
+   "label": "Décorateur"
+  },
+  {
+   "code": "lieu",
+   "label": "Lieu de réception"
+  },
+  {
+   "code": "hebergement",
+   "label": "Hébergement"
+  },
+  {
+   "code": "autre",
+   "label": "Autre"
+  }
+ ],
+ "modele": {
+  "id": "PR-000",
+  "raisonSociale": null,
+  "categorieCode": null,
+  "communeIds": [],
+  "lieuIds": [],
+  "coffretIds": [],
+  "contact": {
+   "site": null,
+   "email": null,
+   "telephone": null,
+   "adresse": null
+  },
+  "source": null,
+  "sourceType": null,
+  "sourceUrl": null,
+  "retrievedAt": null,
+  "updatedAt": null,
+  "externalId": null,
+  "statut": "À VÉRIFIER"
+ },
+ "professionnels": []
+}

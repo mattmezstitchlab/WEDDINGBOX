@@ -1,0 +1,50 @@
+[
+ {
+  "id": "SA-01",
+  "code": "Hiver",
+  "mois": [
+   11,
+   0,
+   1
+  ],
+  "color": "#5B7CFF",
+  "note": "Lumière basse, jour court, décors intérieurs valorisés.",
+  "statut": "VÉRIFIÉ"
+ },
+ {
+  "id": "SA-02",
+  "code": "Printemps",
+  "mois": [
+   2,
+   3,
+   4
+  ],
+  "color": "#5FD08A",
+  "note": "Jour qui s’allonge vite : la lumière d’une même heure change d’un mois à l’autre.",
+  "statut": "VÉRIFIÉ"
+ },
+ {
+  "id": "SA-03",
+  "code": "Été",
+  "mois": [
+   5,
+   6,
+   7
+  ],
+  "color": "#FFC24B",
+  "note": "Journée très longue : la soirée commence avant la nuit.",
+  "statut": "VÉRIFIÉ"
+ },
+ {
+  "id": "SA-04",
+  "code": "Automne",
+  "mois": [
+   8,
+   9,
+   10
+  ],
+  "color": "#E4572E",
+  "note": "Brumes, couleurs, lumière dorée en milieu d’après-midi.",
+  "statut": "VÉRIFIÉ"
+ }
+]

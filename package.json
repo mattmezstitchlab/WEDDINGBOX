@@ -1,0 +1,17 @@
+{
+  "name": "wedding-box",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WEDDING BOX — Lille Métropole : 365 coffrets de mariage, mosaïque-plan des 13 communes.",
+  "type": "module",
+  "scripts": {
+    "data": "node tools/build-data.mjs",
+    "data:init": "node tools/build-data.mjs --init",
+    "data:check": "node tools/build-data.mjs --check",
+    "test": "node tests/app.test.mjs",
+    "serve": "python3 -m http.server 8080 --bind 0.0.0.0"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.1"
+  }
+}

@@ -1,0 +1,131 @@
+{
+ "id": "lille-metropole",
+ "slug": "lille-metropole",
+ "nom": "Lille Métropole",
+ "nomComplet": "WEDDING BOX — Lille Métropole",
+ "statut": "territoire pilote",
+ "editeur": "WEDDING BOX",
+ "rattachement": {
+  "epci": "Métropole européenne de Lille (MEL)",
+  "departement": "Nord (59)",
+  "region": "Hauts-de-France",
+  "pays": "FR",
+  "communesDansLaCollection": 13,
+  "note": "La MEL regroupe 95 communes ; la collection en documente 13. Le reste du territoire est un gisement éditorial, pas un oubli.",
+  "sources": [
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "existence et périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ]
+ },
+ "pointDeReference": {
+  "label": "Centre de Lille",
+  "lat": 50.6333,
+  "lon": 3.0667,
+  "status": "TROUVÉ",
+  "note": "Point unique servant au calcul du lever, du coucher et de la courbe de lumière. Ce n’est pas la position exacte de chaque lieu : à remplacer par des coordonnées officielles (IGN / INSEE) lieu par lieu."
+ },
+ "niveauRang": 3,
+ "parentId": "france",
+ "recit": {
+  "label": "Manifeste",
+  "texteHtml": "Nous ne cherchons pas la France des châteaux. Nous cherchons <strong>la ville qui tient debout</strong> : l’acier du Fresnoy, la brique de la Condition Publique, la Deûle qui coupe les jardins. Chaque coffret est un <em>objet éditorial</em> — moodboard, lumière heure par heure, artisans, budgets, plans B sous la pluie du Nord.",
+  "texte": "Nous ne cherchons pas la France des châteaux. Nous cherchons la ville qui tient debout : l’acier du Fresnoy, la brique de la Condition Publique, la Deûle qui coupe les jardins. Chaque coffret est un objet éditorial — moodboard, lumière heure par heure, artisans, budgets, plans B sous la pluie du Nord.",
+  "citation": {
+   "texte": "Un mariage réussi à Lille, c’est un mariage qui accepte le gris et en fait une matière.",
+   "attribue": null
+  },
+  "cote": [
+   "Trois cent soixante-cinq numéros, un par jour de l’année. Chacun est ancré dans un lieu réel de la métropole, une matière dominante et une saison. Zoomez : la mosaïque devient un plan de ville. Filtrez : elle devient un calendrier.",
+   "Aucune carte de France. Une seule interface : la grille. Spatiale, temporelle, zoomable, filtrable."
+  ],
+  "statut": "PROPOSÉ"
+ },
+ "mentions": {
+  "editorial": "Texte éditorial de WEDDING BOX (statut PROPOSÉ). Il décrit ce que le décor permet d’imaginer — il n’affirme rien sur l’accueil du public, les tarifs, la capacité ou les disponibilités du lieu.",
+  "reperesDemo": "Repères de DÉMONSTRATION hérités du prototype (invités, pages, prestataires, budget indicatif) : aucune source, aucune valeur contractuelle. À remplacer par des données de source ou à retirer avant mise en ligne.",
+  "verification": "Coffrets de démonstration éditoriale : aucune donnée terrain n’a été vérifiée. Le statut PROPOSÉ est le statut par défaut de toute la collection.",
+  "lumiere": {
+   "methode": "calcul solaire NOAA simplifié",
+   "reference": "point de référence Lille 50,633 N / 3,067 E",
+   "precision": "± 1 à 3 minutes",
+   "status": "CALCULÉ",
+   "note": "Aucune valeur inventée : ces heures sont recalculables par tout un chacun à partir de data/ et de tools/lib/solar.mjs."
+  },
+  "sourcesParDefaut": [
+   {
+    "source": "WEDDING BOX — génération éditoriale déterministe",
+    "sourceType": "éditorial",
+    "sourceUrl": null,
+    "portee": "titre, univers, accroche, texte des coffrets",
+    "retrievedAt": null,
+    "updatedAt": null,
+    "externalId": null,
+    "status": "PROPOSÉ"
+   }
+  ],
+  "reserveEditoriale": [
+   "Rien de tout cela n’est acquis : c’est une piste éditoriale, pas une information sur le lieu.",
+   "À lire comme une hypothèse de travail : la fiche « à vérifier » liste ce qui reste à confirmer avec le lieu.",
+   "Piste éditoriale du coffret : elle ne préjuge ni de l’accueil du public, ni des conditions réelles d’organisation."
+  ],
+  "genereLe": "2026-09-23",
+  "aVerifierStandard": [
+   "coordonnées et accès exacts à confirmer depuis une source officielle",
+   "conditions d’accueil, capacité et privatisation : non renseignées",
+   "conditions tarifaires : aucune estimation dans cette collection",
+   "accessibilité et stationnement : à documenter"
+  ]
+ },
+ "edition": {
+  "id": "E-2026",
+  "year": 2026,
+  "label": "Édition 2026",
+  "decalageJours": 0,
+  "statut": "PROPOSÉ",
+  "note": "Année éditoriale unique, utilisée par le titre, le pied de page, les dates de coffret et les données structurées."
+ },
+ "calendrier": {
+  "jours": 365,
+  "statut": "VÉRIFIÉ",
+  "note": "La collection suit un calendrier éditorial de 365 jours (1er janvier → 31 décembre). Le 29 février n'est pas couvert."
+ },
+ "arborescence": {
+  "statut": "préparée, non peuplée",
+  "note": "WEDDING BOX > territoires. Lille Métropole est le territoire pilote ; les autres territoires ne sont pas créés volontairement.",
+  "territoires": [
+   {
+    "id": "lille-metropole",
+    "nom": "Lille Métropole",
+    "statut": "pilote"
+   }
+  ]
+ },
+ "compteurs": {
+  "niveaux": 10,
+  "pays": 1,
+  "monde": 1,
+  "recits": 435,
+  "lumiere": 366,
+  "coffrets": 365,
+  "communes": 13,
+  "lieux": 54,
+  "lieuxPartages": 51,
+  "categories": 6,
+  "moments": 10,
+  "saisons": 4,
+  "mois": 12,
+  "medias": 367,
+  "professionnels": 0,
+  "sources": 22,
+  "statut": "CALCULÉ",
+  "methode": "comptage sur data/territories/lille-metropole — aucune valeur saisie à la main"
+ }
+}
