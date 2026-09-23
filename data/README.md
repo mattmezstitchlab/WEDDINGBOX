@@ -3,6 +3,35 @@
 Ces fichiers sont la **source de vérité** de WEDDING BOX. `index.html` en dérive un noyau généré.
 Toute modification doit passer par `node tools/build-data.mjs` (qui contrôle puis réinjecte).
 
+## Hiérarchie des dix niveaux
+
+La collection est une chaîne, pas une liste : chaque niveau est une entité de plein droit, avec son
+fichier, son parent et sa cardinalité **calculée** (jamais saisie). Le rang et le parent sont écrits
+dans les données (`niveauRang`, `parentId` sur les communes, les lieux et les coffrets).
+
+| Rang | Niveau | Entité | Fichier | Cardinalité | Statut |
+|---|---|---|---|---|---|
+| 1 | MONDE | `monde` | `data/monde.json` | 1 | PROPOSÉ |
+| 2 | FRANCE | `france` | `data/france.json` | 1 | SOURCE OFFICIELLE |
+| 3 | LILLE MÉTROPOLE | `lille-metropole` | `territories/lille-metropole/territoire.json` | 1 | SOURCE OFFICIELLE |
+| 4 | COMMUNE | `CM-01`…`CM-13` | `territories/lille-metropole/communes.json` | 13 | SOURCE OFFICIELLE |
+| 5 | LIEU | `L-001`…`L-054` | `territories/lille-metropole/lieux.json` | 54 | À VÉRIFIER / SOURCE OFFICIELLE |
+| 6 | COFFRET | `C-001`…`C-365` | `territories/lille-metropole/coffrets/C-xxx.json` | 365 | PROPOSÉ |
+| 7 | MOMENT | `MO-01`…`MO-10` | `territories/lille-metropole/moments.json` | 10 | PROPOSÉ |
+| 8 | LUMIÈRE | — | `territories/lille-metropole/lumiere.json` | 366 | CALCULÉ |
+| 9 | MÉDIA | `M-SITE-01`… | `territories/lille-metropole/media.json` | 367 | VÉRIFIÉ |
+| 10 | RÉCIT | `R-monde`, `R-france`, … | `territories/lille-metropole/recits.json` | 435 | PROPOSÉ / SOURCE OFFICIELLE |
+
+`data/niveaux.json` décrit la chaîne elle-même ; `relations.json` en porte la version courte
+(`chaine`, `niveau`). Les cardinalités totales sont reprises dans `territoire.json` (`compteurs`).
+
+**Niveaux 1 et 2 — ce qu'ils affirment, et ce qu'ils n'affirment pas.** MONDE ne documente qu'un
+pays (`MONDE.pays` : France, VÉRIFIÉ, deux sources) et affiche ses limites (`nonCouvert` : aucun autre
+pays, aucune comparaison internationale, aucune donnée hors France). FRANCE porte le découpage
+administratif réel — région Hauts-de-France (32), département du Nord (59), arrondissement de Lille
+(595, 124 communes), Métropole européenne de Lille (95 communes) — et le cadre légal qui explique
+l'organisation par commune (`cadreLegal` : art. 74, art. 63, art. 64, conditions, opposition).
+
 ## Identifiants stables
 
 | Entité | Format | Nombre | Remarque |
@@ -16,6 +45,7 @@ Toute modification doit passer par `node tools/build-data.mjs` (qui contrôle pu
 | Typologie de lieu | code lisible (`eaux`, `industriel`…) | 12 | ressource partagée |
 | Média | `M-SITE-01`, `M-<coffret>-01` | — | gabarits + actifs réels |
 | Professionnel | `PR-000` | 0 | **modèle prêt, annuaire vide** |
+| Niveau | `N-01` … `N-10` | 10 | rang imposé : MONDE → FRANCE → … → RÉCIT |
 
 Modifier une donnée ne déplace plus les identités : les coffrets sont figés dans `coffrets.json`,
 l'algorithme d'origine (`tools/lib/legacy-generator.js`) n'est qu'une archive reproductible.
@@ -59,6 +89,18 @@ démonstration** : ils sont signalés comme tels dans l'interface et doivent êt
 lever, coucher, durée du jour, golden hour, heure bleue, déclinaison, midi solaire et courbe de hauteur
 solaire sur 24 h. Point de référence unique : centre de Lille (50,633 N / 3,067 E), précision ± 1 à 3 minutes.
 Ce ne sont **pas** les coordonnées exactes de chaque lieu — à remplacer par des positions officielles (IGN / INSEE).
+
+## Sources réellement consultées (cadres du produit)
+
+| Niveau | Source | Statut |
+|---|---|---|
+| MONDE / FRANCE | INSEE — Code officiel géographique, arrondissement de Lille (595), relevé du 23/09/2026 | SOURCE OFFICIELLE |
+| FRANCE | service-public.gouv.fr, fiche F930 « Mariage en France » (DILA, Premier ministre), vérifiée le 16/09/2026 | SOURCE OFFICIELLE |
+| MONDE / FRANCE | lillemetropole.fr (95 communes) | SOURCE OFFICIELLE |
+
+Les règles de `france.cadreLegal` sont des **paraphrases** de règles publiques, conservées pour ce
+qu'elles changent à l'organisation d'un mariage ; elles sont à revérifier au texte près sur Légifrance
+avant toute publication juridique. Aucun conseil juridique n'est délivré ici.
 
 ## Sources réellement consultées (identité des lieux)
 

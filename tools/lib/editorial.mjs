@@ -1,5 +1,5 @@
 /**
- * outils/lib/editorial.mjs — bibliothèque éditoriale du territoire
+ * tools/lib/editorial.mjs — bibliothèque éditoriale du territoire
  *
  * CONTENU HUMAIN UNIQUEMENT ICI. Rien de factuel n'est affirmé sur un lieu :
  * les textes sont des PISTES ÉDITORIALES (statut PROPOSÉ) qui décrivent ce
@@ -574,3 +574,229 @@ export const LUMIERE_METHOD = {
   status: STATUS.CALCULE,
   note: 'Aucune valeur inventée : ces heures sont recalculables par tout un chacun à partir de data/ et de tools/lib/solar.mjs.',
 };
+
+
+/* ------------------------------------------------------------------ */
+/* 7. HIÉRARCHIE TERRITORIALE — MONDE → FRANCE → … → RÉCIT            */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Les dix niveaux du produit. Chaque niveau est une entité de plein droit :
+ * il a un rôle, un fichier, une cardinalité calculée et un statut.
+ * Les niveaux 1 et 2 n'existent QUE parce qu'ils sont documentés : rien n'est
+ * inventé sur le monde ou sur la France au-delà de ce qui est sourcé ci-dessous.
+ */
+export const NIVEAUX = [
+  { rang: 1, code: 'monde', nom: 'MONDE', entite: 'monde', parent: null, fichier: 'data/monde.json',
+    role: 'cadre général du produit',
+    description: "Périmètre du produit et de la pratique qu'il documente. Niveau volontairement pauvre : aucune donnée sur les autres pays n'est produite tant qu'elle n'est pas sourcée.",
+    montee: 'Le monde contient des pays ; seul un pays est décrit aujourd’hui.' },
+  { rang: 2, code: 'france', nom: 'FRANCE', entite: 'pays', parent: 'monde', fichier: 'data/france.json',
+    role: 'cadre administratif et légal',
+    description: "Découpage réel (région, département, arrondissement, intercommunalité) et cadre légal du mariage civil, qui explique pourquoi la collection est organisée par commune.",
+    montee: 'La France contient des territoires ; un seul est couvert aujourd’hui.' },
+  { rang: 3, code: 'territoire', nom: 'LILLE MÉTROPOLE', entite: 'territoire', parent: 'france',
+    fichier: 'data/territories/<territoire>/territoire.json',
+    role: 'territoire pilote',
+    description: "Échelle éditoriale de la collection : une métropole, ses communes et ses lieux. Récit porté par le manifeste.",
+    montee: 'Le territoire contient des communes.' },
+  { rang: 4, code: 'commune', nom: 'COMMUNE', entite: 'commune', parent: 'territoire',
+    fichier: 'data/territories/<territoire>/communes.json',
+    role: 'maille administrative et éditoriale',
+    description: "Première contrainte réelle d'un mariage en France : c'est la commune qui décide où la cérémonie civile est possible. Chaque commune porte son code officiel INSEE.",
+    montee: 'La commune contient des lieux.' },
+  { rang: 5, code: 'lieu', nom: 'LIEU', entite: 'lieu', parent: 'commune',
+    fichier: 'data/territories/<territoire>/lieux.json',
+    role: 'décor réel, entité unique',
+    description: "Un lieu existe une seule fois et est référencé par les coffrets. Il porte une typologie, une matière et ce qui reste à vérifier.",
+    montee: 'Le lieu contient des coffrets (via les références).' },
+  { rang: 6, code: 'coffret', nom: 'COFFRET', entite: 'coffret', parent: 'lieu',
+    fichier: 'data/territories/<territoire>/coffrets/C-xxx.json',
+    role: 'unité éditoriale',
+    description: "Identifiant stable C-001 … C-365, un coffret par jour de collection : titre, accroche, texte, univers, saison, tags, moments, relations.",
+    montee: 'Le coffret se décrit par des moments, une lumière, un média et un récit.' },
+  { rang: 7, code: 'moment', nom: 'MOMENT', entite: 'moment', parent: 'coffret',
+    fichier: 'data/territories/<territoire>/moments.json',
+    role: 'ce que le moment exige',
+    description: "Les dix moments d'un mariage, chacun avec son besoin concret (acoustique, circulation, lumière, puissance). Un coffret en référence au moins deux.",
+    montee: 'Le moment se lit à la lumière du jour.' },
+  { rang: 8, code: 'lumiere', nom: 'LUMIÈRE', entite: 'lumiere', parent: 'moment',
+    fichier: 'data/territories/<territoire>/lumiere.json',
+    role: 'donnée calculée',
+    description: "Lever, coucher, durée du jour, golden hour, heure bleue, courbe horaire sur 24 h : calculés pour chaque date de la collection, jamais estimés.",
+    montee: 'La lumière se montre par un média.' },
+  { rang: 9, code: 'media', nom: 'MÉDIA', entite: 'media', parent: 'lumiere',
+    fichier: 'data/territories/<territoire>/media.json',
+    role: 'preuve visuelle ou graphique',
+    description: "Les visuels de coffret sont générés (aucune image). Tout média réel devra porter source, crédit, droits et statut — jamais une image générique présentée comme une photographie du lieu.",
+    montee: 'Le média nourrit le récit.' },
+  { rang: 10, code: 'recit', nom: 'RÉCIT', entite: 'recit', parent: 'media',
+    fichier: 'data/territories/<territoire>/recits.json',
+    role: 'narrative de la collection',
+    description: "Le récit existe à chaque échelle : monde, pays, territoire, commune, lieu, coffret. Il ne dit jamais autre chose que ce que les niveaux inférieurs autorisent.",
+    montee: 'Fin de chaîne : le récit ne remonte plus, il se publie.' },
+];
+
+/* Sources de référence des niveaux 1 et 2, déclarées ici pour être citées
+   par MONDE comme par FRANCE : un seul descriptif par source. */
+export const INSEE_SOURCE = source({
+  label: 'INSEE — Code officiel géographique, arrondissement de Lille (595)', sourceType: 'base officielle',
+  url: 'https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille',
+  status: STATUS.OFFICIEL, portee: 'code officiel géographique de chaque commune', retrievedAt: '2026-09-23',
+});
+
+export const SOURCE_F930 = source({
+  label: 'Service Public — « Mariage en France », fiche F930 (DILA, Premier ministre)', sourceType: 'site officiel',
+  url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F930',
+  status: STATUS.OFFICIEL, portee: 'conditions du mariage, publication des bans, opposition', retrievedAt: '2026-09-23',
+});
+
+/* ------------------------------------------------------------------ */
+/* 8. MONDE — niveau 1                                                 */
+/* ------------------------------------------------------------------ */
+
+export const MONDE = {
+  id: 'monde',
+  code: 'monde',
+  nom: 'MONDE',
+  niveauRang: 1,
+  role: 'cadre général du produit',
+  description:
+    "WEDDING BOX documente une pratique — le mariage — et un territoire à la fois. Le niveau MONDE n'affirme rien sur les autres pays : " +
+    "il fixe le périmètre du produit et empêche la collection de prétendre à une couverture qu'elle n'a pas.",
+  faits: [
+    {
+      enonce: 'Le mariage est une institution attestée dans la quasi-totalité des sociétés humaines, sous des formes juridiques et rituelles très diverses.',
+      status: STATUS.TROUVE,
+      portee: 'anthropologie générale — aucune source rattachée ici',
+    },
+    {
+      enonce: "WEDDING BOX couvre aujourd'hui la France, et dans cette collection un seul territoire : Lille Métropole.",
+      status: STATUS.VERIFIE,
+      portee: 'périmètre réel de cette collection',
+    },
+  ],
+  nonCouvert: [
+    'aucun autre pays n’est documenté',
+    'aucune comparaison internationale n’est produite',
+    'aucune donnée sur les pratiques hors France',
+  ],
+  statut: STATUS.PROPOSE,
+  note: "Ce niveau est volontairement incomplet : il est prévu pour accueillir d'autres pays le jour où des données sourcées existeront.",
+  /* Seul endroit du modèle où d'autres pays s'ajouteront. Il n'en contient qu'un,
+     et il est documenté : pas de liste vide qui laisserait croire à une couverture
+     mondiale, pas de pays inventé pour remplir la grille. */
+  pays: [
+    {
+      id: 'france',
+      nom: 'France',
+      codeIso2: 'FR',
+      codeIso3: 'FRA',
+      documente: true,
+      statut: STATUS.VERIFIE,
+      portee: 'seul pays documenté par cette collection',
+      sources: [INSEE_SOURCE, SOURCE_F930],
+      fichierNiveau: 'data/france.json',
+    },
+  ],
+  paysNonDocumentes: {
+    compte: 'aucun',
+    note: "Aucun autre pays n'est décrit ici, et aucun ne le sera sans données sourcées.",
+  },
+};
+
+/* ------------------------------------------------------------------ */
+/* 9. FRANCE — niveau 2 : découpage réel + cadre légal                 */
+/* ------------------------------------------------------------------ */
+
+export const FRANCE = {
+  id: 'france',
+  code: 'france',
+  nom: 'FRANCE',
+  niveauRang: 2,
+  parent: 'monde',
+  role: 'cadre administratif et légal',
+  identite: {
+    nom: 'France',
+    codeIso2: 'FR',
+    codeIso3: 'FRA',
+    devise: 'EUR',
+    langue: 'français (fr-FR)',
+    statut: STATUS.TROUVE,
+  },
+  decoupage: {
+    pays: { nom: 'France', status: STATUS.TROUVE },
+    region: { nom: 'Hauts-de-France', codeInsee: '32', chefLieu: 'Lille', status: STATUS.OFFICIEL },
+    departement: { nom: 'Nord', codeInsee: '59', chefLieu: 'Lille', status: STATUS.OFFICIEL },
+    arrondissement: { nom: 'Lille', codeInsee: '595', communes: 124, status: STATUS.OFFICIEL },
+    intercommunalite: { nom: 'Métropole européenne de Lille', communes: 95, status: STATUS.OFFICIEL },
+    sources: [
+      INSEE_SOURCE,
+      source({ label: 'Métropole européenne de Lille (site officiel)', sourceType: 'site officiel',
+        url: 'https://www.lillemetropole.fr', status: STATUS.OFFICIEL,
+        portee: 'périmètre de l’intercommunalité', retrievedAt: '2026-09-23' }),
+    ],
+  },
+  cadreLegal: {
+    note: "Paraphrases de règles publiques, conservées pour ce qu'elles changent à l'organisation d'un mariage. À revérifier au texte près sur Légifrance avant toute publication juridique.",
+    regles: [
+      { id: 'FR-L1', enonce: "Le mariage civil se célèbre dans une commune où l'un des époux — ou l'un de leurs parents — a son domicile ou sa résidence, établie par au moins un mois d'habitation continue à la date de la publication des bans.",
+        reference: 'Code civil, art. 74', status: STATUS.OFFICIEL,
+        consequenceEditoriale: "C'est la raison d'être du niveau COMMUNE : dans cette collection, une commune n'est pas un décor, c'est d'abord une condition légale." },
+      { id: 'FR-L2', enonce: "L'annonce du mariage est faite par publication des bans : des avis affichés à la porte de la mairie par l'officier d'état civil.",
+        reference: 'Code civil, art. 63', status: STATUS.OFFICIEL,
+        consequenceEditoriale: "Le mur de la mairie fait partie du décor réel d'un mariage : c'est un lieu photographié le jour même." },
+      { id: 'FR-L3', enonce: "L'affichage des bans dure dix jours consécutifs, et la célébration ne peut avoir lieu qu'à partir du dixième jour qui suit l'affichage. La publication perd sa validité si le mariage n'est pas célébré dans l'année.",
+        reference: 'Code civil, art. 64 (délai) ; usage constant sur la validité d’un an', status: STATUS.OFFICIEL,
+        consequenceEditoriale: "Le calendrier d'un mariage n'est pas seulement éditorial : il est contraint. C'est ce que la collection appelle le « moment »." },
+      { id: 'FR-L4', enonce: "Conditions : être majeur (18 ans), être libre de tout lien matrimonial, absence de lien de parenté ou d'alliance prohibé, consentement libre et éclairé. Les couples de même sexe peuvent se marier.",
+        reference: 'Service Public — fiche F930, vérifiée le 16 septembre 2026', status: STATUS.OFFICIEL,
+        consequenceEditoriale: null },
+      { id: 'FR-L5', enonce: "Peuvent s'opposer à un mariage : l'époux ou l'épouse actuel(le), un ascendant, un tuteur ou curateur, et le procureur de la République.",
+        reference: 'Service Public — fiche F930', status: STATUS.OFFICIEL,
+        consequenceEditoriale: null },
+    ],
+    sources: [SOURCE_F930],
+  },
+  nonCouvert: [
+    "aucun autre territoire français que Lille Métropole n'est documenté",
+    'aucune donnée sur le mariage religieux (non couvert par cette collection)',
+    'aucune donnée fiscale, successorale ou patrimoniale',
+  ],
+  statut: STATUS.OFFICIEL,
+};
+
+/* ------------------------------------------------------------------ */
+/* 10. RÉCIT DU TERRITOIRE (textes portés par les données)             */
+/* ------------------------------------------------------------------ */
+
+export const TERRITORY_RECIT = {
+  label: 'Manifeste',
+  texteHtml:
+    'Nous ne cherchons pas la France des châteaux. Nous cherchons <strong>la ville qui tient debout</strong> : ' +
+    'l’acier du Fresnoy, la brique de la Condition Publique, la Deûle qui coupe les jardins. ' +
+    'Chaque coffret est un <em>objet éditorial</em> — moodboard, lumière heure par heure, ' +
+    'artisans, budgets, plans B sous la pluie du Nord.',
+  texte:
+    'Nous ne cherchons pas la France des châteaux. Nous cherchons la ville qui tient debout : l’acier du Fresnoy, ' +
+    'la brique de la Condition Publique, la Deûle qui coupe les jardins. Chaque coffret est un objet éditorial — ' +
+    'moodboard, lumière heure par heure, artisans, budgets, plans B sous la pluie du Nord.',
+  citation: { texte: 'Un mariage réussi à Lille, c’est un mariage qui accepte le gris et en fait une matière.', attribue: null },
+  cote: [
+    'Trois cent soixante-cinq numéros, un par jour de l’année. Chacun est ancré dans un lieu réel de la métropole, une matière dominante et une saison. Zoomez : la mosaïque devient un plan de ville. Filtrez : elle devient un calendrier.',
+    'Aucune carte de France. Une seule interface : la grille. Spatiale, temporelle, zoomable, filtrable.',
+  ],
+  statut: STATUS.PROPOSE,
+};
+
+/* ------------------------------------------------------------------ */
+/* 11. CODES INSEE DES 13 COMMUNES (source : COG, INSEE)               */
+/* ------------------------------------------------------------------ */
+
+export const COMMUNE_INSEE = {
+  'Lille': '59350', 'Roubaix': '59512', 'Tourcoing': '59599', 'Villeneuve-d’Ascq': '59009',
+  'Marcq-en-Barœul': '59378', 'Lambersart': '59328', 'Mons-en-Barœul': '59410',
+  'Wasquehal': '59646', 'Croix': '59163', 'Hem': '59299', 'Loos': '59360',
+  'Faches-Thumesnil': '59220', 'Saint-André-lez-Lille': '59527',
+};
+

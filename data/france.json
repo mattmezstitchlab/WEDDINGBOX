@@ -1,0 +1,132 @@
+{
+ "id": "france",
+ "code": "france",
+ "nom": "FRANCE",
+ "niveauRang": 2,
+ "parent": "monde",
+ "role": "cadre administratif et légal",
+ "identite": {
+  "nom": "France",
+  "codeIso2": "FR",
+  "codeIso3": "FRA",
+  "devise": "EUR",
+  "langue": "français (fr-FR)",
+  "statut": "TROUVÉ"
+ },
+ "decoupage": {
+  "pays": {
+   "nom": "France",
+   "status": "TROUVÉ"
+  },
+  "region": {
+   "nom": "Hauts-de-France",
+   "codeInsee": "32",
+   "chefLieu": "Lille",
+   "status": "SOURCE OFFICIELLE"
+  },
+  "departement": {
+   "nom": "Nord",
+   "codeInsee": "59",
+   "chefLieu": "Lille",
+   "status": "SOURCE OFFICIELLE"
+  },
+  "arrondissement": {
+   "nom": "Lille",
+   "codeInsee": "595",
+   "communes": 124,
+   "status": "SOURCE OFFICIELLE"
+  },
+  "intercommunalite": {
+   "nom": "Métropole européenne de Lille",
+   "communes": 95,
+   "status": "SOURCE OFFICIELLE"
+  },
+  "sources": [
+   {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "Métropole européenne de Lille (site officiel)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.lillemetropole.fr",
+    "portee": "périmètre de l’intercommunalité",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ]
+ },
+ "cadreLegal": {
+  "note": "Paraphrases de règles publiques, conservées pour ce qu'elles changent à l'organisation d'un mariage. À revérifier au texte près sur Légifrance avant toute publication juridique.",
+  "regles": [
+   {
+    "id": "FR-L1",
+    "enonce": "Le mariage civil se célèbre dans une commune où l'un des époux — ou l'un de leurs parents — a son domicile ou sa résidence, établie par au moins un mois d'habitation continue à la date de la publication des bans.",
+    "reference": "Code civil, art. 74",
+    "status": "SOURCE OFFICIELLE",
+    "consequenceEditoriale": "C'est la raison d'être du niveau COMMUNE : dans cette collection, une commune n'est pas un décor, c'est d'abord une condition légale."
+   },
+   {
+    "id": "FR-L2",
+    "enonce": "L'annonce du mariage est faite par publication des bans : des avis affichés à la porte de la mairie par l'officier d'état civil.",
+    "reference": "Code civil, art. 63",
+    "status": "SOURCE OFFICIELLE",
+    "consequenceEditoriale": "Le mur de la mairie fait partie du décor réel d'un mariage : c'est un lieu photographié le jour même."
+   },
+   {
+    "id": "FR-L3",
+    "enonce": "L'affichage des bans dure dix jours consécutifs, et la célébration ne peut avoir lieu qu'à partir du dixième jour qui suit l'affichage. La publication perd sa validité si le mariage n'est pas célébré dans l'année.",
+    "reference": "Code civil, art. 64 (délai) ; usage constant sur la validité d’un an",
+    "status": "SOURCE OFFICIELLE",
+    "consequenceEditoriale": "Le calendrier d'un mariage n'est pas seulement éditorial : il est contraint. C'est ce que la collection appelle le « moment »."
+   },
+   {
+    "id": "FR-L4",
+    "enonce": "Conditions : être majeur (18 ans), être libre de tout lien matrimonial, absence de lien de parenté ou d'alliance prohibé, consentement libre et éclairé. Les couples de même sexe peuvent se marier.",
+    "reference": "Service Public — fiche F930, vérifiée le 16 septembre 2026",
+    "status": "SOURCE OFFICIELLE",
+    "consequenceEditoriale": null
+   },
+   {
+    "id": "FR-L5",
+    "enonce": "Peuvent s'opposer à un mariage : l'époux ou l'épouse actuel(le), un ascendant, un tuteur ou curateur, et le procureur de la République.",
+    "reference": "Service Public — fiche F930",
+    "status": "SOURCE OFFICIELLE",
+    "consequenceEditoriale": null
+   }
+  ],
+  "sources": [
+   {
+    "source": "Service Public — « Mariage en France », fiche F930 (DILA, Premier ministre)",
+    "sourceType": "site officiel",
+    "sourceUrl": "https://www.service-public.gouv.fr/particuliers/vosdroits/F930",
+    "portee": "conditions du mariage, publication des bans, opposition",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   }
+  ]
+ },
+ "nonCouvert": [
+  "aucun autre territoire français que Lille Métropole n'est documenté",
+  "aucune donnée sur le mariage religieux (non couvert par cette collection)",
+  "aucune donnée fiscale, successorale ou patrimoniale"
+ ],
+ "statut": "SOURCE OFFICIELLE",
+ "enfant": {
+  "niveau": "N-03",
+  "id": "lille-metropole",
+  "nom": "Lille Métropole"
+ },
+ "communesDocumentees": 13,
+ "noteCommunes": "13 communes documentées sur les 95 que compte la métropole et les 124 de l'arrondissement de Lille."
+}

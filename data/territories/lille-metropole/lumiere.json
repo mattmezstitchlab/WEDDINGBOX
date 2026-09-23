@@ -1,0 +1,224 @@
+{
+ "niveauRang": 8,
+ "parent": {
+  "niveau": "N-07",
+  "id": "moment",
+  "nom": "MOMENT"
+ },
+ "soit": 365,
+ "methode": {
+  "methode": "calcul solaire NOAA simplifié",
+  "reference": "point de référence Lille 50,633 N / 3,067 E",
+  "precision": "± 1 à 3 minutes",
+  "status": "CALCULÉ",
+  "note": "Aucune valeur inventée : ces heures sont recalculables par tout un chacun à partir de data/ et de tools/lib/solar.mjs."
+ },
+ "reference": {
+  "label": "Centre de Lille",
+  "lat": 50.6333,
+  "lon": 3.0667,
+  "status": "TROUVÉ",
+  "note": "Point unique servant au calcul du lever, du coucher et de la courbe de lumière. Ce n’est pas la position exacte de chaque lieu : à remplacer par des coordonnées officielles (IGN / INSEE) lieu par lieu."
+ },
+ "parMois": [
+  {
+   "mois": 0,
+   "moisLabel": "janvier",
+   "saison": "SA-01",
+   "coffrets": 31,
+   "leverMoyen": "08:40",
+   "coucherMoyen": "17:14",
+   "dureeMoyenne": "8 h 34",
+   "goldenMoyenne": "16:14",
+   "jourLePlusLong": {
+    "coffret": "C-031",
+    "duree": "9 h 13",
+    "minutes": 553
+   }
+  },
+  {
+   "mois": 1,
+   "moisLabel": "février",
+   "saison": "SA-01",
+   "coffrets": 28,
+   "leverMoyen": "08:00",
+   "coucherMoyen": "18:03",
+   "dureeMoyenne": "10 h 04",
+   "goldenMoyenne": "17:03",
+   "jourLePlusLong": {
+    "coffret": "C-059",
+    "duree": "10 h 53",
+    "minutes": 653
+   }
+  },
+  {
+   "mois": 2,
+   "moisLabel": "mars",
+   "saison": "SA-02",
+   "coffrets": 31,
+   "leverMoyen": "07:05",
+   "coucherMoyen": "18:59",
+   "dureeMoyenne": "11 h 55",
+   "goldenMoyenne": "17:59",
+   "jourLePlusLong": {
+    "coffret": "C-090",
+    "duree": "12 h 52",
+    "minutes": 772
+   }
+  },
+  {
+   "mois": 3,
+   "moisLabel": "avril",
+   "saison": "SA-02",
+   "coffrets": 30,
+   "leverMoyen": "06:53",
+   "coucherMoyen": "20:43",
+   "dureeMoyenne": "13 h 50",
+   "goldenMoyenne": "19:43",
+   "jourLePlusLong": {
+    "coffret": "C-120",
+    "duree": "14 h 43",
+    "minutes": 883
+   }
+  },
+  {
+   "mois": 4,
+   "moisLabel": "mai",
+   "saison": "SA-02",
+   "coffrets": 31,
+   "leverMoyen": "05:59",
+   "coucherMoyen": "21:30",
+   "dureeMoyenne": "15 h 31",
+   "goldenMoyenne": "20:30",
+   "jourLePlusLong": {
+    "coffret": "C-151",
+    "duree": "16 h 09",
+    "minutes": 969
+   }
+  },
+  {
+   "mois": 5,
+   "moisLabel": "juin",
+   "saison": "SA-03",
+   "coffrets": 30,
+   "leverMoyen": "05:36",
+   "coucherMoyen": "22:00",
+   "dureeMoyenne": "16 h 24",
+   "goldenMoyenne": "21:00",
+   "jourLePlusLong": {
+    "coffret": "C-170",
+    "duree": "16 h 29",
+    "minutes": 989
+   }
+  },
+  {
+   "mois": 6,
+   "moisLabel": "juillet",
+   "saison": "SA-03",
+   "coffrets": 31,
+   "leverMoyen": "05:55",
+   "coucherMoyen": "21:52",
+   "dureeMoyenne": "15 h 57",
+   "goldenMoyenne": "20:52",
+   "jourLePlusLong": {
+    "coffret": "C-182",
+    "duree": "16 h 24",
+    "minutes": 984
+   }
+  },
+  {
+   "mois": 7,
+   "moisLabel": "août",
+   "saison": "SA-03",
+   "coffrets": 31,
+   "leverMoyen": "06:38",
+   "coucherMoyen": "21:06",
+   "dureeMoyenne": "14 h 28",
+   "goldenMoyenne": "20:06",
+   "jourLePlusLong": {
+    "coffret": "C-213",
+    "duree": "15 h 18",
+    "minutes": 918
+   }
+  },
+  {
+   "mois": 8,
+   "moisLabel": "septembre",
+   "saison": "SA-04",
+   "coffrets": 30,
+   "leverMoyen": "07:24",
+   "coucherMoyen": "20:01",
+   "dureeMoyenne": "12 h 37",
+   "goldenMoyenne": "19:01",
+   "jourLePlusLong": {
+    "coffret": "C-244",
+    "duree": "13 h 31",
+    "minutes": 811
+   }
+  },
+  {
+   "mois": 9,
+   "moisLabel": "octobre",
+   "saison": "SA-04",
+   "coffrets": 31,
+   "leverMoyen": "07:59",
+   "coucherMoyen": "18:41",
+   "dureeMoyenne": "10 h 42",
+   "goldenMoyenne": "17:41",
+   "jourLePlusLong": {
+    "coffret": "C-274",
+    "duree": "11 h 38",
+    "minutes": 698
+   }
+  },
+  {
+   "mois": 10,
+   "moisLabel": "novembre",
+   "saison": "SA-04",
+   "coffrets": 30,
+   "leverMoyen": "08:03",
+   "coucherMoyen": "17:03",
+   "dureeMoyenne": "8 h 59",
+   "goldenMoyenne": "16:03",
+   "jourLePlusLong": {
+    "coffret": "C-305",
+    "duree": "9 h 44",
+    "minutes": 584
+   }
+  },
+  {
+   "mois": 11,
+   "moisLabel": "décembre",
+   "saison": "SA-01",
+   "coffrets": 31,
+   "leverMoyen": "08:42",
+   "coucherMoyen": "16:45",
+   "dureeMoyenne": "8 h 04",
+   "goldenMoyenne": "15:45",
+   "jourLePlusLong": {
+    "coffret": "C-335",
+    "duree": "8 h 19",
+    "minutes": 499
+   }
+  }
+ ],
+ "extremes": {
+  "jourLePlusLong": {
+   "coffret": "C-170",
+   "date": "2026-06-19",
+   "duree": "16 h 29",
+   "minutes": 989,
+   "lever": "05:35",
+   "coucher": "22:03"
+  },
+  "jourLePlusCourt": {
+   "coffret": "C-353",
+   "date": "2026-12-19",
+   "duree": "7 h 58",
+   "minutes": 478,
+   "lever": "08:46",
+   "coucher": "16:44"
+  }
+ },
+ "statut": "CALCULÉ"
+}

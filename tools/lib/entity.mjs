@@ -1,5 +1,5 @@
 /**
- * outils/lib/entity.mjs — vocabulaire commun du territoire
+ * tools/lib/entity.mjs — vocabulaire commun du territoire
  *
  * Statuts de vérification (un seul vocabulaire pour tout le projet) :
  *   PROPOSÉ          — proposition éditoriale de WEDDING BOX. Aucune valeur factuelle.

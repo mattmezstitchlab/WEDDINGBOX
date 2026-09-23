@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * outils/build-data.mjs — chaîne de données de WEDDING BOX
+ * tools/build-data.mjs — chaîne de données de WEDDING BOX
  *
  *   node tools/build-data.mjs --init      crée data/** à partir du générateur
  *                                         d'origine (une seule fois : fige les
@@ -75,6 +75,9 @@ function build() {
       id: makeId('CM', i + 1, 2),
       slug: slugify(c.name),
       nom: c.name,
+      niveauRang: 4,
+      parentId: E.TERRITORY.id,
+      codeInsee: E.COMMUNE_INSEE[c.name] || null,
       territoireId: E.TERRITORY.id,
       roleEditorial: copy.role || null,
       identite: copy.identite || null,
@@ -87,8 +90,15 @@ function build() {
       },
       position: { lat: null, lon: null, status: STATUS.A_VERIFIER,
         note: 'coordonnées à renseigner depuis une source officielle (IGN / INSEE) — non inventées ici' },
-      sources: [...E.TERRITORY.rattachement.sources],
-      statut: STATUS.TROUVE,
+      sources: [
+        E.INSEE_SOURCE,
+        source({ label: 'INSEE — Code officiel géographique', sourceType: 'base officielle',
+          url: 'https://www.insee.fr/fr/metadonnees/geographie/commune/' + (E.COMMUNE_INSEE[c.name] || '') + '-' + slugify(c.name),
+          status: E.COMMUNE_INSEE[c.name] ? STATUS.OFFICIEL : STATUS.A_VERIFIER,
+          portee: 'code officiel géographique de la commune', retrievedAt: '2026-09-23' }),
+        ...E.TERRITORY.rattachement.sources,
+      ],
+      statut: E.COMMUNE_INSEE[c.name] ? STATUS.OFFICIEL : STATUS.TROUVE,
     };
   });
   const communeByName = new Map(communes.map((c) => [c.nom, c]));
@@ -110,6 +120,8 @@ function build() {
         id: makeId('L', lieuIndex),
         slug: `${slugify(nom)}-${slugify(c.name)}`,
         nom,
+        niveauRang: 5,
+        parentId: commune.id,
         communeId: commune.id,
         typologie: {
           code,
@@ -146,7 +158,7 @@ function build() {
     statut: STATUS.PROPOSE,
   }));
 
-  const moments = E.MOMENTS.map((m) => ({ ...m, statut: STATUS.PROPOSE }));
+  const moments = E.MOMENTS.map((m, i) => ({ ...m, niveauRang: 7, rang: i + 1, statut: STATUS.PROPOSE }));
   const momentById = new Map(moments.map((m) => [m.id, m]));
   const saisons = E.SAISONS.map((s) => ({ ...s, statut: STATUS.VERIFIE }));
   const saisonByCode = new Map(saisons.map((s) => [s.code, s]));
@@ -186,6 +198,8 @@ function build() {
     return {
       id: it.code,
       numero: it.id,
+      niveauRang: 6,
+      parentId: lieu.id,
       titre: it.title,
       communeId: commune.id,
       lieuId: lieu.id,
@@ -336,7 +350,112 @@ function build() {
   };
 
   /* ---- territoire + compteurs calculés ---- */
+  const monde = { ...E.MONDE, enfant: { niveau: 'N-02', id: 'france', nom: E.FRANCE.nom } };
+  const france = {
+    ...E.FRANCE,
+    enfant: { niveau: 'N-03', id: E.TERRITORY.id, nom: E.TERRITORY.nom },
+    communesDocumentees: communes.length,
+    noteCommunes: `${communes.length} communes documentées sur les 95 que compte la métropole et les 124 de l'arrondissement de Lille.`,
+  };
+
+  /* ---- niveau 8 : lumière agrégée (entièrement calculée) ---- */
+  /** "16 h 24" → 984 minutes. Indispensable : comparer ces durées comme des chaînes
+      classerait « 9 h 58 » après « 16 h 24 ». */
+  const dureeEnMinutes = (h) => (h ? Number(h.split(' h ')[0]) * 60 + Number(h.split(' h ')[1]) : 0);
+  const parMois = Array.from({ length: 12 }, (_, m) => {
+    const jours = coffrets.filter((c) => c.calendrier.mois === m);
+    const moy = (f) => Math.round(jours.reduce((a, c) => a + f(c), 0) / (jours.length || 1));
+    const minutes = (h) => (h ? Number(h.slice(0, 2)) * 60 + Number(h.slice(3)) : null);
+    const duree = dureeEnMinutes;
+    const plusLong = jours.reduce((a, c) => (duree(c.lumiere.dureeJour) > duree(a.lumiere.dureeJour) ? c : a), jours[0]);
+    return {
+      mois: m, moisLabel: MOIS_LABEL[m], saison: jours[0].saisonId,
+      coffrets: jours.length,
+      leverMoyen: (() => { const v = moy((c) => minutes(c.lumiere.lever)); return String(Math.floor(v / 60)).padStart(2, '0') + ':' + String(v % 60).padStart(2, '0'); })(),
+      coucherMoyen: (() => { const v = moy((c) => minutes(c.lumiere.coucher)); return String(Math.floor(v / 60)).padStart(2, '0') + ':' + String(v % 60).padStart(2, '0'); })(),
+      dureeMoyenne: (() => { const v = moy((c) => duree(c.lumiere.dureeJour)); return Math.floor(v / 60) + ' h ' + String(v % 60).padStart(2, '0'); })(),
+      goldenMoyenne: (() => { const v = moy((c) => minutes(c.lumiere.goldenHourDebut)); return String(Math.floor(v / 60)).padStart(2, '0') + ':' + String(v % 60).padStart(2, '0'); })(),
+      jourLePlusLong: { coffret: plusLong.id, duree: plusLong.lumiere.dureeJour, minutes: dureeEnMinutes(plusLong.lumiere.dureeJour) },
+    };
+  });
+  const lumiere = {
+    niveauRang: 8,
+    parent: { niveau: 'N-07', id: 'moment', nom: 'MOMENT' },
+    soit: coffrets.length,
+    methode: E.LUMIERE_METHOD,
+    reference: E.TERRITORY.pointDeReference,
+    parMois,
+    extremes: {
+      jourLePlusLong: (() => {
+        const c = coffrets.reduce((a, x) => (dureeEnMinutes(x.lumiere.dureeJour) > dureeEnMinutes(a.lumiere.dureeJour) ? x : a));
+        return { coffret: c.id, date: c.lumiere.date, duree: c.lumiere.dureeJour, minutes: dureeEnMinutes(c.lumiere.dureeJour), lever: c.lumiere.lever, coucher: c.lumiere.coucher };
+      })(),
+      jourLePlusCourt: (() => {
+        const c = coffrets.reduce((a, x) => (dureeEnMinutes(x.lumiere.dureeJour) < dureeEnMinutes(a.lumiere.dureeJour) ? x : a));
+        return { coffret: c.id, date: c.lumiere.date, duree: c.lumiere.dureeJour, minutes: dureeEnMinutes(c.lumiere.dureeJour), lever: c.lumiere.lever, coucher: c.lumiere.coucher };
+      })(),
+    },
+    statut: STATUS.CALCULE,
+  };
+
+  /* ---- niveau 10 : récits à toutes les échelles ---- */
+  const recits = {
+    niveauRang: 10,
+    parent: { niveau: 'N-09', id: 'media', nom: 'MÉDIA' },
+    note: "Le récit existe à chaque échelle. Il ne dit jamais autre chose que ce que les niveaux inférieurs autorisent : un récit de lieu ne peut pas promettre une privatisation, un récit de coffret ne peut pas inventer un tarif.",
+    echelles: [
+      { echelle: 'monde', cibleId: 'monde', soit: 1, source: 'data/monde.json#recit' },
+      { echelle: 'france', cibleId: 'france', soit: 1, source: 'data/france.json#recit' },
+      { echelle: 'territoire', cibleId: E.TERRITORY.id, soit: 1, source: 'territoire.json#recit (manifeste)' },
+      { echelle: 'commune', source: 'communes.json#description', soit: communes.length },
+      { echelle: 'lieu', source: 'lieux.json#description + #promesse', soit: lieux.length },
+      { echelle: 'coffret', source: 'coffrets/C-xxx.json#accroche + #texte + #editorial.paragraphes', soit: coffrets.length },
+    ],
+    recits: [
+      { id: 'R-monde', niveau: 'N-01', echelle: 'monde', cibleId: 'monde', rang: 1,
+        titre: 'Le monde, à peine effleuré',
+        chapeau: "WEDDING BOX ne prétend pas raconter le mariage dans le monde. Il en documente une pratique, sur un territoire à la fois.",
+        corps: [
+          "Le mariage est une institution attestée dans la quasi-totalité des sociétés humaines, sous des formes juridiques et rituelles très diverses. De ce constat, on pourrait tirer une encyclopédie : ce n'est pas le sujet de cette collection.",
+          "Le niveau MONDE sert à autre chose : il borne le produit. Aujourd'hui, WEDDING BOX couvre la France et un seul territoire, Lille Métropole. Aucun autre pays n'est documenté, aucune comparaison internationale n'est produite. C'est une limite, et elle est affichée plutôt que masquée.",
+        ],
+        statut: STATUS.PROPOSE },
+      { id: 'R-france', niveau: 'N-02', echelle: 'france', cibleId: 'france', rang: 2,
+        titre: 'Ce que la loi française impose à un mariage — et pourquoi la collection parle par communes',
+        chapeau: "En France, le mariage civil est communal. Ce n'est pas un détail administratif : c'est la première contrainte réelle, avant même le choix du décor.",
+        corps: [
+          "Le mariage civil se célèbre dans une commune où l'un des époux, ou l'un de leurs parents, a son domicile ou sa résidence, établie par au moins un mois d'habitation continue à la date de la publication des bans (Code civil, art. 74). Autrement dit : on ne choisit pas une commune au hasard, on en a une. C'est exactement pour cette raison que WEDDING BOX classe coffrets et lieux par commune, et non par « style de mariage ».",
+          "L'annonce du mariage passe par la publication des bans, affichés à la porte de la mairie par l'officier d'état civil (art. 63). L'affichage dure dix jours consécutifs, et la célébration n'est possible qu'à partir du dixième jour ; la publication devient caduque si le mariage n'est pas célébré dans l'année (art. 64). Ces délais façonnent le calendrier : c'est la matière du niveau MOMENT.",
+          "Conditions : être majeur, être libre de tout lien matrimonial, absence de lien de parenté ou d'alliance prohibé, consentement libre et éclairé ; les couples de même sexe peuvent se marier. Peuvent s'opposer à un mariage l'époux ou l'épouse actuelle, un ascendant, un tuteur ou curateur, et le procureur de la République (Service Public, fiche F930).",
+        ],
+        statut: STATUS.OFFICIEL,
+        sources: E.FRANCE.cadreLegal.sources },
+    ],
+    statut: STATUS.PROPOSE,
+  };
+
+  /* ---- niveaux : cardinalités réelles + fichier + parent ---- */
+  const cardinalite = {
+    monde: 1, france: 1, territoire: 1, commune: communes.length, lieu: lieux.length,
+    coffret: coffrets.length, moment: moments.length, lumiere: coffrets.length + 1,
+    media: media.assets.length + coffrets.length,
+    recit: recits.recits.length + 1 + communes.length + lieux.length + coffrets.length,
+  };
+  const niveaux = E.NIVEAUX.map((n) => ({
+    id: 'N-' + String(n.rang).padStart(2, '0'),
+    ...n,
+    cardinalite: cardinalite[n.code],
+    cardinaliteMethode: 'calculée sur les données',
+    fichier: n.fichier.replace('<territoire>', E.TERRITORY.id),
+    statut: n.rang <= 2 ? STATUS.OFFICIEL : STATUS.CALCULE,
+  }));
+
   const compteurs = {
+    niveaux: E.NIVEAUX.length,
+    pays: 1,
+    monde: 1,
+    recits: cardinalite.recit,
+    lumiere: coffrets.length + 1,
     coffrets: coffrets.length,
     communes: communes.length,
     lieux: lieux.length,
@@ -356,6 +475,7 @@ function build() {
     methode: 'comptage sur data/territories/lille-metropole — aucune valeur saisie à la main',
   };
 
+  /* ---- hiérarchie : MONDE → FRANCE → TERRITOIRE → … → RÉCIT ---- */
   const mentions = {
     editorial: 'Texte éditorial de WEDDING BOX (statut PROPOSÉ). Il décrit ce que le décor permet d’imaginer — il n’affirme rien sur l’accueil du public, les tarifs, la capacité ou les disponibilités du lieu.',
     reperesDemo: 'Repères de DÉMONSTRATION hérités du prototype (invités, pages, prestataires, budget indicatif) : aucune source, aucune valeur contractuelle. À remplacer par des données de source ou à retirer avant mise en ligne.',
@@ -375,6 +495,9 @@ function build() {
 
   const territoire = {
     ...E.TERRITORY,
+    niveauRang: 3,
+    parentId: 'france',
+    recit: E.TERRITORY_RECIT,
     mentions,
     edition: { ...EDITION, statut: STATUS.PROPOSE,
       note: 'Année éditoriale unique, utilisée par le titre, le pied de page, les dates de coffret et les données structurées.' },
@@ -399,6 +522,9 @@ function build() {
   };
   const relations = {
     territoireId: E.TERRITORY.id,
+    mondeId: 'monde',
+    franceId: 'france',
+    chaine: ['monde', 'france', E.TERRITORY.id, 'commune', 'lieu', 'coffret', 'moment', 'lumiere', 'media', 'recit'],
     genereLe: BUILD_DATE,
     note: 'Index calculé : chaque relation est dérivée des identifiants des coffrets. Aucune relation saisie à la main.',
     parCommune: Object.fromEntries(communes.map((c) => [c.id, { lieux: c.lieux, coffrets: coffrets.filter((x) => x.communeId === c.id).map((x) => x.id) }])),
@@ -419,7 +545,8 @@ function build() {
     integrite: { refsNonResolues: 0, coffretsSansLieu: 0, lieuxSansCommune: 0, lieuxSansCoffret: 0 },
   };
 
-  return { territoire, communes, lieux, coffrets, categories, typologies, moments, saisons, media, professionnels, relations };
+  return { monde, france, niveaux, lumiere, recits, territoire, communes, lieux, coffrets,
+           categories, typologies, moments, saisons, media, professionnels, relations };
 }
 
 /* ================================================================== */
@@ -449,6 +576,23 @@ function verify(d) {
     for (const l of c.coffretsLies) if (!ids.has(l)) err.push(`${c.id} : coffret lié ${l} introuvable`);
     for (const l of c.lieuxAssocies) if (!lieuIds.has(l)) err.push(`${c.id} : lieu associé ${l} introuvable`);
   }
+  if (d.niveaux.length !== 10) err.push(`10 niveaux attendus, ${d.niveaux.length} trouvés`);
+  for (const n of d.niveaux) {
+    if (n.cardinalite == null) err.push(`niveau ${n.code} : cardinalité non calculée`);
+    if (n.rang > 1 && !n.parent) err.push(`niveau ${n.code} : parent manquant`);
+  }
+  if (d.niveaux[0].code !== 'monde' || d.niveaux[9].code !== 'recit') err.push('la chaîne doit aller de MONDE à RÉCIT');
+  if (d.france.decoupage.region.codeInsee !== '32') err.push('découpage France : région inattendue');
+  for (const c of d.communes) {
+    if (!/^[0-9]{5}$/.test(String(c.codeInsee))) err.push(`${c.id} : code INSEE manquant ou invalide (${c.codeInsee})`);
+    if (c.codeInsee.slice(0, 2) !== '59') err.push(`${c.nom} : code INSEE hors département 59 (${c.codeInsee})`);
+  }
+  if (d.lumiere.parMois.length !== 12) err.push('lumière : 12 mois attendus');
+  const longMois = d.lumiere.extremes.jourLePlusLong.date.slice(5, 7);
+  const courtMois = d.lumiere.extremes.jourLePlusCourt.date.slice(5, 7);
+  if (!['06', '07'].includes(longMois)) err.push(`lumière : le jour le plus long devrait être en juin/juillet, trouvé ${longMois}`);
+  if (!['12', '01'].includes(courtMois)) err.push(`lumière : le jour le plus court devrait être en décembre/janvier, trouvé ${courtMois}`);
+  if (d.lumiere.extremes.jourLePlusLong.minutes <= d.lumiere.extremes.jourLePlusCourt.minutes) err.push('lumière : durées extrêmes incohérentes');
   for (const l of d.lieux) {
     if (!communeIds.has(l.communeId)) err.push(`${l.id} : commune ${l.communeId} introuvable`);
     if (!l.coffrets.length) err.push(`${l.id} : aucun coffret ne référence ce lieu`);
@@ -482,17 +626,30 @@ function bundle(d) {
       id: d.territoire.id, nom: d.territoire.nom, nomComplet: d.territoire.nomComplet,
       editeur: d.territoire.editeur, edition: d.territoire.edition,
       rattachement: d.territoire.rattachement, compteurs: d.territoire.compteurs,
+      recit: d.territoire.recit, niveauRang: 3, parentId: 'france',
       mentions: d.territoire.mentions, arborescence: d.territoire.arborescence,
       calendrier: d.territoire.calendrier, pointDeReference: d.territoire.pointDeReference,
     },
     statuts: STATUS_LABEL,
+    niveaux: d.niveaux,
+    monde: { nom: d.monde.nom, role: d.monde.role, description: d.monde.description,
+             faits: d.monde.faits, nonCouvert: d.monde.nonCouvert, statut: d.monde.statut,
+             pays: d.monde.pays, paysNonDocumentes: d.monde.paysNonDocumentes, note: d.monde.note,
+             enfant: d.monde.enfant },
+    france: { nom: d.france.nom, role: d.france.role, identite: d.france.identite,
+              decoupage: d.france.decoupage, cadreLegal: d.france.cadreLegal,
+              noteCommunes: d.france.noteCommunes, nonCouvert: d.france.nonCouvert, statut: d.france.statut },
+    lumiere: { parMois: d.lumiere.parMois, extremes: d.lumiere.extremes, methode: d.lumiere.methode,
+               reference: d.lumiere.reference, soit: d.lumiere.soit },
+    recits: { note: d.recits.note, echelles: d.recits.echelles, recits: d.recits.recits },
     categories: d.categories,
     typologies: d.typologies,
     moments: d.moments,
     saisons: d.saisons,
-    communes: d.communes,
+    communes: d.communes.map((c) => ({ ...c, sources: c.sources.slice(0, 2) })),
     lieux: d.lieux.map((l) => ({
       id: l.id, slug: l.slug, nom: l.nom, communeId: l.communeId,
+      niveauRang: l.niveauRang, parentId: l.parentId,
       typologie: l.typologie, description: l.description, note: l.note,
       statut: l.statut, sources: l.sources, compteurs: l.compteurs,
     })),
@@ -500,11 +657,13 @@ function bundle(d) {
        la suite éditoriale complète (sources, notes, « à vérifier ») reste dans data/. */
     coffrets: d.coffrets.map((c) => ({
       id: c.id, numero: c.numero, titre: c.titre, accroche: c.accroche, texte: c.texte,
+      niveauRang: c.niveauRang, parentId: c.parentId, lieuxAssocies: c.lieuxAssocies,
       communeId: c.communeId, lieuId: c.lieuId, categorieId: c.categorieId, saisonId: c.saisonId,
       moments: c.moments, calendrier: c.calendrier, tags: c.tags,
       artwork: c.art, reperes: c.reperesDemo, statut: c.statut,
     })),
     lieuxIndex: d.relations.parLieu,
+    relations: { chaine: d.relations.chaine, niveau: d.relations.niveau, methode: d.relations.methode },
     compteurs: d.territoire.compteurs,
     professionnels: { categories: d.professionnels.categories, total: 0, note: d.professionnels.note },
     media: { assets: d.media.assets, gabarits: d.media.gabarits, note: d.media.note, aFaire: d.media.aFaire },
@@ -626,7 +785,12 @@ function main() {
     const d = build();
     const err = verify(d);
     if (err.length) { console.error('Validation échouée :\n - ' + err.join('\n - ')); process.exit(1); }
+    write(path.join(DATA_DIR, 'monde.json'), d.monde);
+    write(path.join(DATA_DIR, 'france.json'), d.france);
+    write(path.join(DATA_DIR, 'niveaux.json'), d.niveaux);
     write(path.join(TERRITORY_DIR, 'territoire.json'), d.territoire);
+    write(path.join(TERRITORY_DIR, 'lumiere.json'), d.lumiere);
+    write(path.join(TERRITORY_DIR, 'recits.json'), d.recits);
     write(path.join(TERRITORY_DIR, 'communes.json'), d.communes);
     write(path.join(TERRITORY_DIR, 'coffrets.json'), d.coffrets, true);
     write(path.join(TERRITORY_DIR, 'lieux.json'), d.lieux, true);
@@ -657,6 +821,11 @@ function main() {
     moments: read(path.join(TERRITORY_DIR, 'moments.json')),
     saisons: read(path.join(TERRITORY_DIR, 'saisons.json')),
     media: read(path.join(TERRITORY_DIR, 'media.json')),
+    lumiere: read(path.join(TERRITORY_DIR, 'lumiere.json')),
+    recits: read(path.join(TERRITORY_DIR, 'recits.json')),
+    monde: read(path.join(DATA_DIR, 'monde.json')),
+    france: read(path.join(DATA_DIR, 'france.json')),
+    niveaux: read(path.join(DATA_DIR, 'niveaux.json')),
     professionnels: read(path.join(TERRITORY_DIR, 'professionnels.json')),
     relations: read(path.join(TERRITORY_DIR, 'relations.json')),
   };

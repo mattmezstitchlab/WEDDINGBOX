@@ -316,7 +316,123 @@ dM.querySelector('#navBurger').dispatchEvent(new domM.window.MouseEvent('click',
 ok('ouverture du menu mobile', dM.querySelector('.nav').classList.contains('menu-open') && dM.querySelector('#navBurger').getAttribute('aria-expanded') === 'true');
 domM.window.close();
 
-titre('13. Robustesse');
+titre('13. Chaîne MONDE → FRANCE → … → RÉCIT');
+
+/* ---- niveau par niveau : les dix niveaux sont des entités, pas des mots ---- */
+const niveaux = core.niveaux;
+ok('les dix niveaux existent, dans l’ordre imposé', niveaux.length === 10
+  && niveaux.map((n) => n.code).join(',') === 'monde,france,territoire,commune,lieu,coffret,moment,lumiere,media,recit');
+ok('chaque niveau porte un identifiant N-01…N-10', niveaux.every((n, i) => n.id === 'N-' + String(i + 1).padStart(2, '0') && n.rang === i + 1));
+ok('chaque niveau déclare son fichier de données', niveaux.every((n) => /\.json$/.test(n.fichier)));
+ok('chaque niveau déclare son rôle et son parent', niveaux.every((n) => n.role && n.description)
+  && niveaux.slice(1).every((n, i) => n.parent === niveaux[i].code));
+
+const attendu = { monde: 1, france: 1, territoire: 1, commune: 13, lieu: 54, coffret: 365, moment: 10, lumiere: 366, media: 367, recit: 435 };
+ok('les cardinalités sont calculées sur les données', niveaux.every((n) => n.cardinaliteMethode === 'calculée sur les données'));
+ok('cardinalités réelles : 1 · 1 · 1 · 13 · 54 · 365 · 10 · 366 · 367 · 435',
+  niveaux.every((n) => n.cardinalite === attendu[n.code]),
+  niveaux.map((n) => n.code + '=' + n.cardinalite).join(' '));
+
+/* ---- niveau 1 : MONDE — un seul pays, et ses limites sont affichées ---- */
+ok('MONDE ne documente qu’un pays', core.monde.pays.length === 1 && core.monde.pays[0].nom === 'France');
+ok('ce pays est sourcé et vérifié', core.monde.pays[0].statut === 'VÉRIFIÉ' && core.monde.pays[0].sources.length >= 2,
+  `${core.monde.pays[0].sources.length} source(s)`);
+ok('les limites du niveau MONDE sont écrites', core.monde.nonCouvert.length >= 3
+  && core.monde.nonCouvert.some((t) => /aucun autre pays/i.test(t)));
+
+/* ---- niveau 2 : FRANCE — découpage administratif réel + cadre légal ---- */
+const dec = core.france.decoupage;
+ok('découpage réel : Hauts-de-France (32) › Nord (59) › arrondissement de Lille (595)',
+  dec.region.codeInsee === '32' && dec.departement.codeInsee === '59' && dec.arrondissement.codeInsee === '595');
+ok('arrondissement de Lille : 124 communes, MEL : 95 communes',
+  dec.arrondissement.communes === 124 && dec.intercommunalite.communes === 95);
+const regles = core.france.cadreLegal.regles;
+ok('cinq règles légales expliquent l’organisation par commune', regles.length === 5
+  && regles.every((r) => r.enonce && r.reference));
+ok('art. 74 est relié au niveau COMMUNE', /COMMUNE/.test(regles.find((r) => r.id === 'FR-L1').consequenceEditoriale));
+ok('le cadre légal cite la fiche F930 et Légifrance est annoncé comme contrôle',
+  core.france.cadreLegal.sources.some((x) => /F930/.test(x.source)) && /Légifrance/.test(core.france.cadreLegal.note));
+
+/* ---- niveau 4 : les 13 communes portent leur code officiel géographique ---- */
+const communes = core.communes;
+ok('les 13 communes ont un code INSEE', communes.length === 13
+  && communes.every((c) => /^59\d{3}$/.test(c.codeInsee)));
+ok('codes INSEE exacts (Lille 59350, Roubaix 59512, Villeneuve-d’Ascq 59009)',
+  Object.fromEntries(communes.map((c) => [c.nom, c.codeInsee])).Lille === '59350'
+  && Object.fromEntries(communes.map((c) => [c.nom, c.codeInsee])).Roubaix === '59512'
+  && Object.fromEntries(communes.map((c) => [c.nom, c.codeInsee]))['Villeneuve-d’Ascq'] === '59009');
+ok('chaque niveau inférieur sait de quel niveau il dépend',
+  communes.every((c) => c.niveauRang === 4 && c.parentId === 'lille-metropole')
+  && core.lieux.every((l) => l.niveauRang === 5 && l.parentId && l.communeId === l.parentId)
+  && core.coffrets.every((c) => c.niveauRang === 6 && c.parentId === c.lieuId)
+  && core.lieuxIndex[core.lieux[0].id] !== undefined);
+
+/* ---- niveau 8 : la lumière agrégée est entièrement calculée ---- */
+const lum = core.lumiere;
+const minutes = (h) => Number(h.split(' h ')[0]) * 60 + Number(h.split(' h ')[1]);
+ok('lumière : agrégat sur 12 mois', lum.parMois.length === 12 && lum.parMois.every((m) => m.coffrets > 0));
+ok('lumière : extrêmes cohérents (solstices)',
+  ['06', '07'].includes(lum.extremes.jourLePlusLong.date.slice(5, 7))
+  && ['12', '01'].includes(lum.extremes.jourLePlusCourt.date.slice(5, 7))
+  && minutes(lum.extremes.jourLePlusLong.duree) > minutes(lum.extremes.jourLePlusCourt.duree),
+  `${lum.extremes.jourLePlusLong.duree} / ${lum.extremes.jourLePlusCourt.duree}`);
+ok('lumière : méthode et point de calcul déclarés',
+  /NOAA/.test(lum.methode.methode) && /Lille 50,633 N/.test(lum.methode.reference));
+
+/* ---- niveau 10 : le récit n’affirme que ce que les niveaux inférieurs autorisent ---- */
+ok('récit : six échelles, du monde au coffret', core.recits.echelles.length === 6
+  && core.recits.echelles.map((e) => e.echelle).join(',') === 'monde,france,territoire,commune,lieu,coffret');
+ok('récit : deux récits rédigés (monde, france)', core.recits.recits.length === 2);
+ok('la chaîne est inscrite dans les relations', core.relations.chaine.join('>')
+  === 'monde>france>lille-metropole>commune>lieu>coffret>moment>lumiere>media>recit');
+
+/* ---- interface : la chaîne est visible et navigable ---- */
+ok('arborescence : 10 cartes de niveau affichées', $$('#arborescence .nv').length === 10);
+ok('arborescence : les cardinalités réelles sont affichées',
+  $$('#arborescence .nv-card').map((e) => e.textContent.replace(/\D/g, '')).join(',')
+  === '1,1,1,13,54,365,10,366,367,435',
+  $$('#arborescence .nv-card').map((e) => e.textContent).join(','));
+ok('index des lieux : 54 lieux, entités uniques', $$('#indexLieux .lieu-c').length === 54
+  && new Set(core.lieux.map((l) => l.id)).size === 54);
+ok('index des lieux : chaque lieu annonce sa commune et ses coffrets',
+  $$('#indexLieux .lieu-c').every((b) => b.querySelector('span').textContent.trim() && Number(b.querySelector('em').textContent.match(/\d+/)[0]) > 0));
+
+clic($$('#indexLieux .lieu-c').find((b) => /Fresnoy/.test(b.textContent)));
+await attendre(30);
+ok('clic sur un lieu → la mosaïque se filtre', Number($('#countNum').textContent) === 2,
+  `(${$('#countNum').textContent})`);
+const chipLieu = $$('#filtresActifs .fchip').find((c) => c.dataset.clear === 'lieu');
+ok('le filtre par lieu est visible et retirable', !!chipLieu && /Fresnoy/.test(chipLieu.textContent));
+clic($('#filtresActifs .fchip[data-clear="all"]'));
+await attendre(30);
+ok('« Tout effacer » rend les 365 coffrets', $('#countNum').textContent === '365');
+
+/* ---- la fiche d’un coffret matérialise la chaîne entière ---- */
+clic($('.tile[data-code="C-042"]'));
+await attendre(80);
+const ar = $$('#drawerContent .ariane .ar-l');
+ok('fiche : fil d’Ariane de 10 segments, du MONDE au RÉCIT', ar.length === 10
+  && ar[0].querySelector('.ar-k').textContent === 'MONDE' && ar[9].querySelector('.ar-k').textContent === 'RÉCIT');
+ok('fiche : le pays, le territoire, la commune et le lieu sont nommés',
+  /France/.test(ar[1].textContent) && /Lille Métropole/.test(ar[2].textContent)
+  && /Villeneuve-d’Ascq/.test(ar[3].textContent) && /Grand-Place de l’Ascq/.test(ar[4].textContent));
+ok('fiche : le code INSEE de la commune est affiché', $('#drawerContent .dw-insee').textContent === 'INSEE 59009');
+ok('fiche : la lumière est calculée ou annoncée comme moyenne du mois',
+  /→/.test(ar[7].textContent) && /\d{2}:\d{2}/.test(ar[7].textContent), ar[7].textContent);
+ok('fiche : la note du récit est affichée', /ne peut pas inventer un tarif/.test($('#drawerContent .dw-note').textContent));
+clic(ar[3].querySelector('[data-ar="COMMUNE"]'));
+await attendre(60);
+ok('clic sur la commune du fil → mosaïque filtrée sur cette commune', $('#countNum').textContent === '32',
+  `(${$('#countNum').textContent})`);
+clic($('#filtresActifs .fchip[data-clear="all"]'));
+await attendre(30);
+
+ok('le manifeste vient des données, plus du HTML figé',
+  /France des châteaux/.test(core.territoire.recit.texte)
+  && !/class="m-text">\s*Nous ne cherchons pas la France des châteaux/.test(html)
+  && /France des châteaux/.test($('#manifesteTexte').textContent));
+
+titre('14. Robustesse');
 ok('aucune erreur JavaScript pendant l’exécution', erreurs.length === 0, erreurs.slice(0, 2).join(' | '));
 ok('pas de dépendance réseau obligatoire (visuels générés)', $$('img').length === 0);
 ok('prefers-reduced-motion respecté (règle présente)', html.includes('prefers-reduced-motion'));

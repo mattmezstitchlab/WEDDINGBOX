@@ -1,5 +1,5 @@
 /**
- * outils/lib/solar.mjs — calcul solaire (algorithme NOAA simplifié)
+ * tools/lib/solar.mjs — calcul solaire (algorithme NOAA simplifié)
  *
  * Sert à alimenter la promesse éditoriale du prototype : « la carte des lumières
  * heure par heure ». Ces valeurs sont CALCULÉES, jamais inventées : lever,

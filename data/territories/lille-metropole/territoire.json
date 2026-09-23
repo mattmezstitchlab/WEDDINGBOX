@@ -32,6 +32,22 @@
   "status": "TROUVÉ",
   "note": "Point unique servant au calcul du lever, du coucher et de la courbe de lumière. Ce n’est pas la position exacte de chaque lieu : à remplacer par des coordonnées officielles (IGN / INSEE) lieu par lieu."
  },
+ "niveauRang": 3,
+ "parentId": "france",
+ "recit": {
+  "label": "Manifeste",
+  "texteHtml": "Nous ne cherchons pas la France des châteaux. Nous cherchons <strong>la ville qui tient debout</strong> : l’acier du Fresnoy, la brique de la Condition Publique, la Deûle qui coupe les jardins. Chaque coffret est un <em>objet éditorial</em> — moodboard, lumière heure par heure, artisans, budgets, plans B sous la pluie du Nord.",
+  "texte": "Nous ne cherchons pas la France des châteaux. Nous cherchons la ville qui tient debout : l’acier du Fresnoy, la brique de la Condition Publique, la Deûle qui coupe les jardins. Chaque coffret est un objet éditorial — moodboard, lumière heure par heure, artisans, budgets, plans B sous la pluie du Nord.",
+  "citation": {
+   "texte": "Un mariage réussi à Lille, c’est un mariage qui accepte le gris et en fait une matière.",
+   "attribue": null
+  },
+  "cote": [
+   "Trois cent soixante-cinq numéros, un par jour de l’année. Chacun est ancré dans un lieu réel de la métropole, une matière dominante et une saison. Zoomez : la mosaïque devient un plan de ville. Filtrez : elle devient un calendrier.",
+   "Aucune carte de France. Une seule interface : la grille. Spatiale, temporelle, zoomable, filtrable."
+  ],
+  "statut": "PROPOSÉ"
+ },
  "mentions": {
   "editorial": "Texte éditorial de WEDDING BOX (statut PROPOSÉ). Il décrit ce que le décor permet d’imaginer — il n’affirme rien sur l’accueil du public, les tarifs, la capacité ou les disponibilités du lieu.",
   "reperesDemo": "Repères de DÉMONSTRATION hérités du prototype (invités, pages, prestataires, budget indicatif) : aucune source, aucune valeur contractuelle. À remplacer par des données de source ou à retirer avant mise en ligne.",
@@ -93,6 +109,11 @@
   ]
  },
  "compteurs": {
+  "niveaux": 10,
+  "pays": 1,
+  "monde": 1,
+  "recits": 435,
+  "lumiere": 366,
   "coffrets": 365,
   "communes": 13,
   "lieux": 54,
@@ -103,7 +124,7 @@
   "mois": 12,
   "medias": 367,
   "professionnels": 0,
-  "sources": 8,
+  "sources": 22,
   "statut": "CALCULÉ",
   "methode": "comptage sur data/territories/lille-metropole — aucune valeur saisie à la main"
  }

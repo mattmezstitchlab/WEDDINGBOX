@@ -1,0 +1,70 @@
+{
+ "id": "monde",
+ "code": "monde",
+ "nom": "MONDE",
+ "niveauRang": 1,
+ "role": "cadre général du produit",
+ "description": "WEDDING BOX documente une pratique — le mariage — et un territoire à la fois. Le niveau MONDE n'affirme rien sur les autres pays : il fixe le périmètre du produit et empêche la collection de prétendre à une couverture qu'elle n'a pas.",
+ "faits": [
+  {
+   "enonce": "Le mariage est une institution attestée dans la quasi-totalité des sociétés humaines, sous des formes juridiques et rituelles très diverses.",
+   "status": "TROUVÉ",
+   "portee": "anthropologie générale — aucune source rattachée ici"
+  },
+  {
+   "enonce": "WEDDING BOX couvre aujourd'hui la France, et dans cette collection un seul territoire : Lille Métropole.",
+   "status": "VÉRIFIÉ",
+   "portee": "périmètre réel de cette collection"
+  }
+ ],
+ "nonCouvert": [
+  "aucun autre pays n’est documenté",
+  "aucune comparaison internationale n’est produite",
+  "aucune donnée sur les pratiques hors France"
+ ],
+ "statut": "PROPOSÉ",
+ "note": "Ce niveau est volontairement incomplet : il est prévu pour accueillir d'autres pays le jour où des données sourcées existeront.",
+ "pays": [
+  {
+   "id": "france",
+   "nom": "France",
+   "codeIso2": "FR",
+   "codeIso3": "FRA",
+   "documente": true,
+   "statut": "VÉRIFIÉ",
+   "portee": "seul pays documenté par cette collection",
+   "sources": [
+    {
+     "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+     "sourceType": "base officielle",
+     "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+     "portee": "code officiel géographique de chaque commune",
+     "retrievedAt": "2026-09-23",
+     "updatedAt": null,
+     "externalId": null,
+     "status": "SOURCE OFFICIELLE"
+    },
+    {
+     "source": "Service Public — « Mariage en France », fiche F930 (DILA, Premier ministre)",
+     "sourceType": "site officiel",
+     "sourceUrl": "https://www.service-public.gouv.fr/particuliers/vosdroits/F930",
+     "portee": "conditions du mariage, publication des bans, opposition",
+     "retrievedAt": "2026-09-23",
+     "updatedAt": null,
+     "externalId": null,
+     "status": "SOURCE OFFICIELLE"
+    }
+   ],
+   "fichierNiveau": "data/france.json"
+  }
+ ],
+ "paysNonDocumentes": {
+  "compte": "aucun",
+  "note": "Aucun autre pays n'est décrit ici, et aucun ne le sera sans données sourcées."
+ },
+ "enfant": {
+  "niveau": "N-02",
+  "id": "france",
+  "nom": "FRANCE"
+ }
+}

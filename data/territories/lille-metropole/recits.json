@@ -1,0 +1,88 @@
+{
+ "niveauRang": 10,
+ "parent": {
+  "niveau": "N-09",
+  "id": "media",
+  "nom": "MÉDIA"
+ },
+ "note": "Le récit existe à chaque échelle. Il ne dit jamais autre chose que ce que les niveaux inférieurs autorisent : un récit de lieu ne peut pas promettre une privatisation, un récit de coffret ne peut pas inventer un tarif.",
+ "echelles": [
+  {
+   "echelle": "monde",
+   "cibleId": "monde",
+   "soit": 1,
+   "source": "data/monde.json#recit"
+  },
+  {
+   "echelle": "france",
+   "cibleId": "france",
+   "soit": 1,
+   "source": "data/france.json#recit"
+  },
+  {
+   "echelle": "territoire",
+   "cibleId": "lille-metropole",
+   "soit": 1,
+   "source": "territoire.json#recit (manifeste)"
+  },
+  {
+   "echelle": "commune",
+   "source": "communes.json#description",
+   "soit": 13
+  },
+  {
+   "echelle": "lieu",
+   "source": "lieux.json#description + #promesse",
+   "soit": 54
+  },
+  {
+   "echelle": "coffret",
+   "source": "coffrets/C-xxx.json#accroche + #texte + #editorial.paragraphes",
+   "soit": 365
+  }
+ ],
+ "recits": [
+  {
+   "id": "R-monde",
+   "niveau": "N-01",
+   "echelle": "monde",
+   "cibleId": "monde",
+   "rang": 1,
+   "titre": "Le monde, à peine effleuré",
+   "chapeau": "WEDDING BOX ne prétend pas raconter le mariage dans le monde. Il en documente une pratique, sur un territoire à la fois.",
+   "corps": [
+    "Le mariage est une institution attestée dans la quasi-totalité des sociétés humaines, sous des formes juridiques et rituelles très diverses. De ce constat, on pourrait tirer une encyclopédie : ce n'est pas le sujet de cette collection.",
+    "Le niveau MONDE sert à autre chose : il borne le produit. Aujourd'hui, WEDDING BOX couvre la France et un seul territoire, Lille Métropole. Aucun autre pays n'est documenté, aucune comparaison internationale n'est produite. C'est une limite, et elle est affichée plutôt que masquée."
+   ],
+   "statut": "PROPOSÉ"
+  },
+  {
+   "id": "R-france",
+   "niveau": "N-02",
+   "echelle": "france",
+   "cibleId": "france",
+   "rang": 2,
+   "titre": "Ce que la loi française impose à un mariage — et pourquoi la collection parle par communes",
+   "chapeau": "En France, le mariage civil est communal. Ce n'est pas un détail administratif : c'est la première contrainte réelle, avant même le choix du décor.",
+   "corps": [
+    "Le mariage civil se célèbre dans une commune où l'un des époux, ou l'un de leurs parents, a son domicile ou sa résidence, établie par au moins un mois d'habitation continue à la date de la publication des bans (Code civil, art. 74). Autrement dit : on ne choisit pas une commune au hasard, on en a une. C'est exactement pour cette raison que WEDDING BOX classe coffrets et lieux par commune, et non par « style de mariage ».",
+    "L'annonce du mariage passe par la publication des bans, affichés à la porte de la mairie par l'officier d'état civil (art. 63). L'affichage dure dix jours consécutifs, et la célébration n'est possible qu'à partir du dixième jour ; la publication devient caduque si le mariage n'est pas célébré dans l'année (art. 64). Ces délais façonnent le calendrier : c'est la matière du niveau MOMENT.",
+    "Conditions : être majeur, être libre de tout lien matrimonial, absence de lien de parenté ou d'alliance prohibé, consentement libre et éclairé ; les couples de même sexe peuvent se marier. Peuvent s'opposer à un mariage l'époux ou l'épouse actuelle, un ascendant, un tuteur ou curateur, et le procureur de la République (Service Public, fiche F930)."
+   ],
+   "statut": "SOURCE OFFICIELLE",
+   "sources": [
+    {
+     "source": "Service Public — « Mariage en France », fiche F930 (DILA, Premier ministre)",
+     "sourceType": "site officiel",
+     "sourceUrl": "https://www.service-public.gouv.fr/particuliers/vosdroits/F930",
+     "portee": "conditions du mariage, publication des bans, opposition",
+     "retrievedAt": "2026-09-23",
+     "updatedAt": null,
+     "externalId": null,
+     "status": "SOURCE OFFICIELLE"
+    }
+   ]
+  }
+ ],
+ "statut": "PROPOSÉ"
+}

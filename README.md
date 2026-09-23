@@ -5,6 +5,11 @@ Un seul fichier d'interface (`index.html`), une couche de données séparée (`d
 
 **Territoire pilote :** Lille Métropole. L'architecture prévoit d'autres territoires, mais ils ne sont **pas** créés.
 
+**Chaîne des dix niveaux :** MONDE → FRANCE → LILLE MÉTROPOLE → COMMUNE → LIEU → COFFRET → MOMENT → LUMIÈRE → MÉDIA → RÉCIT.
+Chaque niveau est une entité de plein droit (fichier, rôle, parent, statut, cardinalité calculée), exposée
+dans l'interface par une arborescence, un index des 54 lieux et un fil d'Ariane à dix segments dans
+chaque fiche coffret. Les niveaux 1 et 2 n'affirment que du contenu sourcé — et affichent leurs limites.
+
 ---
 
 ## Démarrer
@@ -24,7 +29,7 @@ Ouvrir `index.html` directement fonctionne aussi : la collection et les fiches r
 node tools/build-data.mjs --init   # (re)génère data/ depuis l'algorithme d'origine — une seule fois
 node tools/build-data.mjs          # vérifie data/, puis réinjecte le noyau dans index.html
 node tools/build-data.mjs --check  # vérifie sans écrire
-node tests/app.test.mjs            # 90 tests : données, rendu, liens, sélection, SEO, a11y, mobile
+node tests/app.test.mjs            # 127 tests : données, dix niveaux, rendu, liens, sélection, SEO, a11y, mobile
 ```
 
 `data/` est la **source de vérité**. `index.html` embarque un noyau généré (bloc balisé
@@ -36,6 +41,9 @@ node tests/app.test.mjs            # 90 tests : données, rendu, liens, sélecti
 index.html                          interface unique (identité visuelle, rendu, interactions)
 assets/                             favicon, icône Apple, carte de partage Open Graph
 data/
+  monde.json                        niveau 1 : périmètre du produit, pays documentés, limites
+  france.json                       niveau 2 : découpage administratif réel + cadre légal du mariage civil
+  niveaux.json                      la chaîne des dix niveaux (rang, parent, fichier, cardinalité, statut)
   schema/                           JSON Schema : coffret, lieu, commune
   territories/lille-metropole/
     territoire.json                 identité, édition, rattachement, compteurs, mentions
@@ -49,7 +57,9 @@ data/
     saisons.json                   4 saisons
     media.json                     médiathèque : actifs réels + gabarit des visuels générés
     professionnels.json            modèle prêt, annuaire volontairement vide
-    relations.json                 index calculé : commune ⇄ lieu ⇄ coffret ⇄ univers ⇄ moment
+    lumiere.json                   niveau 8 : agrégat de 12 mois + extrêmes de l'année (entièrement calculé)
+    recits.json                    niveau 10 : six échelles de récit + récits rédigés (monde, france)
+    relations.json                 index calculé : commune ⇄ lieu ⇄ coffret ⇄ univers ⇄ moment + `chaine`
 tools/
   build-data.mjs                    génération, contrôle d'intégrité, injection du noyau
   lib/legacy-generator.js           recopie conforme de la génération d'origine (garantie d'identité)
@@ -69,7 +79,9 @@ docs/RAPPORT.md                     rapport d'enrichissement détaillé
 5. **Un coffret a une adresse stable** : `?c=C-042` (le fragment `#c-042` reste reconnu).
 6. **Statuts explicites** : `PROPOSÉ`, `TROUVÉ`, `SOURCE OFFICIELLE`, `À VÉRIFIER`, `VÉRIFIÉ`, `CALCULÉ`.
 7. **Les visuels de coffret sont générés** (aucune image) et ne sont jamais présentés comme des photographies.
-8. **La direction artistique ne change pas** : Archivo variable (XL 900/62 %, M 800/72 %, S 750/68 %, accents italiques 500/100 %).
+8. **Rien ne monte sans autorisation.** Un récit de lieu ne promet pas une privatisation ; un coffret
+   n'invente pas un tarif ; un niveau ne dit jamais autre chose que ce que ses niveaux inférieurs autorisent.
+9. **La direction artistique ne change pas** : Archivo variable (XL 900/62 %, M 800/72 %, S 750/68 %, accents italiques 500/100 %).
 
 ## Déploiement
 

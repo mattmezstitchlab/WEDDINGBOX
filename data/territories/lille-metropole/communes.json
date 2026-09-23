@@ -3,6 +3,9 @@
   "id": "CM-01",
   "slug": "lille",
   "nom": "Lille",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59350",
   "territoireId": "lille-metropole",
   "roleEditorial": "ville-centre",
   "identite": "Préfecture du Nord et ville-centre de la métropole.",
@@ -21,6 +24,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59350-lille",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -31,7 +54,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-001",
    "L-002",
@@ -54,6 +77,9 @@
   "id": "CM-02",
   "slug": "roubaix",
   "nom": "Roubaix",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59512",
   "territoireId": "lille-metropole",
   "roleEditorial": "ville industrielle",
   "identite": "Ancienne capitale textile de la métropole.",
@@ -72,6 +98,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59512-roubaix",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -82,7 +128,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-011",
    "L-012",
@@ -101,6 +147,9 @@
   "id": "CM-03",
   "slug": "tourcoing",
   "nom": "Tourcoing",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59599",
   "territoireId": "lille-metropole",
   "roleEditorial": "ville industrielle",
   "identite": "Ville textile, à la frontière belge.",
@@ -119,6 +168,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59599-tourcoing",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -129,7 +198,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-017",
    "L-018",
@@ -148,6 +217,9 @@
   "id": "CM-04",
   "slug": "villeneuve-d-ascq",
   "nom": "Villeneuve-d’Ascq",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59009",
   "territoireId": "lille-metropole",
   "roleEditorial": "ville nouvelle et universitaire",
   "identite": "Ville nouvelle des années 1970, campus et musée.",
@@ -166,6 +238,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59009-villeneuve-d-ascq",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -176,7 +268,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-023",
    "L-024",
@@ -194,6 +286,9 @@
   "id": "CM-05",
   "slug": "marcq-en-bar-ul",
   "nom": "Marcq-en-Barœul",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59378",
   "territoireId": "lille-metropole",
   "roleEditorial": "commune résidentielle",
   "identite": "Commune du nord-est de la métropole.",
@@ -212,6 +307,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59378-marcq-en-bar-ul",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -222,7 +337,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-028",
    "L-029",
@@ -239,6 +354,9 @@
   "id": "CM-06",
   "slug": "lambersart",
   "nom": "Lambersart",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59328",
   "territoireId": "lille-metropole",
   "roleEditorial": "commune de bord de Deûle",
   "identite": "Commune au nord-ouest, traversée par la Deûle.",
@@ -257,6 +375,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59328-lambersart",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -267,7 +405,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-032",
    "L-033",
@@ -283,6 +421,9 @@
   "id": "CM-07",
   "slug": "mons-en-bar-ul",
   "nom": "Mons-en-Barœul",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59410",
   "territoireId": "lille-metropole",
   "roleEditorial": "commune de fortification",
   "identite": "Commune limitrophe de Lille, marquée par son fort.",
@@ -301,6 +442,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59410-mons-en-bar-ul",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -311,7 +472,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-035",
    "L-036",
@@ -327,6 +488,9 @@
   "id": "CM-08",
   "slug": "wasquehal",
   "nom": "Wasquehal",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59646",
   "territoireId": "lille-metropole",
   "roleEditorial": "commune de bord de Marque",
   "identite": "Commune de l’est métropolitain, sur la Marque.",
@@ -345,6 +509,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59646-wasquehal",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -355,7 +539,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-038",
    "L-039",
@@ -371,6 +555,9 @@
   "id": "CM-09",
   "slug": "croix",
   "nom": "Croix",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59163",
   "territoireId": "lille-metropole",
   "roleEditorial": "commune au patrimoine remarquable",
   "identite": "Commune de la Villa Cavrois (Robert Mallet-Stevens).",
@@ -389,6 +576,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59163-croix",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -399,7 +606,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-041",
    "L-042",
@@ -415,6 +622,9 @@
   "id": "CM-10",
   "slug": "hem",
   "nom": "Hem",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59299",
   "territoireId": "lille-metropole",
   "roleEditorial": "commune à faible couverture",
   "identite": "Commune de l’est de la métropole.",
@@ -433,6 +643,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59299-hem",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -443,7 +673,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-044",
    "L-045",
@@ -459,6 +689,9 @@
   "id": "CM-11",
   "slug": "loos",
   "nom": "Loos",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59360",
   "territoireId": "lille-metropole",
   "roleEditorial": "commune de fortification et de Deûle",
   "identite": "Commune du sud-ouest, fort détaché et berges.",
@@ -477,6 +710,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59360-loos",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -487,7 +740,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-047",
    "L-048",
@@ -503,6 +756,9 @@
   "id": "CM-12",
   "slug": "faches-thumesnil",
   "nom": "Faches-Thumesnil",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59220",
   "territoireId": "lille-metropole",
   "roleEditorial": "commune à faible couverture",
   "identite": "Commune du sud de la métropole.",
@@ -521,6 +777,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59220-faches-thumesnil",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -531,7 +807,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-050",
    "L-051"
@@ -546,6 +822,9 @@
   "id": "CM-13",
   "slug": "saint-andre-lez-lille",
   "nom": "Saint-André-lez-Lille",
+  "niveauRang": 4,
+  "parentId": "lille-metropole",
+  "codeInsee": "59527",
   "territoireId": "lille-metropole",
   "roleEditorial": "commune de bord de Deûle",
   "identite": "Commune au nord de Lille, sur la Deûle.",
@@ -564,6 +843,26 @@
   },
   "sources": [
    {
+    "source": "INSEE — Code officiel géographique, arrondissement de Lille (595)",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/arrondissement/595-lille",
+    "portee": "code officiel géographique de chaque commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
+    "source": "INSEE — Code officiel géographique",
+    "sourceType": "base officielle",
+    "sourceUrl": "https://www.insee.fr/fr/metadonnees/geographie/commune/59527-saint-andre-lez-lille",
+    "portee": "code officiel géographique de la commune",
+    "retrievedAt": "2026-09-23",
+    "updatedAt": null,
+    "externalId": null,
+    "status": "SOURCE OFFICIELLE"
+   },
+   {
     "source": "Métropole européenne de Lille (site officiel)",
     "sourceType": "site officiel",
     "sourceUrl": "https://www.lillemetropole.fr",
@@ -574,7 +873,7 @@
     "status": "SOURCE OFFICIELLE"
    }
   ],
-  "statut": "TROUVÉ",
+  "statut": "SOURCE OFFICIELLE",
   "lieux": [
    "L-052",
    "L-053",

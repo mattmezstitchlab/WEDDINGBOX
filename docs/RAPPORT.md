@@ -50,7 +50,7 @@ Vérifié par tests : 365 tuiles, 12 en-têtes de chronologie, 4 niveaux de zoom
 - **professionnels.json** : 11 catégories et le modèle complet — **annuaire volontairement vide**, aucun professionnel inventé.
 - **JSON Schema** pour coffret, lieu, commune.
 
-### Fiche coffret (drawer) — de 1 bloc à 11 sections
+### Fiche coffret (drawer) — de 1 bloc à 12 sections (dont le fil d'Ariane des dix niveaux)
 Numéro, titre, accroche, statuts · métadonnées (jour de collection, date éditoriale, saison, lieu, commune, univers) ·
 texte du coffret · **lecture éditoriale** (lieu / moment / lumière) · le lieu (typologie, description, ce qui reste à vérifier) ·
 la commune (identité, description, densité) · moments de mariage · **lumière du jour calculée** (lever, coucher, durée,
@@ -109,14 +109,18 @@ moment commun +1 par moment, saison +1, mois +1) : la règle est affichée dans 
 
 ## 7. Tests
 
-`node tests/app.test.mjs` → **90 tests, 0 échec**, exécutés dans un vrai DOM (jsdom) sur le fichier `index.html` réel,
+`node tests/app.test.mjs` → **127 tests, 0 échec**, exécutés dans un vrai DOM (jsdom) sur le fichier `index.html` réel,
 avec lecture des vrais fichiers `data/`.
 
 Couverture : intégrité des données (identifiants stables, unicité, absence de référence cassée) · rendu de la mosaïque ·
-compteurs · filtres/recherche/tri/vues/zoom · fiche enrichie (11 sections, lumière, relations, sources) ·
+compteurs · filtres/recherche/tri/vues/zoom · fiche enrichie (12 sections, dont la chaîne des dix niveaux, lumière, relations, sources) ·
 liens profonds et bouton retour · sélection persistante (ajout, retrait, rechargement, lien partagé) ·
 SEO (title, canonical, OG, Twitter, JSON-LD) · accessibilité · mobile (filtres repliés, menu, 365 tuiles) ·
 absence d'erreur JavaScript · absence de dépendance réseau.
+La chaîne des dix niveaux est testée niveau par niveau : ordre imposé, identifiants `N-01`…`N-10`, cardinalités
+calculées (1 · 1 · 1 · 13 · 54 · 365 · 10 · 366 · 367 · 435), `parentId` de chaque entité, découpage administratif
+et cinq règles légales, 13 codes INSEE, agrégat de lumière sur 12 mois et extrêmes cohérents avec les solstices,
+fil d'Ariane à dix segments dans la fiche, filtres par lieu et par commune depuis l'interface.
 
 Contrôles complémentaires : intégrité vérifiée par `build-data.mjs` (références, doublons de lieux, numérotation),
 serveur local (page et 5 ressources en 200), contraste WCAG calculé.
@@ -136,6 +140,40 @@ serveur local (page et 5 ressources en 200), contraste WCAG calculé.
 7. **Couverture inégale** : Lille 100 coffrets, Faches-Thumesnil 4. C'est un constat du jeu de données, affiché et assumé.
 8. **Pas de géolocalisation réelle** sur la carte des communes : c'est un graphique de densité, pas une carte géographique.
 
+## 8 bis. Chaîne des dix niveaux (MONDE → … → RÉCIT)
+
+Demande : faire de MONDE → FRANCE → LILLE MÉTROPOLE → COMMUNE → LIEU → COFFRET → MOMENT → LUMIÈRE →
+MÉDIA → RÉCIT la structure explicite du produit. Chaque niveau est devenu une **entité de plein droit**.
+
+| Rang | Niveau | Ce qui a été ajouté | Statut |
+|---|---|---|---|
+| 1 | MONDE | `data/monde.json` : 2 faits, 3 limites affichées, 1 pays documenté (France) avec ses deux sources | PROPOSÉ / VÉRIFIÉ |
+| 2 | FRANCE | `data/france.json` : découpage réel (32 › 59 › 595/124 › MEL 95) et `cadreLegal` FR-L1…FR-L5 | SOURCE OFFICIELLE |
+| 3 | LILLE MÉTROPOLE | déjà en place ; porte désormais son `recit` (manifeste, citation, cote servis par les données) | SOURCE OFFICIELLE |
+| 4 | COMMUNE | `niveauRang`, `parentId`, `codeInsee` sur les 13 communes (COG INSEE) | SOURCE OFFICIELLE |
+| 5 | LIEU | `niveauRang`, `parentId` ; index des 54 lieux dans l'interface, filtrant la mosaïque | À VÉRIFIER / SOURCE OFFICIELLE |
+| 6 | COFFRET | `niveauRang`, `parentId` ; fil d'Ariane à dix segments dans chaque fiche | PROPOSÉ |
+| 7 | MOMENT | inchangé côté données ; nommé et cliquable dans le fil d'Ariane | PROPOSÉ |
+| 8 | LUMIÈRE | `data/.../lumiere.json` : 12 mois agrégés + extrêmes de l'année (jour le plus long/le plus court) | CALCULÉ |
+| 9 | MÉDIA | compté (367 : 365 visuels générés + 2 actifs) ; aucune photographie présentée comme un lieu | VÉRIFIÉ |
+| 10 | RÉCIT | `data/.../recits.json` : 6 échelles, `R-monde`, `R-france`, et la note « un niveau n'autorise rien de plus que ses niveaux inférieurs » | PROPOSÉ / SOURCE OFFICIELLE |
+
+- `data/niveaux.json` décrit la chaîne elle-même ; `relations.chaine` en porte la version courte.
+- **Cardinalités calculées, jamais saisies** : 1 · 1 · 1 · 13 · 54 · 365 · 10 · 366 · 367 · 435.
+- **Interface** : arborescence des dix niveaux (chaque carte mène au niveau correspondant), index des
+  54 lieux, filtres actifs retirables (commune, lieu, univers, moment, saison, mois, recherche, sélection),
+  et fil d'Ariane dans la fiche — la commune, le lieu et le moment y filtrent la mosaïque d'un clic.
+- Le manifeste du territoire n'est plus écrit dans le HTML : il vient de `territoire.recit`.
+- Sources ajoutées : INSEE — Code officiel géographique, arrondissement de Lille (595), relevé du
+  23/09/2026 (13 codes INSEE : Lille 59350, Roubaix 59512, Tourcoing 59599, Villeneuve-d'Ascq 59009,
+  Marcq-en-Barœul 59378, Lambersart 59328, Mons-en-Barœul 59410, Wasquehal 59646, Croix 59163,
+  Hem 59299, Loos 59360, Faches-Thumesnil 59220, Saint-André-lez-Lille 59527) ; service-public.gouv.fr,
+  fiche F930 « Mariage en France », vérifiée le 16/09/2026 (art. 63, 64, 74 du code civil et conditions
+  du mariage). Les règles sont des paraphrases, à revérifier sur Légifrance avant publication juridique.
+- Bug réel corrigé au passage : la comparaison des durées du jour se faisait sur des chaînes
+  (« 9 h 58 » passait pour plus long que « 16 h 24 ») — les extrêmes sont désormais comparés en minutes,
+  avec un contrôle qui exige un jour le plus long en juin/juillet et le plus court en décembre/janvier.
+
 ## 9. À confirmer (décisions qui ne peuvent venir que de vous)
 
 1. **Année éditoriale** : passée à 2026 pour être cohérente (aujourd'hui 23/09/2026). Confirmez-vous l'édition 2026 ?
@@ -147,18 +185,22 @@ serveur local (page et 5 ressources en 200), contraste WCAG calculé.
 4. **Newsletter** : quel service brancher (Brevo, Mailerlite, autre) ?
 5. **Professionnels** : l'annuaire reste vide tant qu'aucun professionnel réel n'est fourni avec sa provenance.
 6. **Autres territoires** : l'arborescence est prête (`data/territories/<slug>/`), rien n'a été créé. Prochain territoire ?
-7. **Médias** : aucun média réel. Toute photo ajoutée devra porter source, crédit, droits et statut — jamais une
+7. **Niveaux 1 et 2** : MONDE ne contient que la France, et FRANCE ne documente que Lille Métropole.
+   Ajoute-t-on d'autres pays ou d'autres territoires, ou ces niveaux restent-ils des cadres déclaratifs ?
+   Le découpage juridique est-il à garder dans l'interface, ou à réserver à la documentation ?
+8. **Médias** : aucun média réel. Toute photo ajoutée devra porter source, crédit, droits et statut — jamais une
    image générique présentée comme une photographie du lieu.
 
 ## 10. Repères
 
 | | Avant | Après |
 |---|---|---|
-| Fichiers de données | 0 | 15 fichiers d'entités + 365 fiches + 3 schémas |
+| Fichiers de données | 0 | 20 fichiers d'entités (dont `monde`, `france`, `niveaux`, `lumiere`, `recits`) + 365 fiches + 3 schémas |
 | Entités typées | — | 13 communes, 54 lieux, 365 coffrets, 6 univers, 10 moments, 4 saisons, 12 typologies |
-| Sections dans la fiche coffret | 1 | 11 |
+| Sections dans la fiche coffret | 1 | 12 |
 | Compteurs saisis à la main | 4 (dont 2 faux) | 0 |
-| Tests automatisés | 0 | 90 |
+| Niveaux modélisés | 0 | 10 (MONDE → RÉCIT), avec cardinalités calculées |
+| Tests automatisés | 0 | 127 |
 | Adresse par coffret | non | oui |
 | Sélection persistante | non | oui |
-| Sources citées | 0 | 7 sources officielles + provenance structurée |
+| Sources citées | 0 | 9 sources officielles + provenance structurée (lieux, INSEE, fiche F930) |
