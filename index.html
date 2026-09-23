@@ -675,6 +675,7 @@ button,input,select{font:inherit;color:inherit}
 .dw-src a{color:var(--paper);text-decoration:underline;text-decoration-color:rgba(239,234,225,.35);text-underline-offset:3px}
 .dw-src a:hover{text-decoration-color:var(--acid)}
 .src-date{opacity:.7}
+.src-portee{font-family:var(--fd);font-weight:700;font-stretch:80%;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--acid);border:1px solid rgba(217,255,63,.35);border-radius:100px;padding:2px 7px}
 .dw-meta-inline{grid-template-columns:repeat(2,1fr);border:1px solid var(--line);border-right:0;border-left:0}
 .dw-lum-values{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin:0 0 14px}
 .dw-lum-values>div{background:var(--ink-2);padding:11px 13px}
@@ -1332,11 +1333,23 @@ function statutBadge(statut, titre) {
   const libelle = STATUTS[statut] || statut;
   return `<span class="st" data-st="${statut}" title="${titre || ''}">${statut}<i>${libelle}</i></span>`;
 }
-function sourceLine(s) {
+function sourceLine(s, prefixe) {
   const lien = s.sourceUrl ? `<a href="${s.sourceUrl}" target="_blank" rel="noopener noreferrer">${s.source}</a>` : s.source;
+  const marque = prefixe ? `<span class="src-portee">${prefixe}</span> ` : '';
   const portee = s.portee ? ` — ${s.portee}` : '';
   const date = s.retrievedAt ? ` <span class="src-date">relevé le ${s.retrievedAt}</span>` : '';
-  return `<li>${lien}${portee}${date} ${statutBadge(s.status)}</li>`;
+  return `<li>${marque}${lien}${portee}${date} ${statutBadge(s.status)}</li>`;
+}
+/** Sources dédupliquées, chacune annonçant ce qu'elle documente réellement. */
+function sourcesDe(it, recLieu) {
+  const lieu = ((recLieu && recLieu.sources) || []).map((s) => ({ s, prefixe: null }));
+  const territoire = [...(it.commune.sources || [])].map((s) => ({ s, prefixe: 'Territoire' }));
+  const vues = new Set();
+  return [...lieu, ...territoire].filter(({ s }) => {
+    const k = s.sourceUrl || s.source;
+    if (vues.has(k)) return false;
+    vues.add(k); return true;
+  });
 }
 
 /** Barre de lumière : 24 valeurs calculées (hauteur du soleil par heure). */
@@ -1358,7 +1371,7 @@ function ficheHTML(it, rec) {
   const recCommune = rec && rec.commune ? rec.commune : null;
   const lum = (rec && rec.lumiere) || null;
   const paragraphes = (rec && rec.editorial && rec.editorial.paragraphes) || [];
-  const sources = [...(recLieu && recLieu.sources ? recLieu.sources : []), ...(it.commune.sources || [])];
+  const sources = sourcesDe(it, recLieu);
   const selected = state.selection.has(it.code);
   const momentObjs = it.moments.map((m) => MOMENT.get(m));
   const etat = detailEtat.get(it.code);
@@ -1461,7 +1474,8 @@ function ficheHTML(it, rec) {
 
       ${sources.length ? `<section class="dw-sec">
         <h4>Sources</h4>
-        <ul class="dw-src">${sources.map(sourceLine).join('')}</ul>
+        <ul class="dw-src">${sources.map(({ s, prefixe }) => sourceLine(s, prefixe)).join('')}</ul>
+        <p class="dw-note">Une source est citée pour ce qu’elle documente : l’identité du lieu, ou le rattachement territorial. Aucune source ne certifie ici un usage mariage.</p>
       </section>` : ''}
 
       ${lieuxAssocies.length ? `<section class="dw-sec">
