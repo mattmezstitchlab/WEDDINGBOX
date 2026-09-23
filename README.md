@@ -22,9 +22,19 @@ chaque fiche coffret. Les niveaux 1 et 2 n'affirment que du contenu sourcé — 
 
 ```bash
 # servir le dossier (les fiches détaillées sont chargées à la demande)
-python3 -m http.server 8080
+npm run serve          # ou : python3 -m http.server 8080
 # → http://localhost:8080/
 ```
+
+## Lancer les tests
+
+```bash
+npm install            # installe jsdom (seule dépendance, de développement)
+npm test               # 154 tests dans un vrai DOM, sur index.html et data/ réels
+```
+
+Le site lui-même n'a **aucune dépendance** : `index.html` et `data/` fonctionnent seuls,
+jsdom ne sert qu'à la suite de tests.
 
 Ouvrir `index.html` directement fonctionne aussi : la collection et les fiches restent lisibles
 (un message signale alors que les fiches détaillées ne peuvent pas être chargées).
@@ -35,7 +45,7 @@ Ouvrir `index.html` directement fonctionne aussi : la collection et les fiches r
 node tools/build-data.mjs --init   # (re)génère data/ depuis l'algorithme d'origine — une seule fois
 node tools/build-data.mjs          # vérifie data/, puis réinjecte le noyau dans index.html
 node tools/build-data.mjs --check  # vérifie sans écrire
-node tests/app.test.mjs            # 154 tests : données, plan, dix niveaux, rendu, liens, sélection, SEO, a11y, mobile
+npm test                           # 154 tests : données, plan, dix niveaux, rendu, liens, sélection, SEO, a11y, mobile
 ```
 
 `data/` est la **source de vérité**. `index.html` embarque un noyau généré (bloc balisé
@@ -72,6 +82,7 @@ tools/
   lib/editorial.mjs                 contenu humain : textes, typologies, notes, sources réelles
   lib/entity.mjs                    statuts, identifiants, provenance
   lib/solar.mjs                     calcul solaire (lever, coucher, golden hour, courbe 24 h)
+package.json                        dépendance de développement (jsdom) + scripts npm
 tests/app.test.mjs                  suite de tests fonctionnels (jsdom)
 docs/RAPPORT.md                     rapport d'enrichissement détaillé
 ```

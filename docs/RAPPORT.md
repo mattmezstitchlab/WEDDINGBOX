@@ -109,7 +109,7 @@ moment commun +1 par moment, saison +1, mois +1) : la règle est affichée dans 
 
 ## 7. Tests
 
-`node tests/app.test.mjs` → **127 tests, 0 échec**, exécutés dans un vrai DOM (jsdom) sur le fichier `index.html` réel,
+`npm install` puis `npm test` → **154 tests, 0 échec**, exécutés dans un vrai DOM (jsdom) sur le fichier `index.html` réel,
 avec lecture des vrais fichiers `data/`.
 
 Couverture : intégrité des données (identifiants stables, unicité, absence de référence cassée) · rendu de la mosaïque ·

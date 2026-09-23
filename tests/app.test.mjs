@@ -10,7 +10,17 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import url from 'node:url';
-import { JSDOM, VirtualConsole } from '/tmp/verify/node_modules/jsdom/lib/api.js';
+/* jsdom est une dépendance de développement (package.json) : les tests se lancent
+   par « npm install » puis « node tests/app.test.mjs », sans chemin en dur. */
+let jsdom = null;
+for (const source of ['jsdom', 'file:///tmp/verify/node_modules/jsdom/lib/api.js']) {
+  try { jsdom = await import(source); break; } catch (e) { /* on essaie la suivante */ }
+}
+if (!jsdom) {
+  console.error('jsdom est introuvable. Lancez « npm install » à la racine du dépôt, puis relancez.');
+  process.exit(1);
+}
+const { JSDOM, VirtualConsole } = jsdom;
 
 const ROOT = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), '..');
 const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
